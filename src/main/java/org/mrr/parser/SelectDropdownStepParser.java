@@ -8,22 +8,22 @@ import org.mrr.ActionType;
 public class SelectDropdownStepParser extends AbstractStepParser {
   /**
    * Default Constructor.
-   * @param testStepDescription free text description of the test step.
-   * The description is expected in this form: "select in dropdown dropdownName value \"Surname Name\""
+   * @param stepDescription in this form "select in dropdown dropdownName value \"Surname Name\""
    */
-  public SelectDropdownStepParser(final String testStepDescription) {
-    super(testStepDescription);
+  public SelectDropdownStepParser(final String stepDescription) {
+    super(stepDescription);
   }
 
   @Override
   void validate() {
-    super.performBasicValidation("Select in dropdown\\s\\w+\\svalue\\s\"[a-zA-Z0-9 ]+\"", "select in dropdown");
+    final String regex = "Select in dropdown\\s\\w+\\svalue\\s\"[a-zA-Z0-9 ]+\"";
+    super.performBasicValidation(regex, "select in dropdown");
   }
 
   @Override
   protected String parseTarget() {
-    String[] splitString = getTestStepDescription().replaceAll("Select in dropdown ", "").split("value");
-    return splitString[0].trim();
+    String[] split = getStepDescription().replaceAll("Select in dropdown ", "").split("value");
+    return split[0].trim();
   }
 
   @Override
@@ -33,7 +33,7 @@ public class SelectDropdownStepParser extends AbstractStepParser {
 
   @Override
   protected String parseValue() {
-    final String[] split = getTestStepDescription().split("\"");
+    final String[] split = getStepDescription().split("\"");
     return split[1];
   }
 }

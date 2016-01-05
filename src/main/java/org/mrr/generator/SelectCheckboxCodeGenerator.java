@@ -1,8 +1,8 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStepBean;
+import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
 
-import static org.mrr.generator.CodeIdentifierGenerator.*;
+import org.mrr.AutomationStepBean;
 
 /**
  * Code generator class for the step: select checkbox myCheckbox.
@@ -20,6 +20,7 @@ public class SelectCheckboxCodeGenerator extends AbstractCodeGenerator {
   @Override
   public String generateCode() {
     final String checkboxIdentifier = getIdentifierCodeFor(getAutomationTarget());
-    return "if (!driver.findElement(" + checkboxIdentifier + ").isSelected()){driver.findElement(" + checkboxIdentifier + ").click();}";
+    return "if (!driver.findElement(" + checkboxIdentifier
+      + ").isSelected()){driver.findElement(" + checkboxIdentifier + ").click();}";
   }
 }

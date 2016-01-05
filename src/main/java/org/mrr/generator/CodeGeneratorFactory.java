@@ -13,10 +13,9 @@ public class CodeGeneratorFactory {
   }
 
   /**
-   * Returns a code generator object that corresponds to the automation step bean received as parameter.
+   * Returns a code generator object for the automation step bean received as parameter.
    * @param automationStepBean the automation step bean to generate automation code for.
-   * @return code generator object for the automation step bean, or Runtime Exception if the right code
-   * generator is not found (e.g. not implemented).
+   * @return code generator object for the automation step bean.
    */
   public static AbstractCodeGenerator newInstance(AutomationStepBean automationStepBean) {
     if (ActionType.LOAD_PAGE.equals(automationStepBean.getActionType())) {
@@ -32,6 +31,7 @@ public class CodeGeneratorFactory {
     } else if (ActionType.DESELECT_CHECKBOX.equals(automationStepBean.getActionType())) {
       return new DeselectCheckboxCodeGenerator(automationStepBean);
     }
-    throw new CodeGeneratorNotIdentifiedException("The code generator for the action type: \"" + automationStepBean.getActionType().getText() + "\" is not found.");
+    throw new CodeGeneratorNotIdentifiedException("The code generator for the action type: \""
+      + automationStepBean.getActionType().getText() + "\" is not found.");
   }
 }

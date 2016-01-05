@@ -21,7 +21,7 @@ public class AutomationCodeGeneratorTest {
   public void setup() {
     this.automationCodeGenerator = new AutomationCodeGenerator();
     String pathToFirstTestFile = PATH_TO_TEST_RESOURCE_FOLDER + "FirstTestCase.txt";
-    this.automationCodeCommands = this.automationCodeGenerator.createAutomationCodeForActionsInFile(pathToFirstTestFile);
+    this.automationCodeCommands = this.automationCodeGenerator.createCodeForActionsInFile(pathToFirstTestFile);
   }
 
   @Test

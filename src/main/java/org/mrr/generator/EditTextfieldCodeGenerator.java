@@ -1,8 +1,8 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStepBean;
-
 import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
+
+import org.mrr.AutomationStepBean;
 
 /**
  * Selenium Code Generator for the operation "set value in edit text field".
@@ -20,6 +20,7 @@ public class EditTextfieldCodeGenerator extends AbstractCodeGenerator {
   @Override
   public String generateCode() {
     final String automationCodeForTarget = getIdentifierCodeFor(getAutomationTarget());
-    return "driver.findElement(" + automationCodeForTarget + ").sendKeys(\"" + getAutomationValue() + "\");";
+    return "driver.findElement(" + automationCodeForTarget
+      + ").sendKeys(\"" + getAutomationValue() + "\");";
   }
 }

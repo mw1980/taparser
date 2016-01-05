@@ -17,7 +17,7 @@ public class ClickRadioButtonStepParser extends AbstractStepParser {
 
   @Override
   protected String parseTarget() {
-    String[] splitDescription = getTestStepDescription().split(" ");
+    String[] splitDescription = getStepDescription().split(" ");
     return splitDescription[3];
   }
 

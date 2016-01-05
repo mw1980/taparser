@@ -8,22 +8,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SelectDropdownStepParserTest {
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingEmptyDescription_shouldThrowDescriptionNotParsableException() {
     new SelectDropdownStepParser("").validate();
   }
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingMalformedDescription_shouldThrowDescriptionNotParsableException() {
     new SelectDropdownStepParser("Select dropdown mydropdown value \"5\"").validate();
   }
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingMissingValueInDescription_shouldThrowDescriptionNotParsableException() {
     new SelectDropdownStepParser("Select in dropdown mydropdown \"ui label\"").validate();
   }
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingDescriptionWithoutQuotationMarks_shouldThrowDescriptionNotParsableException() {
     new SelectDropdownStepParser("Select in dropdown mydropdown value ui option").validate();
   }

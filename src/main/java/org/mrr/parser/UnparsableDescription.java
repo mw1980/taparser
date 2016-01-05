@@ -3,9 +3,9 @@ package org.mrr.parser;
 /**
  * Runtime Exception thrown one tries to parse a malformed test step description.
  */
-class DescriptionNotParsableException extends RuntimeException {
+class UnparsableDescription extends RuntimeException {
 
-  public DescriptionNotParsableException(final String message) {
+  public UnparsableDescription(final String message) {
     super(message);
   }
 }

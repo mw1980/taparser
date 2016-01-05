@@ -25,10 +25,14 @@ public class Identifier {
    */
   private final String identificationString;
 
-  public Identifier(
-    final String name,
-    final IdentificationType identificationType,
-    final String identificationString) {
+  /**
+   * Bean class, stores the elements needed to identify an user interface element.
+   * @param name non technical user interface name.
+   * @param identificationType identification for ui element, e.g.: "id", "name", "xpath".
+   * @param identificationString technical identification string, e.g. the html id.
+   */
+  public Identifier(final String name, final IdentificationType identificationType,
+                    final String identificationString) {
     this.name = name;
     this.identificationType = identificationType;
     this.identificationString = identificationString;
@@ -47,12 +51,16 @@ public class Identifier {
   }
 
   @Override
-  public boolean equals(final Object o) {
-    if (this == o) return true;
+  public boolean equals(final Object other) {
+    if (this == other) {
+      return true;
+    }
 
-    if (o == null || getClass() != o.getClass()) return false;
+    if (other == null || getClass() != other.getClass()) {
+      return false;
+    }
 
-    Identifier that = (Identifier) o;
+    final Identifier that = (Identifier) other;
 
     return new EqualsBuilder()
       .append(getName(), that.getName())
@@ -72,10 +80,10 @@ public class Identifier {
 
   @Override
   public String toString() {
-    return "Identifier{" +
-      "name='" + name + '\'' +
-      ", identificationType=" + identificationType +
-      ", identificationString='" + identificationString + '\'' +
-      '}';
+    return "Identifier{"
+      + "name='" + name + '\''
+      + ", identificationType=" + identificationType
+      + ", identificationString='" + identificationString + '\''
+      + '}';
   }
 }

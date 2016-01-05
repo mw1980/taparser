@@ -8,12 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SelectCheckboxStepParserTest {
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingWrongCheckboxNameText_shouldThrowDescriptionNotParsableException() {
     new SelectCheckboxStepParser("Select checkbox my first checkbox").validate();
   }
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingDescriptionWithMissingCheckboxText_shouldThrowDescriptionNotParsableException() {
     new SelectCheckboxStepParser("Select myCheckbox").validate();
   }

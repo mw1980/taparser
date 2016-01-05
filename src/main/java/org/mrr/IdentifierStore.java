@@ -1,10 +1,10 @@
 package org.mrr;
 
+import org.mrr.reader.CsvIdentifiersReader;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.mrr.reader.CsvIdentifiersReader;
 
 /**
  * The class stores the known element identifiers for the current application.
@@ -23,14 +23,18 @@ public class IdentifierStore {
     this.pathToFile = pathToFile;
   }
 
-  public Map<String, Identifier> getStoredElements(){
+  /**
+   * Initializes, if empty, and returns the list of the known ui identifiers.
+   * @return map with [key, values] of type [uiName, uiIdentifier].
+   */
+  public Map<String, Identifier> getStoredElements() {
     if (storedElements.isEmpty()) {
       final List<Identifier> identifiers = new CsvIdentifiersReader(pathToFile).readElements();
       for (Identifier each : identifiers) {
         storedElements.put(each.getName(), each);
       }
     }
-      return storedElements;
+    return storedElements;
   }
 
   /**
@@ -41,7 +45,8 @@ public class IdentifierStore {
   public Identifier getIdentifierFor(final String uiElement) {
     final Map<String, Identifier> storedIdentifiers = getStoredElements();
     if (!storedIdentifiers.containsKey(uiElement)) {
-      throw new IdentifierValueNotFoundException("No identifier found for the element: " + uiElement + ".");
+      throw new IdentifierValueNotFoundException("No identifier found for the element: "
+        + uiElement + ".");
     }
     return storedIdentifiers.get(uiElement);
   }

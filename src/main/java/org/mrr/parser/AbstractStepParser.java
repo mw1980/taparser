@@ -1,19 +1,19 @@
 package org.mrr.parser;
 
-import java.util.regex.Pattern;
-
 import org.mrr.ActionType;
 import org.mrr.AutomationStepBean;
+
+import java.util.regex.Pattern;
 
 /**
  * Abstract class, contains the methods to parse test case description and create
  * ActionSteps objects from free text test case description.
  */
 public abstract class AbstractStepParser {
-  private final String testStepDescription;
+  private final String stepDescription;
 
-  AbstractStepParser(final String testStepDescription) {
-    this.testStepDescription = testStepDescription;
+  AbstractStepParser(final String stepDescription) {
+    this.stepDescription = stepDescription;
   }
 
   /**
@@ -31,18 +31,18 @@ public abstract class AbstractStepParser {
   }
 
   /**
-   * Validation Method. Checks if the step description text ha the right form to be parsed to an AutomationStepObject.
+   * Validation Method. Checks if the step description can be parsed to an AutomationStepObject.
    */
   abstract void validate();
 
   /**
-   * The method identifies the target of the test step action from the current test case description.
+   * The method identifies the target of test step action from the current test case description.
    * @return the test case action target as string.
    */
   protected abstract String parseTarget();
 
   /**
-   * The method identifies the action type of the test step action from the current test case description.
+   * The method identifies the action type of the test step action from the test case description.
    * @return the test case action type.
    */
   protected abstract ActionType parseActionType();
@@ -54,13 +54,14 @@ public abstract class AbstractStepParser {
    */
   protected abstract String parseValue();
 
-  void performBasicValidation(final String regex, final String stepType){
-    if (!Pattern.matches(regex, getTestStepDescription())) {
-      throw new DescriptionNotParsableException("The description: \"" + getTestStepDescription() + "\" is not a valid " + stepType + " step description.");
+  void performBasicValidation(final String regex, final String stepType) {
+    if (!Pattern.matches(regex, getStepDescription())) {
+      throw new UnparsableDescription("The description: \"" + getStepDescription()
+        + "\" is not a valid " + stepType + " step description.");
     }
   }
 
-  String getTestStepDescription() {
-    return testStepDescription;
+  String getStepDescription() {
+    return stepDescription;
   }
 }

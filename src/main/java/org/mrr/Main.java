@@ -9,7 +9,8 @@ class Main {
   public static void main(String[] args) {
     AutomationCodeGenerator codeGenerator = new AutomationCodeGenerator();
 
-    final List<String> actionsInFile = codeGenerator.createAutomationCodeForActionsInFile("src/main/resources/org/mrr/txt/FirstTestCase.txt");
+    final String filePath = "src/main/resources/org/mrr/txt/FirstTestCase.txt";
+    final List<String> actionsInFile = codeGenerator.createCodeForActionsInFile(filePath);
     for (String action : actionsInFile) {
       System.out.println(action);
     }

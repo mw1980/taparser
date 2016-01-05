@@ -8,12 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeselectCheckboxStepParserTest {
 
-  @Test (expected = DescriptionNotParsableException.class)
+  @Test (expected = UnparsableDescription.class)
   public void whenValidatingDescriptionWithWrongCheckboxName_shouldThrowDescriptionNotParsableException(){
     new DeselectCheckboxStepParser("Deselect checkbox my first checkbox").validate();
   }
 
-  @Test (expected = DescriptionNotParsableException.class)
+  @Test (expected = UnparsableDescription.class)
   public void whenValidatingDescriptionWithMissingCheckbox_shouldThrowDescriptionNotParsableException(){
     new DeselectCheckboxStepParser("Deselect agreeWithCookies").validate();
   }

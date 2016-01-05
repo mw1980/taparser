@@ -1,8 +1,8 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStepBean;
-
 import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
+
+import org.mrr.AutomationStepBean;
 
 /**
  * Selenium code generator for the actions of type: "Click button myButton".

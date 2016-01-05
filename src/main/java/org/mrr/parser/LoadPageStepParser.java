@@ -34,7 +34,7 @@ public class LoadPageStepParser extends AbstractStepParser {
     //Expected:
     // - on position 0 the action text: ""
     // - on position 1 the action target: "http://www.myWebPage.com"
-    String[] actionTokens = getTestStepDescription().split(ActionType.LOAD_PAGE.getText() + " ");
+    String[] actionTokens = getStepDescription().split(ActionType.LOAD_PAGE.getText() + " ");
     return actionTokens[1];
   }
 }

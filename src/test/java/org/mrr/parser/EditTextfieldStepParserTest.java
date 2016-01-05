@@ -10,12 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Tests for the class EditTextfieldStepParser.
  */
 public class EditTextfieldStepParserTest {
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingDescriptionWithoutValue_shouldThrowDescriptionNotParsableException(){
     new EditTextfieldStepParser("Set in textfield login \"user name\"").validate();
   }
 
-  @Test (expected = DescriptionNotParsableException.class)
+  @Test (expected = UnparsableDescription.class)
   public void whenValidatingDescriptionWithoutQuotationMarks_shouldThrowDescriptionNotParableException(){
     new EditTextfieldStepParser("Set in textfied login value user").validate();
   }

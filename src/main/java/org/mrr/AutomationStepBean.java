@@ -16,6 +16,12 @@ public class AutomationStepBean {
   private final String target;
   private final String value;
 
+  /**
+   * The bean stores the elements of an automation step.
+   * @param actionType the type of the action, e.g.: click button, edit textfield.
+   * @param target the target of the action, e.g.: the button to be clicked.
+   * @param value the value of the action, e.g.: the text to be written in textfield.
+   */
   public AutomationStepBean(final ActionType actionType, final String target, final String value) {
     this.actionType = actionType;
     this.target = target;
@@ -36,20 +42,24 @@ public class AutomationStepBean {
 
   @Override
   public String toString() {
-    return "AutomationStepBean{" +
-      "actionType=" + actionType.getText() +
-      ", target='" + target + '\'' +
-      ", value='" + value + '\'' +
-      '}';
+    return "AutomationStepBean{"
+      + "actionType=" + actionType.getText()
+      + ", target='" + target + '\''
+      + ", value='" + value + '\''
+      + '}';
   }
 
   @Override
-  public boolean equals(final Object o) {
-    if (this == o) return true;
+  public boolean equals(final Object other) {
+    if (this == other) {
+      return true;
+    }
 
-    if (o == null || getClass() != o.getClass()) return false;
+    if (other == null || getClass() != other.getClass()) {
+      return false;
+    }
 
-    AutomationStepBean that = (AutomationStepBean) o;
+    final AutomationStepBean that = (AutomationStepBean) other;
 
     return new EqualsBuilder()
       .append(actionType, that.actionType)

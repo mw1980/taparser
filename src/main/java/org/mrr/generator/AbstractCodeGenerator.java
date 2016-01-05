@@ -26,11 +26,11 @@ public abstract class AbstractCodeGenerator {
     return automationStep;
   }
 
-  String getAutomationTarget(){
+  String getAutomationTarget() {
     return automationStep.getTarget();
   }
 
-  String getAutomationValue(){
+  String getAutomationValue() {
     return automationStep.getValue();
   }
 }

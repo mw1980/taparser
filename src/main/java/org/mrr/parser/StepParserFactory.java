@@ -11,8 +11,13 @@ public class StepParserFactory {
     //the class contains only static methods, so the constructor is hidden.
   }
 
-  public static AbstractStepParser newInstance(final String testCaseDescription) {
-    final String trimmedDescription = testCaseDescription.trim();
+  /**
+   * The method delivers the right step parser for the test step description.
+   * @param stepDescription free text description of the test step.
+   * @return concrete object of type AbstractStepParser.
+   */
+  public static AbstractStepParser newInstance(final String stepDescription) {
+    final String trimmedDescription = stepDescription.trim();
     if (trimmedDescription.startsWith(ActionType.LOAD_PAGE.getText())) {
       return new LoadPageStepParser(trimmedDescription);
     } else if (trimmedDescription.startsWith(ActionType.EDIT_TEXT.getText())) {
@@ -28,10 +33,11 @@ public class StepParserFactory {
     } else if (trimmedDescription.startsWith(ActionType.SELECT_RADIO_BUTTON.getText())) {
       return new ClickRadioButtonStepParser(trimmedDescription);
     }
-    throw new DescriptionNotParsableException("the action in '" + testCaseDescription + "' cannot be identified.");
+    throw new UnparsableDescription("Cannot identify action in '" + stepDescription + "'.");
   }
 
   private static boolean isClickAction(final String description) {
-    return description.startsWith(ActionType.CLICK_BUTTON.getText()) || description.startsWith(ActionType.CLICK_LINK.getText());
+    return description.startsWith(ActionType.CLICK_BUTTON.getText())
+      || description.startsWith(ActionType.CLICK_LINK.getText());
   }
 }

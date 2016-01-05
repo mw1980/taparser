@@ -1,7 +1,5 @@
 package org.mrr.parser;
 
-import java.util.regex.Pattern;
-
 import org.mrr.ActionType;
 
 /**
@@ -10,11 +8,10 @@ import org.mrr.ActionType;
 public class SelectCheckboxStepParser extends AbstractStepParser {
   /**
    * Default constructor.
-   * @param testStepDescription String description of the test step.
-   * It is expected in this form: "select checkbox checkboxname".
+   * @param stepDescription description, in this form: "select checkbox checkboxname".
    */
-  public SelectCheckboxStepParser(final String testStepDescription) {
-    super(testStepDescription);
+  public SelectCheckboxStepParser(final String stepDescription) {
+    super(stepDescription);
   }
 
   @Override
@@ -24,7 +21,7 @@ public class SelectCheckboxStepParser extends AbstractStepParser {
 
   @Override
   protected String parseTarget() {
-    String[] splitDescription = getTestStepDescription().split(" ");
+    String[] splitDescription = getStepDescription().split(" ");
     return splitDescription[2];
   }
 

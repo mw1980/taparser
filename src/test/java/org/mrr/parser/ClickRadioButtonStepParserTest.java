@@ -8,17 +8,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ClickRadioButtonStepParserTest {
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingWrongRadioButtonText_shouldThrowDescriptionNotParsableException() {
     new ClickRadioButtonStepParser("Select radiobutton value").validate();
   }
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingWrongOptionText_shouldThrowDescriptionNotParsableException() {
     new ClickRadioButtonStepParser("Select radio button per post").validate();
   }
 
-  @Test(expected = DescriptionNotParsableException.class)
+  @Test(expected = UnparsableDescription.class)
   public void whenValidatingMissingTargetDescription_shouldThrowDescriptionNotParsableException() {
     new ClickRadioButtonStepParser("Select radio button").validate();
   }

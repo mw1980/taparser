@@ -3,27 +3,27 @@ package org.mrr.parser;
 import org.mrr.ActionType;
 
 /**
- * The class contains methods to generate edit text field automation bean object from plain text description.
+ * Parser class for the edit text field steps.
  */
 public class EditTextfieldStepParser extends AbstractStepParser {
 
   /**
    * Default Constructor.
-   * @param testCaseDescription free text description for the edit text field step.
-   * The description is expected in this form: set in textfield myTextfield value "word1 word2 ... wordn"
+   * @param stepDescription in the form: set in textfield myTextfield value "word1 word2 ... wordn"
    */
-  public EditTextfieldStepParser(final String testCaseDescription) {
-    super(testCaseDescription);
+  public EditTextfieldStepParser(final String stepDescription) {
+    super(stepDescription);
   }
 
   @Override
   void validate() {
-    super.performBasicValidation("Set in textfield\\s\\w+\\svalue\\s\"[a-zA-Z0-9_ ]+\"", "edit text field");
+    final String regex = "Set in textfield\\s\\w+\\svalue\\s\"[a-zA-Z0-9_ ]+\"";
+    super.performBasicValidation(regex, "edit text field");
   }
 
   @Override
   protected String parseTarget() {
-    final String[] testCaseWords = getTestStepDescription().split(" ");
+    final String[] testCaseWords = getStepDescription().split(" ");
     return testCaseWords[3];
   }
 
@@ -34,7 +34,7 @@ public class EditTextfieldStepParser extends AbstractStepParser {
 
   @Override
   protected String parseValue() {
-    String[] actionTokens = getTestStepDescription().split("value ");
+    String[] actionTokens = getStepDescription().split("value ");
     return actionTokens[1].replace("\"", "");
   }
 }

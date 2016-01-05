@@ -1,14 +1,15 @@
 package org.mrr.reader;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import static java.nio.charset.Charset.defaultCharset;
+import static java.nio.file.Files.readAllLines;
+import static java.nio.file.Paths.get;
 
 import org.mrr.IdentificationType;
 import org.mrr.Identifier;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The class contains methods to read from ui elements identifier from external csv file.
@@ -34,7 +35,7 @@ public class CsvIdentifiersReader {
   public List<Identifier> readElements() {
     final List<Identifier> identifiers = new ArrayList<>();
     try {
-      final List<String> inputs = Files.readAllLines(Paths.get(this.filePath), Charset.defaultCharset());
+      final List<String> inputs = readAllLines(get(this.filePath), defaultCharset());
       for (final String input : inputs) {
         identifiers.add(readElementIdentifierFromString(input));
       }

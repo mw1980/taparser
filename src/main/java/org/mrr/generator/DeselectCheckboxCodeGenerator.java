@@ -1,8 +1,8 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStepBean;
+import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
 
-import static org.mrr.generator.CodeIdentifierGenerator.*;
+import org.mrr.AutomationStepBean;
 
 /**
  * Selenium code generator for the actions of type: "deselect checkbox mycheckbox".
@@ -20,6 +20,7 @@ public class DeselectCheckboxCodeGenerator extends AbstractCodeGenerator {
   @Override
   public String generateCode() {
     final String identifierCodeForTarget = getIdentifierCodeFor(getAutomationTarget());
-    return "if (driver.findElement(" + identifierCodeForTarget + ").isSelected()){driver.findElement(" + identifierCodeForTarget + ").click();}";
+    return "if (driver.findElement(" + identifierCodeForTarget
+      + ").isSelected()){driver.findElement(" + identifierCodeForTarget + ").click();}";
   }
 }
