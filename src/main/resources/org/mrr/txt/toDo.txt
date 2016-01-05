@@ -1,0 +1,18 @@
+checks...
+rewrite the identifier part (springify)
+move to github
+
+
+
+checks:
+//check text field value.
+WebElement element = driver.findElement(By.id("input_name"));
+String elementval = element.getAttribute("value");
+
+//check label text.
+driver.findElement(By.id("row")).getText();
+
+
+
+
+

@@ -1,0 +1,8 @@
+Load page http://www.google.com
+Set in textfield user value "myuser"
+Click button submit
+Click link newpage
+Select in dropdown mydropdown value "Select Option"
+Select checkbox agreecookies
+Deselect checkbox agreecookies
+Select radio button emailradiobutton
