@@ -22,10 +22,6 @@ public abstract class AbstractCodeGenerator {
    */
   public abstract String generateCode();
 
-  AutomationStepBean getAutomationStep() {
-    return automationStep;
-  }
-
   String getAutomationTarget() {
     return automationStep.getTarget();
   }
