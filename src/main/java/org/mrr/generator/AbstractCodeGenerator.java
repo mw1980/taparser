@@ -7,7 +7,7 @@ import org.mrr.AutomationStepBean;
  */
 public abstract class AbstractCodeGenerator {
   private final AutomationStepBean automationStep;
-  private CodeIdentifierGenerator codeIdentifierGenerator;
+  private final CodeIdentifierGenerator codeIdentifierGenerator;
 
   /**
    * Default Constructor.
