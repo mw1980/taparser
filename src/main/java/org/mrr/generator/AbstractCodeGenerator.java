@@ -22,7 +22,9 @@ public abstract class AbstractCodeGenerator {
    * Constructor for tests.
    * Allows to set also the custom code identifier generator.
    * @param automationStep The automation step to generate the test automation code for.
+   * @param codeIdentifierGenerator The custom code identifier generator.
    */
+
   AbstractCodeGenerator(final AutomationStepBean automationStep,
                         final CodeIdentifierGenerator codeIdentifierGenerator) {
     this.automationStep = automationStep;
@@ -45,11 +47,5 @@ public abstract class AbstractCodeGenerator {
 
   CodeIdentifierGenerator getCodeIdentifierGenerator() {
     return this.codeIdentifierGenerator;
-  }
-
-  //For the tests: gives the possibility to set a custom CodeIdentifierGenerator,
-  // that reads the identifiers from a test file.
-  public void setCodeIdentifierGenerator(final CodeIdentifierGenerator codeIdentifierGenerator) {
-    this.codeIdentifierGenerator = codeIdentifierGenerator;
   }
 }

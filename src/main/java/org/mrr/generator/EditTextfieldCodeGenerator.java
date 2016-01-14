@@ -15,6 +15,11 @@ public class EditTextfieldCodeGenerator extends AbstractCodeGenerator {
     super(automationStep);
   }
 
+  public EditTextfieldCodeGenerator(final AutomationStepBean automationStep,
+                                    final CodeIdentifierGenerator codeIdentifierGenerator) {
+    super(automationStep, codeIdentifierGenerator);
+  }
+
   @Override
   public String generateCode() {
     return "driver.findElement("
