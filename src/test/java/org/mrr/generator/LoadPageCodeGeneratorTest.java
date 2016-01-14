@@ -1,12 +1,13 @@
 package org.mrr.generator;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStepBean;
+import org.mrr.CodeGeneratorBaseTest;
 
-import static org.junit.Assert.*;
-
-public class LoadPageCodeGeneratorTest {
+public class LoadPageCodeGeneratorTest extends CodeGeneratorBaseTest {
 
   @Test
   public void testGenerateCode() throws Exception {

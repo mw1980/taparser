@@ -1,7 +1,5 @@
 package org.mrr.generator;
 
-import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
-
 import org.mrr.AutomationStepBean;
 
 /**
@@ -16,8 +14,17 @@ public class ClickButtonCodeGenerator extends AbstractCodeGenerator {
     super(automationStep);
   }
 
+  /*
+    Use this constructor only if you need to set a custom code identifier generator.
+   */
+  public ClickButtonCodeGenerator(final AutomationStepBean automationStep,
+                                  final CodeIdentifierGenerator codeIdentifierGenerator) {
+    super(automationStep, codeIdentifierGenerator);
+  }
+
   @Override
   public String generateCode() {
-    return "driver.findElement(" + getIdentifierCodeFor(getAutomationTarget()) + ").click();";
+    return "driver.findElement("
+      + getCodeIdentifierGenerator().generate(getAutomationTarget()) + ").click();";
   }
 }

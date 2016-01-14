@@ -1,7 +1,5 @@
 package org.mrr.generator;
 
-import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
-
 import org.mrr.AutomationStepBean;
 
 /**
@@ -19,8 +17,8 @@ public class EditTextfieldCodeGenerator extends AbstractCodeGenerator {
 
   @Override
   public String generateCode() {
-    final String automationCodeForTarget = getIdentifierCodeFor(getAutomationTarget());
-    return "driver.findElement(" + automationCodeForTarget
+    return "driver.findElement("
+      + getCodeIdentifierGenerator().generate(getAutomationTarget())
       + ").sendKeys(\"" + getAutomationValue() + "\");";
   }
 }

@@ -7,6 +7,7 @@ import org.mrr.AutomationStepBean;
  */
 public abstract class AbstractCodeGenerator {
   private final AutomationStepBean automationStep;
+  private CodeIdentifierGenerator codeIdentifierGenerator;
 
   /**
    * Default Constructor.
@@ -14,6 +15,18 @@ public abstract class AbstractCodeGenerator {
    */
   AbstractCodeGenerator(final AutomationStepBean automationStep) {
     this.automationStep = automationStep;
+    this.codeIdentifierGenerator = new CodeIdentifierGenerator();
+  }
+
+  /**
+   * Constructor for tests.
+   * Allows to set also the custom code identifier generator.
+   * @param automationStep The automation step to generate the test automation code for.
+   */
+  AbstractCodeGenerator(final AutomationStepBean automationStep,
+                        final CodeIdentifierGenerator codeIdentifierGenerator) {
+    this.automationStep = automationStep;
+    this.codeIdentifierGenerator = codeIdentifierGenerator;
   }
 
   /**
@@ -28,5 +41,15 @@ public abstract class AbstractCodeGenerator {
 
   String getAutomationValue() {
     return automationStep.getValue();
+  }
+
+  CodeIdentifierGenerator getCodeIdentifierGenerator() {
+    return this.codeIdentifierGenerator;
+  }
+
+  //For the tests: gives the possibility to set a custom CodeIdentifierGenerator,
+  // that reads the identifiers from a test file.
+  public void setCodeIdentifierGenerator(final CodeIdentifierGenerator codeIdentifierGenerator) {
+    this.codeIdentifierGenerator = codeIdentifierGenerator;
   }
 }

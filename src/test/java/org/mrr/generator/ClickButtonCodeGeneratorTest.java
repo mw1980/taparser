@@ -1,18 +1,18 @@
 package org.mrr.generator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStepBean;
+import org.mrr.CodeGeneratorBaseTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class ClickButtonCodeGeneratorTest {
+public class ClickButtonCodeGeneratorTest extends CodeGeneratorBaseTest {
 
   @Test
   public void shouldGenerateCodeAsExpected(){
     AutomationStepBean stepBean = new AutomationStepBean(ActionType.CLICK_BUTTON, "submit", "");
-    //TODO springify it. The actual implementation reads the identifiers from the production csv file :(
-    String generatedCode = new ClickButtonCodeGenerator(stepBean).generateCode();
-    assertThat(generatedCode).isEqualTo("driver.findElement(By.id(\"submitButtonId\")).click();");
+    final ClickButtonCodeGenerator clickButtonCodeGenerator = new ClickButtonCodeGenerator(stepBean, testCodeIdentifierGenerator);
+    assertThat(clickButtonCodeGenerator.generateCode()).isEqualTo("driver.findElement(By.id(\"submitButtonId\")).click();");
   }
 }

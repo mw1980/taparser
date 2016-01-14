@@ -1,6 +1,5 @@
 package org.mrr.generator;
 
-import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
 
 import org.mrr.AutomationStepBean;
 
@@ -16,9 +15,15 @@ public class SelectInDropdownCodeGenerator extends AbstractCodeGenerator {
     super(automationStep);
   }
 
+  public SelectInDropdownCodeGenerator(final AutomationStepBean automationStep,
+                                       final CodeIdentifierGenerator codeIdentifierGenerator) {
+    super(automationStep, codeIdentifierGenerator);
+  }
+
   @Override
   public String generateCode() {
-    return "new Select (driver.findElement(" + getIdentifierCodeFor(getAutomationTarget())
+    return "new Select (driver.findElement("
+      + getCodeIdentifierGenerator().generate(getAutomationTarget())
       + ")).selectByVisibleText(\"" + getAutomationValue() + "\");";
   }
 }

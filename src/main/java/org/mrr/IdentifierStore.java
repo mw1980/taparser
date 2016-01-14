@@ -9,10 +9,8 @@ import java.util.Map;
 /**
  * The class stores the known element identifiers for the current application.
  */
-//TODO springify here.
 public class IdentifierStore {
-
-  private final Map<String, Identifier> storedElements = new HashMap<>();
+  private static final Map<String, Identifier> storedElements = new HashMap<>();
   private final String pathToFile;
 
   /**
@@ -23,6 +21,13 @@ public class IdentifierStore {
     this.pathToFile = pathToFile;
   }
 
+  /*
+   * Just for tests.
+   */
+  public static void resetIdentifierList() {
+    storedElements.clear();
+  }
+
   /**
    * Initializes, if empty, and returns the list of the known ui identifiers.
    * @return map with [key, values] of type [uiName, uiIdentifier].
@@ -30,7 +35,7 @@ public class IdentifierStore {
   public Map<String, Identifier> getStoredElements() {
     if (storedElements.isEmpty()) {
       final List<Identifier> identifiers = new CsvIdentifiersReader(pathToFile).readElements();
-      for (Identifier each : identifiers) {
+      for (final Identifier each : identifiers) {
         storedElements.put(each.getName(), each);
       }
     }

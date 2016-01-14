@@ -1,7 +1,5 @@
 package org.mrr.generator;
 
-import static org.mrr.generator.CodeIdentifierGenerator.getIdentifierCodeFor;
-
 import org.mrr.AutomationStepBean;
 
 /**
@@ -17,10 +15,18 @@ public class DeselectCheckboxCodeGenerator extends AbstractCodeGenerator {
     super(automationStep);
   }
 
+  /**
+   * Use this constructor only id you need to specify a specific code identifier generator.
+   */
+  public DeselectCheckboxCodeGenerator(final AutomationStepBean automationStep,
+                                       final CodeIdentifierGenerator codeIdentifierGenerator) {
+    super(automationStep, codeIdentifierGenerator);
+  }
+
   @Override
   public String generateCode() {
-    final String identifierCodeForTarget = getIdentifierCodeFor(getAutomationTarget());
-    return "if (driver.findElement(" + identifierCodeForTarget
-      + ").isSelected()){driver.findElement(" + identifierCodeForTarget + ").click();}";
+    final String targetIdCode = getCodeIdentifierGenerator().generate(getAutomationTarget());
+    return "if (driver.findElement(" + targetIdCode
+      + ").isSelected()){driver.findElement(" + targetIdCode + ").click();}";
   }
 }
