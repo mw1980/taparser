@@ -1,13 +1,13 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStepBean;
+import org.mrr.AutomationStep;
 
 /**
  * Selenium Code Generator for the Load Page action steps.
  */
 public class LoadPageCodeGenerator extends AbstractCodeGenerator {
 
-  public LoadPageCodeGenerator(final AutomationStepBean automationStep) {
+  public LoadPageCodeGenerator(final AutomationStep automationStep) {
     super(automationStep);
   }
 

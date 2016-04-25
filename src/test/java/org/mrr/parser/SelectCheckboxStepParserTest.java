@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.ActionType;
-import org.mrr.AutomationStepBean;
+import org.mrr.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,8 +20,8 @@ public class SelectCheckboxStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldParseAsExpected() {
-    final AutomationStepBean expected = new AutomationStepBean(ActionType.SELECT_CHECKBOX, "a", "");
-    final AutomationStepBean calculated = new SelectCheckboxStepParser("Select checkbox a").parse();
+    final AutomationStep expected = new AutomationStep(ActionType.SELECT_CHECKBOX, "a", "");
+    final AutomationStep calculated = new SelectCheckboxStepParser("Select checkbox a").parse();
     assertThat(calculated).isEqualTo(expected);
   }
 }

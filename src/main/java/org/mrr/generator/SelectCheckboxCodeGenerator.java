@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStepBean;
+import org.mrr.AutomationStep;
 
 /**
  * Code generator class for the step: select checkbox myCheckbox.
@@ -11,11 +11,11 @@ public class SelectCheckboxCodeGenerator extends AbstractCodeGenerator {
    * Default Constructor.
    * @param automationStep The automation step to generate the test automation code for.
    */
-  public SelectCheckboxCodeGenerator(final AutomationStepBean automationStep) {
+  public SelectCheckboxCodeGenerator(final AutomationStep automationStep) {
     super(automationStep);
   }
 
-  public SelectCheckboxCodeGenerator(final AutomationStepBean automationStep,
+  public SelectCheckboxCodeGenerator(final AutomationStep automationStep,
                                      final CodeIdentifierGenerator codeIdentifierGenerator) {
     super(automationStep, codeIdentifierGenerator);
   }

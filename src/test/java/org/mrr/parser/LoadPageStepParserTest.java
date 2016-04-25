@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.ActionType;
-import org.mrr.AutomationStepBean;
+import org.mrr.AutomationStep;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -22,9 +22,9 @@ public class LoadPageStepParserTest {
 
   @Test
   public void whenParsingLoadAction_shouldReturnLoadActionTypeValueAndNoActionTarget() {
-    final AutomationStepBean automationStepBean = new LoadPageStepParser("Load page http://www.google.de").parse();
-    final AutomationStepBean expected = new AutomationStepBean(ActionType.LOAD_PAGE, "", "http://www.google.de");
-    assertEquals(expected, automationStepBean);
+    final AutomationStep automationStep = new LoadPageStepParser("Load page http://www.google.de").parse();
+    final AutomationStep expected = new AutomationStep(ActionType.LOAD_PAGE, "", "http://www.google.de");
+    assertEquals(expected, automationStep);
   }
 
 }

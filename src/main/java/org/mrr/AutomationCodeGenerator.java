@@ -20,7 +20,7 @@ class AutomationCodeGenerator {
    */
   public String createAutomationCodeForSingleStep(final String actionText) {
     final AbstractStepParser stepParserCommand = StepParserFactory.newInstance(actionText);
-    final AutomationStepBean automationBean = stepParserCommand.parse();
+    final AutomationStep automationBean = stepParserCommand.parse();
     final AbstractCodeGenerator codeGenerator = CodeGeneratorFactory.newInstance(automationBean);
     return codeGenerator.generateCode();
   }

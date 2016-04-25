@@ -1,7 +1,7 @@
 package org.mrr.parser;
 
 import org.mrr.ActionType;
-import org.mrr.AutomationStepBean;
+import org.mrr.AutomationStep;
 
 import java.util.regex.Pattern;
 
@@ -22,9 +22,9 @@ public abstract class AbstractStepParser {
    * and returns an automationStepBean object.
    * @return Automation Step Bean object parsed from the test case description.
    */
-  public AutomationStepBean parse() {
+  public AutomationStep parse() {
     validate();
-    return new AutomationStepBean(
+    return new AutomationStep(
       parseActionType(),
       parseTarget(),
       parseValue());

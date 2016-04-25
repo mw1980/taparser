@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.ActionType;
-import org.mrr.AutomationStepBean;
+import org.mrr.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,8 +25,8 @@ public class ClickButtonStepParserTest {
 
   @Test
   public void whenParsingCorrectButtonDescription_shouldIdentifyTheTargetCorrect() {
-    final AutomationStepBean calculated = new ClickButtonStepParser("Click button submitform").parse();
-    final AutomationStepBean expected = new AutomationStepBean(ActionType.CLICK_BUTTON, "submitform", "");
+    final AutomationStep calculated = new ClickButtonStepParser("Click button submitform").parse();
+    final AutomationStep expected = new AutomationStep(ActionType.CLICK_BUTTON, "submitform", "");
     assertThat(calculated).isEqualTo(expected);
   }
 
@@ -47,7 +47,7 @@ public class ClickButtonStepParserTest {
 
   @Test
   public void whenParsingCorrectLinkDescription_shouldIdentifyTheTargetCorrect() {
-    final AutomationStepBean calculated = new ClickButtonStepParser("Click link submitform").parse();
-    assertThat(calculated).isEqualTo(new AutomationStepBean(ActionType.CLICK_BUTTON, "submitform", ""));
+    final AutomationStep calculated = new ClickButtonStepParser("Click link submitform").parse();
+    assertThat(calculated).isEqualTo(new AutomationStep(ActionType.CLICK_BUTTON, "submitform", ""));
   }
 }
