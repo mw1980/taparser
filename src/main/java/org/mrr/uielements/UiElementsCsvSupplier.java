@@ -1,7 +1,7 @@
-package org.mrr.reader;
+package org.mrr.uielements;
 
-import org.mrr.IdentifiedBy;
-import org.mrr.UiElement;
+import org.mrr.IdentificationType;
+import org.mrr.ReadSpecificationException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -29,14 +29,14 @@ public class UiElementsCsvSupplier {
      * Creates the ui elements from their desccription in the external file.
      *
      * @return List of Ui elements.
-     * @throws TestSpecificationReaderException if the ui elements description cannot be read.
+     * @throws ReadSpecificationException if the ui elements description cannot be read.
      */
     public Map<String, UiElement> createUiElements() {
         try {
             final List<String> descriptions = readAllLines(get(this.location), defaultCharset());
             return createUiElements(descriptions);
         } catch (final IOException e) {
-            throw new TestSpecificationReaderException("File not found: " + this.location, e);
+            throw new ReadSpecificationException("File not found: " + this.location, e);
         }
     }
 
@@ -45,7 +45,7 @@ public class UiElementsCsvSupplier {
         for (final String description : descriptions) {
             final String[] lineItems = description.split(" ");
             result.put(lineItems[0],
-                    new UiElement(lineItems[0], IdentifiedBy.forValue(lineItems[1]), lineItems[2]));
+                    new UiElement(lineItems[0], IdentificationType.forValue(lineItems[1]), lineItems[2]));
         }
         return result;
     }

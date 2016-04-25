@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStep;
 import org.mrr.CodeGeneratorBaseTest;
-import org.mrr.UiElementNotFoundException;
+import org.mrr.uielements.UiElementNotFoundException;
 
 public class SelectCheckboxCodeGeneratorTest extends CodeGeneratorBaseTest {
 

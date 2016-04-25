@@ -3,15 +3,16 @@ package org.mrr.reader;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
-import org.mrr.IdentifiedBy;
-import org.mrr.UiElement;
+import org.mrr.IdentificationType;
+import org.mrr.ReadSpecificationException;
+import org.mrr.uielements.UiElement;
+import org.mrr.uielements.UiElementsCsvSupplier;
 
-import java.util.List;
 import java.util.Map;
 
 public class UiElementsCsvSupplierTest {
 
-  @Test(expected = TestSpecificationReaderException.class)
+  @Test(expected = ReadSpecificationException.class)
   public void whenReadFromNoExistingFile_shouldThrowException() {
     new UiElementsCsvSupplier("notExistingFile").createUiElements();
   }
@@ -33,14 +34,14 @@ public class UiElementsCsvSupplierTest {
   }
 
   private UiElement firstCsvElement() {
-    return new UiElement("user", IdentifiedBy.ID, "userNameHtmlId");
+    return new UiElement("user", IdentificationType.ID, "userNameHtmlId");
   }
 
   private UiElement secondCsvElement() {
-    return new UiElement("password", IdentifiedBy.ID, "userPassHtmlId");
+    return new UiElement("password", IdentificationType.ID, "userPassHtmlId");
   }
 
   private UiElement thirdCsvElement() {
-    return new UiElement("submit", IdentifiedBy.ID, "submitButtonId");
+    return new UiElement("submit", IdentificationType.ID, "submitButtonId");
   }
 }

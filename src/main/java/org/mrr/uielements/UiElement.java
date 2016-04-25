@@ -1,7 +1,8 @@
-package org.mrr;
+package org.mrr.uielements;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.mrr.IdentificationType;
 
 /**
  * The class contains the elements that identify an user interface element.
@@ -17,7 +18,7 @@ public class UiElement {
    * The way the user interface element is identified.
    * E.g. "By Id", "By XPath".
    */
-  private final IdentifiedBy type;
+  private final IdentificationType type;
 
   /**
    * The technical identification value.
@@ -30,7 +31,7 @@ public class UiElement {
    * @param type identification for ui element, e.g.: "id", "name", "xpath".
    * @param id technical identification string, e.g. the html id.
    */
-  public UiElement(final String name, final IdentifiedBy type, final String id) {
+  public UiElement(final String name, final IdentificationType type, final String id) {
     this.name = name;
     this.type = type;
     this.id = id;
@@ -40,7 +41,7 @@ public class UiElement {
     return name;
   }
 
-  public IdentifiedBy type() {
+  public IdentificationType type() {
     return type;
   }
 

@@ -1,18 +1,16 @@
-package org.mrr;
-
-import org.mrr.reader.UiElementsCsvSupplier;
+package org.mrr.uielements;
 
 import java.util.*;
 
 /**
  * The class stores the user interface elements [name, identifiedBy, id] registered for the current application.
  */
-public class UiElementsDeposit {
+public class UiElementsStore {
     //TODO Spring bean with shared (cached) content here...
     private Map<String, UiElement> articles = new TreeMap<>();
     private final UiElementsCsvSupplier supplier;
 
-    public UiElementsDeposit(final UiElementsCsvSupplier supplier) {
+    public UiElementsStore(final UiElementsCsvSupplier supplier) {
         this.supplier = supplier;
     }
 
@@ -20,7 +18,7 @@ public class UiElementsDeposit {
      * Delivers the registered ui elements.
      * @return map with [key, values] of type [uiName, id].
      */
-    Map<String, UiElement> articles() {
+    public Map<String, UiElement> articles() {
         initArticlesIfEmpty();
         return Collections.unmodifiableMap(articles);
     }

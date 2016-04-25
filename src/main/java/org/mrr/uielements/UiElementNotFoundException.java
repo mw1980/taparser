@@ -1,4 +1,4 @@
-package org.mrr;
+package org.mrr.uielements;
 
 /**
  * Exception thrown when calculating the enum value for a given literal/String value fails.

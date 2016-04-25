@@ -4,7 +4,6 @@ import org.mrr.generator.AbstractCodeGenerator;
 import org.mrr.generator.CodeGeneratorFactory;
 import org.mrr.parser.AbstractStepParser;
 import org.mrr.parser.StepParserFactory;
-import org.mrr.reader.FileTestCaseReader;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -27,13 +26,13 @@ class AutomationCodeGenerator {
 
   /**
    * Read all the action texts in the external file and generate the test automation code for them.
-   * @param filePath the path to the file that contains the action texts.
+   * @param location the path to the file that contains the action texts.
    * @return List of test automation commands for the test action steps read in the external file.
    */
-  public List<String> createCodeForActionsInFile(final String filePath) {
+  public List<String> createCodeForActionsInFile(final String location) {
     final List<String> result = new LinkedList<>();
-    for (final String each : new FileTestCaseReader(filePath).readTestCasesFromFile()) {
-      result.add(createAutomationCodeForSingleStep(each));
+    for (final String step : new StepDescriptionsStore(location).deliverStepsDescription()) {
+      result.add(createAutomationCodeForSingleStep(step));
     }
     return result;
   }
