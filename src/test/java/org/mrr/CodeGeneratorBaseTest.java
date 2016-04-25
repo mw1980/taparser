@@ -19,8 +19,5 @@ public class CodeGeneratorBaseTest {
     this.testCodeIdentifierGenerator = new CodeIdentifierGenerator(PATH_TO_TEST_ELEMENTS_IDENTIFIER);
   }
 
-  @After
-  public void tearDown(){
-    IdentifierStore.resetIdentifierList();
-  }
+
 }

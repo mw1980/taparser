@@ -23,8 +23,4 @@ public class IdentifierStoreTest {
     new IdentifierStore(filePath).getStoredElements();
   }
 
-  @After
-  public void tearDown() {
-    IdentifierStore.resetIdentifierList();
-  }
 }

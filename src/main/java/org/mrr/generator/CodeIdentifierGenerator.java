@@ -26,6 +26,7 @@ public class CodeIdentifierGenerator {
    * @return the selenium automation code for interacting with the user interface element.
    */
   public String generate(final String uiElement) {
+    //TODO cache hier...
     final Identifier identifier = new IdentifierStore(this.filePath).getIdentifierFor(uiElement);
     final StringBuilder seleniumText = new StringBuilder("");
     if (BY_ID.equals(identifier.getIdentificationType())) {

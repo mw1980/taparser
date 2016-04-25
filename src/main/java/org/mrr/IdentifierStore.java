@@ -10,7 +10,7 @@ import java.util.Map;
  * The class stores the known element identifiers for the current application.
  */
 public class IdentifierStore {
-  private static final Map<String, Identifier> storedElements = new HashMap<>();
+  private final Map<String, Identifier> storedElements = new HashMap<>();
   private final String pathToFile;
 
   /**
@@ -19,13 +19,6 @@ public class IdentifierStore {
    */
   public IdentifierStore(final String pathToFile) {
     this.pathToFile = pathToFile;
-  }
-
-  /*
-   * Just for tests.
-   */
-  public static void resetIdentifierList() {
-    storedElements.clear();
   }
 
   /**
