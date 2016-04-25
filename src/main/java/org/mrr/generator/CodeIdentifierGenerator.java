@@ -29,11 +29,11 @@ public class CodeIdentifierGenerator {
     //TODO cache hier...
     final Identifier identifier = new IdentifierStore(this.filePath).getIdentifierFor(uiElement);
     final StringBuilder seleniumText = new StringBuilder("");
-    if (BY_ID.equals(identifier.getIdentificationType())) {
+    if (BY_ID.equals(identifier.getType())) {
       seleniumText.append("By.id(\"");
     }
     //TODO ... continue here for the other identification strings.
-    seleniumText.append(identifier.getIdentificationString()).append("\")");
+    seleniumText.append(identifier.getId()).append("\")");
     return seleniumText.toString();
   }
 }

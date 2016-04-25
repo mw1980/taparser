@@ -17,37 +17,36 @@ public class Identifier {
    * The way the user interface element is identified.
    * E.g. "By Id", "By XPath".
    */
-  private final IdentificationType identificationType;
+  private final IdentificationType type;
 
   /**
-   * The technical identification type.
+   * The technical identification value.
    * E.g. the id of the element ("user_name").
    */
-  private final String identificationString;
+  private final String id;
 
   /**
    * Bean class, stores the elements needed to identify an user interface element.
    * @param name non technical user interface name.
-   * @param identificationType identification for ui element, e.g.: "id", "name", "xpath".
-   * @param identificationString technical identification string, e.g. the html id.
+   * @param type identification for ui element, e.g.: "id", "name", "xpath".
+   * @param id technical identification string, e.g. the html id.
    */
-  public Identifier(final String name, final IdentificationType identificationType,
-                    final String identificationString) {
+  public Identifier(final String name, final IdentificationType type, final String id) {
     this.name = name;
-    this.identificationType = identificationType;
-    this.identificationString = identificationString;
+    this.type = type;
+    this.id = id;
   }
 
   public String getName() {
     return name;
   }
 
-  public IdentificationType getIdentificationType() {
-    return identificationType;
+  public IdentificationType getType() {
+    return type;
   }
 
-  public String getIdentificationString() {
-    return identificationString;
+  public String getId() {
+    return id;
   }
 
   @Override
@@ -64,8 +63,8 @@ public class Identifier {
 
     return new EqualsBuilder()
       .append(getName(), that.getName())
-      .append(getIdentificationType(), that.getIdentificationType())
-      .append(getIdentificationString(), that.getIdentificationString())
+      .append(getType(), that.getType())
+      .append(getId(), that.getId())
       .isEquals();
   }
 
@@ -73,8 +72,8 @@ public class Identifier {
   public int hashCode() {
     return new HashCodeBuilder(17, 37)
       .append(getName())
-      .append(getIdentificationType())
-      .append(getIdentificationString())
+      .append(getType())
+      .append(getId())
       .toHashCode();
   }
 
@@ -82,8 +81,8 @@ public class Identifier {
   public String toString() {
     return "Identifier{"
       + "name='" + name + '\''
-      + ", identificationType=" + identificationType
-      + ", identificationString='" + identificationString + '\''
+      + ", type=" + type
+      + ", id='" + id + '\''
       + '}';
   }
 }
