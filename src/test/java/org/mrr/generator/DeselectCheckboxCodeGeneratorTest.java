@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStepBean;
 import org.mrr.CodeGeneratorBaseTest;
-import org.mrr.IdentifierValueNotFoundException;
+import org.mrr.UiElementNotFoundException;
 
 public class DeselectCheckboxCodeGeneratorTest extends CodeGeneratorBaseTest {
 
-  @Test(expected = IdentifierValueNotFoundException.class)
+  @Test(expected = UiElementNotFoundException.class)
   public void whenGeneratingCodeForNotIdentifiableTarget_shouldThrowIdentifierValueNotFoundException() {
     final AutomationStepBean automationBean = new AutomationStepBean(ActionType.DESELECT_CHECKBOX, "notThere", null);
     new DeselectCheckboxCodeGenerator(automationBean, testCodeIdentifierGenerator).generateCode();

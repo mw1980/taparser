@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStepBean;
 import org.mrr.CodeGeneratorBaseTest;
-import org.mrr.IdentifierValueNotFoundException;
+import org.mrr.UiElementNotFoundException;
 
 public class SelectInDropdownCodeGeneratorTest extends CodeGeneratorBaseTest {
 
-  @Test(expected = IdentifierValueNotFoundException.class)
+  @Test(expected = UiElementNotFoundException.class)
   public void whenGeneratingCodeForUiElementWithoutIdentifier_shouldThrowIdentifierValueNotFoundException() {
     final AutomationStepBean beanWithoutIdentifier = new AutomationStepBean(ActionType.SELECT_IN_DROPDOWN, "withoutIdentifier", "");
     new SelectInDropdownCodeGenerator(beanWithoutIdentifier, testCodeIdentifierGenerator).generateCode();

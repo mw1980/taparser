@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStepBean;
 import org.mrr.CodeGeneratorBaseTest;
-import org.mrr.IdentifierValueNotFoundException;
+import org.mrr.UiElementNotFoundException;
 
 public class SelectCheckboxCodeGeneratorTest extends CodeGeneratorBaseTest {
 
@@ -18,7 +18,7 @@ public class SelectCheckboxCodeGeneratorTest extends CodeGeneratorBaseTest {
     assertThat(codeGenerator.generateCode()).isEqualTo(expectedCode);
   }
 
-  @Test (expected = IdentifierValueNotFoundException.class)
+  @Test (expected = UiElementNotFoundException.class)
   public void whenParsingAutomationBeanWithUnknownTarget_shouldRaiseException(){
     final AutomationStepBean automationBeanWithUnknownTarget = new AutomationStepBean(ActionType.SELECT_CHECKBOX, "unknownTarget", null);
     new SelectCheckboxCodeGenerator(automationBeanWithUnknownTarget, testCodeIdentifierGenerator).generateCode();

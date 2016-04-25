@@ -5,10 +5,13 @@ package org.mrr.reader;
  */
 class TestSpecificationReaderException extends RuntimeException {
 
-  /**
-   * Default Constructor.
-   */
   public TestSpecificationReaderException(final String message) {
     super(message);
   }
+
+  public TestSpecificationReaderException(final String message, final Throwable cause) {
+    super(message, cause);
+  }
+
+
 }
