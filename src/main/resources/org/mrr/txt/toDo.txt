@@ -1,5 +1,5 @@
 checks...
-rewrite the uiElement part (springify)
+rewrite the component part (springify)
 move to github
 
 

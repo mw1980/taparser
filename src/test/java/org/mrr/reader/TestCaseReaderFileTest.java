@@ -18,13 +18,13 @@ public class TestCaseReaderFileTest {
 
   @Test
   public void whenReadingFromEmptyFile_shouldReturnEmptyList() {
-    List<String> testCases = new StepDescriptionsStore(TestConstants.PATH_TO_TEST_RESOURCE_FOLDER + "/EmptyTestCase.txt").deliverStepsDescription();
+    List<String> testCases = new StepDescriptionsStore(TestConstants.TEST_RESOURCE_FOLDER_LOCATION + "/EmptyTestCase.txt").deliverStepsDescription();
     assertTrue(testCases.isEmpty());
   }
 
   @Test
   public void whenReadingFromSampleFile_shouldReturnExpectedListElements() {
-    List<String> testCasesFromFile = new StepDescriptionsStore(TestConstants.PATH_TO_TEST_RESOURCE_FOLDER + "FirstTestCase.txt").deliverStepsDescription();
+    List<String> testCasesFromFile = new StepDescriptionsStore(TestConstants.TEST_RESOURCE_FOLDER_LOCATION + "FirstTestCase.txt").deliverStepsDescription();
     assertThat(testCasesFromFile.size()).isEqualTo(8);
     assertThat(testCasesFromFile.get(0)).isEqualTo("Load page http://www.google.com");
   }

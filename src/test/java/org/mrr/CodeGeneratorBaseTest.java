@@ -1,8 +1,7 @@
 package org.mrr;
 
-import static org.mrr.reader.TestConstants.PATH_TO_TEST_ELEMENTS_IDENTIFIER;
+import static org.mrr.reader.TestConstants.TEST_ELEMENTS_IDENTIFIER_LOCATION;
 
-import org.junit.After;
 import org.junit.Before;
 import org.mrr.generator.CodeIdentifierGenerator;
 
@@ -16,7 +15,7 @@ public class CodeGeneratorBaseTest {
 
   @Before
   public void setup(){
-    this.testCodeIdentifierGenerator = new CodeIdentifierGenerator(PATH_TO_TEST_ELEMENTS_IDENTIFIER);
+    this.testCodeIdentifierGenerator = new CodeIdentifierGenerator(TEST_ELEMENTS_IDENTIFIER_LOCATION);
   }
 
 

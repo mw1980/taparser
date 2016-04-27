@@ -1,11 +1,12 @@
 package org.mrr.generator;
 
 import org.mrr.Constants;
-import org.mrr.uielements.UiElement;
-import org.mrr.uielements.UiElementsStore;
-import org.mrr.uielements.UiElementsCsvSupplier;
+import org.mrr.controls.Control;
+import org.mrr.controls.ControlsPool;
+import org.mrr.controls.ControlsCsvAgent;
 
 import static org.mrr.IdentificationType.ID;
+import static org.mrr.IdentificationType.UNKNOWN;
 
 /**
  * Utility class. It contains methods to manipulate the user interface elements identifiers.
@@ -29,7 +30,10 @@ public class CodeIdentifierGenerator {
      */
     public String generate(final String uiElement) {
         //TODO cache hier...
-        final UiElement identifier = new UiElementsStore(new UiElementsCsvSupplier(this.filePath)).searchUiElementByName(uiElement);
+        final Control identifier = new ControlsPool(new ControlsCsvAgent(this.filePath)).searchForControl(uiElement);
+        if (UNKNOWN.equals(identifier.type())) {
+            return "Cannot find the control: " + uiElement + " in the repository. The code cannot be generated";
+        }
         final StringBuilder seleniumText = new StringBuilder("");
         if (ID.equals(identifier.type())) {
             seleniumText.append("By.id(\"");
