@@ -31,11 +31,11 @@ public class CodeIdentifierGenerator {
     public String generate(final String uiElement) {
         //TODO cache hier...
         final UiControl identifier = new ControlsPool(new ControlsCsvAgent(this.filePath)).searchForControl(uiElement);
-        if (UNKNOWN.equals(identifier.type())) {
+        if (UNKNOWN.equals(identifier.identificationType())) {
             return "Cannot find the control: " + uiElement + " in the repository. The code cannot be generated";
         }
         final StringBuilder seleniumText = new StringBuilder("");
-        if (ID.equals(identifier.type())) {
+        if (ID.equals(identifier.identificationType())) {
             seleniumText.append("By.id(\"");
         }
         //TODO ... continue here for the other identification strings.

@@ -31,7 +31,7 @@ public class CodeGeneratorFactory {
     } else if (ActionType.DESELECT_CHECKBOX.equals(automationStep.actionType())) {
       return new DeselectCheckboxCodeGenerator(automationStep);
     }
-    throw new CodeGeneratorNotIdentifiedException("The code generator for the action type: \""
+    throw new CodeGeneratorNotIdentifiedException("The code generator for the action identificationType: \""
       + automationStep.actionType().getText() + "\" is not found.");
   }
 }

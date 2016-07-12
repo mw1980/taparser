@@ -3,7 +3,7 @@ package org.mrr.parser;
 import org.mrr.ActionType;
 
 /**
- * Parser class for the actions of type: "deselect checkbox mycheckbox".
+ * Parser class for the actions of identificationType: "deselect checkbox mycheckbox".
  */
 public class DeselectCheckboxStepParser extends AbstractStepParser {
 

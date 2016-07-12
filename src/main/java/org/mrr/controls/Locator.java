@@ -44,7 +44,7 @@ public class Locator {
     @Override
     public String toString() {
         return "Locator{" +
-                "type=" + type +
+                "identificationType=" + type +
                 ", id='" + id + '\'' +
                 '}';
     }

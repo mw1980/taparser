@@ -3,7 +3,7 @@ package org.mrr.parser;
 import org.mrr.ActionType;
 
 /**
- * Step parser for the actions of type select value in Dropdown.
+ * Step parser for the actions of identificationType select value in Dropdown.
  */
 public class SelectDropdownStepParser extends AbstractStepParser {
   /**
