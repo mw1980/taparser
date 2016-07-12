@@ -2,7 +2,7 @@ package org.mrr.generator;
 
 import org.mrr.Constants;
 import org.mrr.controls.UiControl;
-import org.mrr.controls.ControlsPool;
+import org.mrr.controls.ControlsRepositoryImpl;
 import org.mrr.controls.ControlsCsvAgent;
 
 import static org.mrr.IdentificationType.ID;
@@ -30,7 +30,7 @@ public class CodeIdentifierGenerator {
      */
     public String generate(final String uiElement) {
         //TODO cache hier...
-        final UiControl identifier = new ControlsPool(new ControlsCsvAgent(this.filePath)).searchForControl(uiElement);
+        final UiControl identifier = new ControlsRepositoryImpl(new ControlsCsvAgent(this.filePath)).searchControlByName(uiElement);
         if (UNKNOWN.equals(identifier.identificationType())) {
             return "Cannot find the control: " + uiElement + " in the repository. The code cannot be generated";
         }
