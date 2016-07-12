@@ -14,8 +14,8 @@ public class ControlsPoolTest {
     public void whenReadingCorrectIdentifiers_shouldSaveThemAsExpected() {
         final String filePath = TEST_RESOURCE_FOLDER_LOCATION + "ElementIdentifiers.csv";
         //TODO: mock hier the controlAgent after switching to spring.
-        Map<String, Control> elements = new ControlsPool(new ControlsCsvAgent(filePath)).controls();
-        assertThat(elements.get("name")).isEqualTo(new Control("name",
+        Map<String, UiControl> elements = new ControlsPool(new ControlsCsvAgent(filePath)).controls();
+        assertThat(elements.get("name")).isEqualTo(new UiControl("name",
                 new Locator(IdentificationType.ID, "userNameHtmlId")));
     }
 

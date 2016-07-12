@@ -2,13 +2,13 @@ package org.mrr.controls;
 
 import org.mrr.IdentificationType;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * The class translates a plain text description to a java control.
+ * TODO: move the logic to the ControlsCsvAgent class. Delete this file.
  */
 class ControlsTranslator{
     private final List<String> descriptions;
@@ -18,8 +18,8 @@ class ControlsTranslator{
         this.descriptions = dscrption;
     }
 
-    Map<String, Control> translate() {
-        final Map<String, Control> result = new HashMap<>();
+    Map<String, UiControl> translate() {
+        final Map<String, UiControl> result = new HashMap<>();
         for (final String description : descriptions) {
             final String[] words = description.split(" ");
             result.put(name(words), control(words));
@@ -31,10 +31,10 @@ class ControlsTranslator{
         return words[0];
     }
 
-    private Control control(final String[] words) {
+    private UiControl control(final String[] words) {
         final String name = name(words);
         final IdentificationType type = IdentificationType.forValue(words[1]);
         final String value = words[2];
-        return new Control(name, new Locator(type, value));
+        return new UiControl(name, new Locator(type, value));
     }
 }

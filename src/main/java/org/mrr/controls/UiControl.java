@@ -7,12 +7,13 @@ import static org.mrr.IdentificationType.UNKNOWN;
 /**
  * Java representation of an html control.
  */
-public class Control {
-    static final Control NO_CONTROL = new Control("", new Locator(UNKNOWN, ""));
+
+public class UiControl {
+    static final UiControl NO_CONTROL = new UiControl("", new Locator(UNKNOWN, ""));
     private final String name;
     private final Locator locator;
 
-    public Control(final String nme, final Locator lcator) {
+    public UiControl(final String nme, final Locator lcator) {
         this.name = nme;
         this.locator = lcator;
     }
@@ -30,7 +31,7 @@ public class Control {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Control component = (Control) o;
+        UiControl component = (UiControl) o;
 
         if (name != null ? !name.equals(component.name) : component.name != null) return false;
         return locator != null ? locator.equals(component.locator) : component.locator == null;
@@ -45,7 +46,7 @@ public class Control {
 
     @Override
     public String toString() {
-        return "Control{" +
+        return "UiControl{" +
                 "name='" + name + '\'' +
                 ", locator=" + locator +
                 '}';

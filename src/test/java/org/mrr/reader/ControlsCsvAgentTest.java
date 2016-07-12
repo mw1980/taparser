@@ -3,7 +3,7 @@ package org.mrr.reader;
 import org.junit.Test;
 import org.mrr.IdentificationType;
 import org.mrr.ReadSpecificationException;
-import org.mrr.controls.Control;
+import org.mrr.controls.UiControl;
 import org.mrr.controls.ControlsCsvAgent;
 import org.mrr.controls.Locator;
 
@@ -21,31 +21,31 @@ public class ControlsCsvAgentTest {
     @Test
     public void whenReadingFromEmptyFile_shouldReturnEmptyList() {
         final String filePath = TestConstants.TEST_RESOURCE_FOLDER_LOCATION + "EmptyElementIdentifiersFile.csv";
-        final Map<String, Control> elementsFromFile = new ControlsCsvAgent(filePath).supply();
+        final Map<String, UiControl> elementsFromFile = new ControlsCsvAgent(filePath).supply();
         assertThat(elementsFromFile).isEmpty();
     }
 
     @Test
     public void whenReadingFromCorrectFile_shouldReturnAllElements() {
         final String filePath = TestConstants.TEST_RESOURCE_FOLDER_LOCATION + "ElementIdentifiers.csv";
-        final Map<String, Control> elementsFromFile = new ControlsCsvAgent(filePath).supply();
+        final Map<String, UiControl> elementsFromFile = new ControlsCsvAgent(filePath).supply();
         assertThat(firstCsvElement()).isEqualTo(elementsFromFile.get("user"));
         assertThat(secondCsvElement()).isEqualTo(elementsFromFile.get("password"));
         assertThat(thirdCsvElement()).isEqualTo(elementsFromFile.get("submit"));
     }
 
-    private Control firstCsvElement() {
-        return new Control("user",
+    private UiControl firstCsvElement() {
+        return new UiControl("user",
                 new Locator(IdentificationType.ID, "userNameHtmlId"));
     }
 
-    private Control secondCsvElement() {
-        return new Control("password",
+    private UiControl secondCsvElement() {
+        return new UiControl("password",
                 new Locator(IdentificationType.ID, "userPassHtmlId"));
     }
 
-    private Control thirdCsvElement() {
-        return new Control("submit",
+    private UiControl thirdCsvElement() {
+        return new UiControl("submit",
                 new Locator(IdentificationType.ID, "submitButtonId"));
     }
 }

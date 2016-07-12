@@ -10,7 +10,7 @@ import static java.util.Collections.unmodifiableMap;
 public class ControlsPool {
     private final ControlsAgent supplier;
     //TODO Spring bean with shared (cached) content here...
-    private Map<String, Control> controls;
+    private Map<String, UiControl> controls;
 
     public ControlsPool(final ControlsAgent supplier) {
         this.supplier = supplier;
@@ -19,7 +19,7 @@ public class ControlsPool {
     /**
      * Delivers the currently registered controls.
      */
-    protected Map<String, Control> controls() {
+    protected Map<String, UiControl> controls() {
         initControlsIfEmpty();
         return unmodifiableMap(this.controls);
     }
@@ -36,12 +36,12 @@ public class ControlsPool {
      * @param name control name
      * @return the control, if found. Otherwise a null control object.
      */
-    public Control searchForControl(final String name) {
+    public UiControl searchForControl(final String name) {
         //TODO replace the call to controls() with field article when the class as spring bean defined is.
         if (controls().containsKey(name)) {
             return controls.get(name);
         } else {
-            return Control.NO_CONTROL;
+            return UiControl.NO_CONTROL;
         }
     }
 }

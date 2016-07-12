@@ -28,7 +28,7 @@ public class ControlsCsvAgent implements ControlsAgent {
      * @return List of controls.
      * @throws ReadSpecificationException if the ui elements description cannot be read.
      */
-    public Map<String, Control> supply() {
+    public Map<String, UiControl> supply() {
         try {
             //TODO: read lines over a injected bean. It shpould be easier to test.
             final List<String> descriptions = readAllLines(get(this.location), defaultCharset());
