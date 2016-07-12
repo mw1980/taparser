@@ -10,6 +10,7 @@ import java.util.Map;
  * The class translates a plain text description to a java control.
  * TODO: move the logic to the ControlsCsvAgent class. Delete this file.
  */
+@Deprecated
 class ControlsTranslator{
     private final List<String> descriptions;
 
