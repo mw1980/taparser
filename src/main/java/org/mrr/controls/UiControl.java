@@ -2,7 +2,6 @@ package org.mrr.controls;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 import org.mrr.IdentificationType;
 
@@ -12,7 +11,6 @@ import static org.mrr.IdentificationType.UNKNOWN;
 /**
  * Java representation of an user interface control.
  */
-@Getter
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
