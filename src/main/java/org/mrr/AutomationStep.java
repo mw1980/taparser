@@ -6,10 +6,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 /**
  * This class encapsulates the elements of an test automation step:
  * It contains:
- * - the action identificationType, e.g.: load page, edit text field, check;
+ * - the action identificationType, e.g.: descriptionsAsText page, edit text field, check;
  * - the target of an action, e.g.: the id of an text field to be edited.
  * - the value of the action (optional), e.g. the value to set in the text field,
- * the url of the page to load, the value to check for in an edit field.
+ * the url of the page to descriptionsAsText, the value to check for in an edit field.
  */
 public class AutomationStep {
     private final ActionType type;

@@ -1,7 +1,7 @@
 package org.mrr;
 
 /**
- * Exception thrown when the test case specification cannot be read.
+ * Exception thrown when the test case specification cannot be descriptionsAsText.
  */
 public class ReadSpecificationException extends RuntimeException {
 

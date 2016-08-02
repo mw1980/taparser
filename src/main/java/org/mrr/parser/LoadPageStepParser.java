@@ -8,7 +8,7 @@ import org.mrr.ActionType;
 public class LoadPageStepParser extends AbstractStepParser {
   /**
    * Default constructor.
-   * @param testCaseDescription test case description, expected in this form: load page url
+   * @param testCaseDescription test case description, expected in this form: descriptionsAsText page url
    */
   public LoadPageStepParser(final String testCaseDescription) {
     super(testCaseDescription);
@@ -16,7 +16,7 @@ public class LoadPageStepParser extends AbstractStepParser {
 
   @Override
   void validate() {
-    super.performBasicValidation("Load page\\s\\S+", "load page");
+    super.performBasicValidation("Load page\\s\\S+", "descriptionsAsText page");
   }
 
   @Override

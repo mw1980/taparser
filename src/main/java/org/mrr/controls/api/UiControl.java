@@ -15,9 +15,10 @@ import static org.mrr.IdentificationType.UNKNOWN;
 @EqualsAndHashCode
 @ToString
 public class UiControl {
-    public static final UiControl NO_CONTROL = new UiControl(EMPTY, new Locator(UNKNOWN, EMPTY));
+    public static final UiControl NO_CONTROL = new UiControl(EMPTY, new UiLocator(UNKNOWN, EMPTY));
+
     private final String name;
-    private final Locator locator;
+    private final UiLocator locator;
 
     public IdentificationType identificationType() {
         return locator.type();

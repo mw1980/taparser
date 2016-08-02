@@ -1,6 +1,6 @@
 package org.mrr;
 
-import org.mrr.controls.api.ControlsPoolException;
+import org.mrr.controls.api.LoadControlsException;
 
 /**
  * UI Elements Identification Types supported by the application.
@@ -12,6 +12,6 @@ public enum IdentificationType {
     if ("id".equalsIgnoreCase(value)) {
       return IdentificationType.ID;
     }
-    throw new ControlsPoolException("Unknown IdentificationType value for " + value);
+    throw new LoadControlsException("Unknown IdentificationType value for " + value);
   }
 }

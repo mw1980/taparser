@@ -1,27 +1,24 @@
 package org.mrr.controls;
 
 import org.mrr.IdentificationType;
-import org.mrr.controls.api.Locator;
+import org.mrr.controls.api.TranslateControlsStrategy;
+import org.mrr.controls.api.UiLocator;
 import org.mrr.controls.api.UiControl;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * The class translates a plain text description to a java control.
- * TODO: move the logic to the ControlsCsvAgent class. Delete this file.
+ * The class translates a plain text descriptions to a java control.
  */
-@Deprecated
-class ControlsTranslator{
-    private final List<String> descriptions;
 
-    //TODO Validate the descriptions
-    ControlsTranslator(final List<String> dscrption) {
-        this.descriptions = dscrption;
-    }
+@Component
+class CsvTranslateControlsStrategy implements TranslateControlsStrategy {
 
-    Map<String, UiControl> translate() {
+    @Override
+    public Map<String, UiControl> translate(final List<String> descriptions) {
         final Map<String, UiControl> result = new HashMap<>();
         for (final String description : descriptions) {
             final String[] words = description.split(" ");
@@ -38,6 +35,6 @@ class ControlsTranslator{
         final String name = name(words);
         final IdentificationType type = IdentificationType.forValue(words[1]);
         final String value = words[2];
-        return new UiControl(name, new Locator(type, value));
+        return new UiControl(name, new UiLocator(type, value));
     }
 }

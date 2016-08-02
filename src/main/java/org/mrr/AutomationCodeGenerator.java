@@ -27,7 +27,7 @@ class AutomationCodeGenerator {
   /**
    * Read all the action texts in the external file and generate the test automation code for them.
    * @param location the path to the file that contains the action texts.
-   * @return List of test automation commands for the test action steps read in the external file.
+   * @return List of test automation commands for the test action steps descriptionsAsText in the external file.
    */
   public List<String> createCodeForActionsInFile(final String location) {
     final List<String> result = new LinkedList<>();

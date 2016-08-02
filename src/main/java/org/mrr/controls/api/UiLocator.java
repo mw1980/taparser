@@ -11,7 +11,7 @@ import org.mrr.IdentificationType;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Locator {
+public class UiLocator {
     private final IdentificationType type;
     private final String id;
 
