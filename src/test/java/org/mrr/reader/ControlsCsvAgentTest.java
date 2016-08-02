@@ -3,9 +3,9 @@ package org.mrr.reader;
 import org.junit.Test;
 import org.mrr.IdentificationType;
 import org.mrr.ReadSpecificationException;
-import org.mrr.controls.UiControl;
+import org.mrr.controls.api.UiControl;
 import org.mrr.controls.ControlsCsvAgent;
-import org.mrr.controls.Locator;
+import org.mrr.controls.api.Locator;
 
 import java.util.Map;
 

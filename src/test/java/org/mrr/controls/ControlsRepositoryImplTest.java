@@ -2,6 +2,9 @@ package org.mrr.controls;
 
 import org.junit.Test;
 import org.mrr.IdentificationType;
+import org.mrr.controls.api.ControlsPoolException;
+import org.mrr.controls.api.Locator;
+import org.mrr.controls.api.UiControl;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package org.mrr.controls;
+package org.mrr.controls.api;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -15,7 +15,7 @@ import static org.mrr.IdentificationType.UNKNOWN;
 @EqualsAndHashCode
 @ToString
 public class UiControl {
-    static final UiControl NO_CONTROL = new UiControl(EMPTY, new Locator(UNKNOWN, EMPTY));
+    public static final UiControl NO_CONTROL = new UiControl(EMPTY, new Locator(UNKNOWN, EMPTY));
     private final String name;
     private final Locator locator;
 

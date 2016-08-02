@@ -1,6 +1,8 @@
 package org.mrr.controls;
 
 import org.mrr.ReadSpecificationException;
+import org.mrr.controls.api.ControlsAgent;
+import org.mrr.controls.api.UiControl;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,6 +1,8 @@
 package org.mrr.controls;
 
 import org.mrr.IdentificationType;
+import org.mrr.controls.api.Locator;
+import org.mrr.controls.api.UiControl;
 
 import java.util.HashMap;
 import java.util.List;

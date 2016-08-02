@@ -1,4 +1,4 @@
-package org.mrr.controls;
+package org.mrr.controls.api;
 
 public class ControlsPoolException extends RuntimeException {
 

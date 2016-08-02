@@ -1,12 +1,11 @@
 package org.mrr.generator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.Test;
 import org.mrr.ActionType;
 import org.mrr.AutomationStep;
 import org.mrr.CodeGeneratorBaseTest;
-import org.mrr.controls.ControlsPoolException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SelectCheckboxCodeGeneratorTest extends CodeGeneratorBaseTest {
 

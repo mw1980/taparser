@@ -1,6 +1,6 @@
 package org.mrr;
 
-import org.mrr.controls.ControlsPoolException;
+import org.mrr.controls.api.ControlsPoolException;
 
 /**
  * UI Elements Identification Types supported by the application.

@@ -1,5 +1,9 @@
 package org.mrr.controls;
 
+import org.mrr.controls.api.ControlsAgent;
+import org.mrr.controls.api.ControlsRepository;
+import org.mrr.controls.api.UiControl;
+
 import java.util.Map;
 
 /**

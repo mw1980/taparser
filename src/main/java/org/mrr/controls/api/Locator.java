@@ -1,4 +1,4 @@
-package org.mrr.controls;
+package org.mrr.controls.api;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,5 +22,4 @@ public class Locator {
     public String id() {
         return id;
     }
-
 }

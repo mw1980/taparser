@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
 import org.mrr.Constants;
-import org.mrr.controls.UiControl;
+import org.mrr.controls.api.UiControl;
 import org.mrr.controls.ControlsRepositoryImpl;
 import org.mrr.controls.ControlsCsvAgent;
 
