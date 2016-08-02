@@ -1,13 +1,33 @@
 package org.mrr.reader;
 
+import org.hamcrest.core.IsNull;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mrr.IdentificationType;
 import org.mrr.ReadSpecificationException;
+import org.mrr.config.ApplicationConfig;
+import org.mrr.controls.ControlsAgentImpl;
+import org.mrr.controls.api.ControlsAgent;
 import org.mrr.controls.api.UiControl;
 import org.mrr.controls.api.UiLocator;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Map;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ControlsAgentImplTest {
+
+    @Test
+    public void checkSpringInjection(){
+        final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
+        ControlsAgent controlsAgent = context.getBean("controlsAgentImpl", ControlsAgentImpl.class);
+        final Map<String, UiControl> controls = controlsAgent.supply();
+        assertThat(controls, IsNull.notNullValue());
+        System.out.println(controls);
+
+    }
 
     @Test(expected = ReadSpecificationException.class)
     @Ignore
