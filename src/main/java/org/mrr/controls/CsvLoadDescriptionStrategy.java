@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.ReadSpecificationException;
+import org.mrr.controls.api.LoadControlsException;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ class CsvLoadDescriptionStrategy implements LoadDescriptionsStrategy {
         try {
            return readAllLines(get(this.location), defaultCharset());
         } catch (final IOException e) {
-            throw new ReadSpecificationException("File not found: " + this.location, e);
+            throw new LoadControlsException("File not found: " + this.location, e);
         }
     }
 }
