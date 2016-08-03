@@ -3,8 +3,8 @@ package org.mrr.generator;
 import org.mrr.Constants;
 import org.mrr.controls.api.UiControl;
 
-import static org.mrr.IdentificationType.ID;
-import static org.mrr.IdentificationType.UNKNOWN;
+import static org.mrr.core.IdentificationCriteria.ID;
+import static org.mrr.core.IdentificationCriteria.UNKNOWN;
 
 /**
  * Utility class. It contains methods to manipulate the user interface elements identifiers.
@@ -30,11 +30,11 @@ public class CodeIdentifierGenerator {
         //TODO avoid null. Implement real logic here.
         ///final UiControl identifier = new ControlsRepositoryImpl(new ControlsAgentImpl(this.filePath)).searchControlByName(uiElement);
         final UiControl identifier = null;
-        if (UNKNOWN.equals(identifier.identificationType())) {
+        if (UNKNOWN.equals(identifier.identifiedBy())) {
             return "Cannot find the control: " + uiElement + " in the repository. The code cannot be generated";
         }
         final StringBuilder seleniumText = new StringBuilder("");
-        if (ID.equals(identifier.identificationType())) {
+        if (ID.equals(identifier.identifiedBy())) {
             seleniumText.append("By.id(\"");
         }
         //TODO ... continue here for the other identification strings.

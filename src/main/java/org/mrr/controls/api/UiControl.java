@@ -3,10 +3,10 @@ package org.mrr.controls.api;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.IdentificationType;
+import org.mrr.core.IdentificationCriteria;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.mrr.IdentificationType.UNKNOWN;
+import static org.mrr.core.IdentificationCriteria.UNKNOWN;
 
 /**
  * Java representation of an user interface control.
@@ -20,8 +20,8 @@ public class UiControl {
     private final String name;
     private final UiLocator locator;
 
-    public IdentificationType identificationType() {
-        return locator.type();
+    public IdentificationCriteria identifiedBy() {
+        return locator.identificationCriteria();
     }
 
     public String id() {

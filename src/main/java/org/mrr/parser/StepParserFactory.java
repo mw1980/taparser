@@ -14,7 +14,7 @@ public class StepParserFactory {
   /**
    * The method delivers the right step parser for the test step description.
    * @param stepDescription free text description of the test step.
-   * @return concrete object of identificationType AbstractStepParser.
+   * @return concrete object of type AbstractStepParser.
    */
   public static AbstractStepParser newInstance(final String stepDescription) {
     final String trimmedDescription = stepDescription.trim();

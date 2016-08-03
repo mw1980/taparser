@@ -3,7 +3,7 @@ package org.mrr.controls.api;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.IdentificationType;
+import org.mrr.core.IdentificationCriteria;
 
 /**
  * The class stores the information needed to locate a control on a html page.
@@ -12,11 +12,11 @@ import org.mrr.IdentificationType;
 @EqualsAndHashCode
 @ToString
 public class UiLocator {
-    private final IdentificationType type;
+    private final IdentificationCriteria identificationCriteria;
     private final String id;
 
-    IdentificationType type() {
-        return type;
+    IdentificationCriteria identificationCriteria() {
+        return identificationCriteria;
     }
 
     public String id() {

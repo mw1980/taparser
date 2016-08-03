@@ -3,7 +3,7 @@ package org.mrr.generator;
 import org.mrr.AutomationStep;
 
 /**
- * Selenium code generator for the actions of identificationType: "Click button myButton".
+ * Selenium code generator for the actions of type: "Click button myButton".
  */
 public class ClickButtonCodeGenerator extends AbstractCodeGenerator {
   /**

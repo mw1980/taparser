@@ -11,7 +11,7 @@ import static java.util.Collections.singletonList;
 import static java.util.Collections.singletonMap;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.mrr.IdentificationType.ID;
+import static org.mrr.core.IdentificationCriteria.ID;
 
 /**
  * Tests for the class CsvTranslateControlsStrategy.

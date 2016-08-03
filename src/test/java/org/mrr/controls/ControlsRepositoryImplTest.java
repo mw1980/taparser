@@ -14,7 +14,7 @@ import static java.util.Collections.singletonMap;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mrr.IdentificationType.ID;
+import static org.mrr.core.IdentificationCriteria.ID;
 
 public class ControlsRepositoryImplTest {
 

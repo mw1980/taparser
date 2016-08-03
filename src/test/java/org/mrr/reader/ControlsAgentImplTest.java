@@ -3,7 +3,7 @@ package org.mrr.reader;
 import org.hamcrest.core.IsNull;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.mrr.IdentificationType;
+import org.mrr.core.IdentificationCriteria;
 import org.mrr.ReadSpecificationException;
 import org.mrr.config.ApplicationConfig;
 import org.mrr.controls.ControlsAgentImpl;
@@ -55,16 +55,16 @@ public class ControlsAgentImplTest {
 
     private UiControl firstCsvElement() {
         return new UiControl("user",
-                new UiLocator(IdentificationType.ID, "userNameHtmlId"));
+                new UiLocator(IdentificationCriteria.ID, "userNameHtmlId"));
     }
 
     private UiControl secondCsvElement() {
         return new UiControl("password",
-                new UiLocator(IdentificationType.ID, "userPassHtmlId"));
+                new UiLocator(IdentificationCriteria.ID, "userPassHtmlId"));
     }
 
     private UiControl thirdCsvElement() {
         return new UiControl("submit",
-                new UiLocator(IdentificationType.ID, "submitButtonId"));
+                new UiLocator(IdentificationCriteria.ID, "submitButtonId"));
     }
 }

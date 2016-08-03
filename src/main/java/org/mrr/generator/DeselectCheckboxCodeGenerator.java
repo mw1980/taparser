@@ -3,7 +3,7 @@ package org.mrr.generator;
 import org.mrr.AutomationStep;
 
 /**
- * Selenium code generator for the actions of identificationType: "deselect checkbox mycheckbox".
+ * Selenium code generator for the actions of type: "deselect checkbox mycheckbox".
  */
 public class DeselectCheckboxCodeGenerator extends AbstractCodeGenerator {
 

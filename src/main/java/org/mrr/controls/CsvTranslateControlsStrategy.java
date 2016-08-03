@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.IdentificationType;
+import org.mrr.core.IdentificationCriteria;
 import org.mrr.controls.api.TranslateControlsStrategy;
 import org.mrr.controls.api.UiLocator;
 import org.mrr.controls.api.UiControl;
@@ -33,7 +33,7 @@ class CsvTranslateControlsStrategy implements TranslateControlsStrategy {
 
     private UiControl control(final String[] words) {
         final String name = name(words);
-        final IdentificationType type = IdentificationType.forValue(words[1]);
+        final IdentificationCriteria type = IdentificationCriteria.forValue(words[1]);
         final String value = words[2];
         return new UiControl(name, new UiLocator(type, value));
     }

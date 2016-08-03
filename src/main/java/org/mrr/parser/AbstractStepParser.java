@@ -18,7 +18,7 @@ public abstract class AbstractStepParser {
 
   /**
    * The action method of the step parser.
-   * Parses the action identificationType, the action target and action values from test case description
+   * Parses the action type, the action target and action values from test case description
    * and returns an automationStepBean object.
    * @return Automation Step Bean object parsed from the test case description.
    */
@@ -42,8 +42,8 @@ public abstract class AbstractStepParser {
   protected abstract String parseTarget();
 
   /**
-   * The method identifies the action identificationType of the test step action from the test case description.
-   * @return the test case action identificationType.
+   * The method identifies the action type of the test step action from the test case description.
+   * @return the test case action type.
    */
   protected abstract ActionType parseActionType();
 
