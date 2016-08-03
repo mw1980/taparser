@@ -13,7 +13,7 @@ import static java.nio.file.Files.readAllLines;
 import static java.nio.file.Paths.get;
 
 /**
- * The class contains methods to descriptionsAsText controls descriptions from an csv file.
+ * The class contains methods to read controls descriptions from an csv file.
  */
 @Component
 class CsvLoadDescriptionStrategy implements LoadDescriptionsStrategy {
