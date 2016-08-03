@@ -61,7 +61,7 @@ public class ControlsRepositoryImplTest {
     }
 
     @Test
-    public void whenSearchingForControlByName_shouldCachTheResult(){
+    public void whenSearchingForControlByName_shouldCacheTheResult(){
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
         when(agent.supply()).thenReturn(notEmptyControlsMap());
         repository.searchControlByName("");

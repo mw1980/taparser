@@ -1,6 +1,5 @@
 package org.mrr.controls;
 
-import org.mrr.ReadSpecificationException;
 import org.mrr.controls.api.ControlsAgent;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
 import org.mrr.controls.api.TranslateControlsStrategy;
@@ -30,7 +29,6 @@ public class ControlsAgentImpl implements ControlsAgent {
      * Returns the list of controls defined in the external csv file at the current location.
      *
      * @return List of controls.
-     * @throws ReadSpecificationException if the ui elements description cannot be descriptionsAsText.
      */
     @Override
     public Map<String, UiControl> supply() {

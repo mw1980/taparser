@@ -3,7 +3,7 @@ package org.mrr.controls.api;
 import java.util.List;
 
 /**
- * The class contains methods to descriptionsAsText the control description from external source (e.g. xml, or csv)
+ * The interface defines the methods used to load the controls descriptions from external source (e.g. xml, or csv)
  */
 public interface LoadDescriptionsStrategy {
     /**
