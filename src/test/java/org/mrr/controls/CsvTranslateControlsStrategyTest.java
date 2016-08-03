@@ -5,6 +5,7 @@ import org.mrr.controls.api.LoadControlsException;
 import org.mrr.controls.api.UiControl;
 import org.mrr.controls.api.UiLocator;
 
+import java.util.Collections;
 import java.util.Map;
 
 import static java.util.Collections.singletonList;
@@ -30,8 +31,18 @@ public class CsvTranslateControlsStrategyTest {
         assertThat(calculated, equalTo(expected));
     }
 
+    @Test
+    public void whenTranslatingEmptyList_shouldReturnEmptyUiControlMap(){
+        final CsvTranslateControlsStrategy translator = new CsvTranslateControlsStrategy();
+        assertThat(
+                translator.translate(Collections.<String>emptyList()),
+                equalTo(Collections.<String, UiControl>emptyMap())
+        );
+    }
+
+
     @Test (expected = LoadControlsException.class)
-    public void whenTranslatingInvalidControlType_shouldThrowException(){
+    public void whenTranslatingInvalidIdentificationCriteria_shouldThrowException(){
         final CsvTranslateControlsStrategy translator = new CsvTranslateControlsStrategy();
         translator.translate(singletonList("name otherIdentificationType elementId"));
     }
