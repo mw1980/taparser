@@ -11,7 +11,8 @@ import org.mrr.controls.api.UiLocator;
 import java.util.Map;
 
 import static java.util.Collections.singletonMap;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mrr.core.IdentificationCriteria.ID;
@@ -72,18 +73,17 @@ public class ControlsRepositoryImplTest {
     @Test
     public void whenControlNoFound_shouldReturnTheNoControlUiObject(){
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
-        assertEquals(
+        assertThat(
                 UiControl.NO_CONTROL,
-                repository.searchControlByName("name"));
+                equalTo(repository.searchControlByName("name")));
     }
 
     @Test
     public void whenSearchingForAvailableObject_shouldReturnCorrectObject(){
         when(agent.supply()).thenReturn(notEmptyControlsMap());
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
-        assertEquals(
+        assertThat(
                 notEmptyControl(),
-                repository.searchControlByName(CONTROL_NAME));
-
+                equalTo(repository.searchControlByName(CONTROL_NAME)));
     }
 }
