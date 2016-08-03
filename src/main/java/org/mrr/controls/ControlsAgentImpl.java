@@ -14,7 +14,7 @@ import java.util.Map;
  * Controls delivery agent, that gets the controls from an csv file.
  */
 @Component
-public class ControlsAgentImpl implements ControlsAgent {
+class ControlsAgentImpl implements ControlsAgent {
     private final LoadDescriptionsStrategy loadStrategy;
     private final TranslateControlsStrategy translateStrategy;
 
