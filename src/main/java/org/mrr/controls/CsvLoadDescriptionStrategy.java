@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.controls.api.LoadControlsException;
+import org.mrr.core.LoadControlsException;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

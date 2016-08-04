@@ -1,4 +1,4 @@
-package org.mrr.controls.api;
+package org.mrr.core;
 
 public class LoadControlsException extends RuntimeException {
 

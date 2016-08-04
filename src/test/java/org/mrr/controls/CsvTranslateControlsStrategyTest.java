@@ -1,7 +1,7 @@
 package org.mrr.controls;
 
 import org.junit.Test;
-import org.mrr.controls.api.LoadControlsException;
+import org.mrr.core.LoadControlsException;
 import org.mrr.controls.api.UiControl;
 import org.mrr.controls.api.UiLocator;
 

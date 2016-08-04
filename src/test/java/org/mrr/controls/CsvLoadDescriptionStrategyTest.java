@@ -1,7 +1,7 @@
 package org.mrr.controls;
 
 import org.junit.Test;
-import org.mrr.controls.api.LoadControlsException;
+import org.mrr.core.LoadControlsException;
 import org.springframework.test.util.ReflectionTestUtils;
 
 /**
