@@ -1,7 +1,5 @@
 package org.mrr.controls;
 
-import org.hamcrest.core.IsNull;
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
@@ -14,16 +12,17 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertNotNull;
 
 public class IntegrationTests {
     @Test
     @Ignore
-    //this is actually an integration test and should be moved to its own integration folder.
     public void checkSpringInjection(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        ControlsSupplyAgent controlsSupplyAgent = context.getBean("controlsAgentImpl", ControlsSupplyAgentImpl.class);
+        ControlsSupplyAgent controlsSupplyAgent = context.getBean("controlsSupplyAgentImpl", ControlsSupplyAgentImpl.class);
         final Map<String, UiControl> controls = controlsSupplyAgent.supply();
-        assertThat(controls, IsNull.notNullValue());
+        assertThat(controls, notNullValue());
     }
 
     @Test
@@ -32,8 +31,16 @@ public class IntegrationTests {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final CsvLoadDescriptionStrategy loadStrategy = context.getBean("csvLoadDescriptionStrategy", CsvLoadDescriptionStrategy.class);
         final List<String> descriptions = loadStrategy.descriptionsAsText();
-        Assert.assertNotNull(descriptions);
+        assertNotNull(descriptions);
         System.out.println(descriptions);
     }
 
+    @Test
+    @Ignore
+    public void shouldLoadUiElementsWhenCalledFromControlsLogicClass(){
+        final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
+        final ControlsLogicImpl controlsLogic = context.getBean("controlsLogicImpl", ControlsLogicImpl.class);
+        final Map<String, UiControl> controls = controlsLogic.loadControlsFromCsvFile();
+        assertThat(controls, notNullValue());
+    }
 }

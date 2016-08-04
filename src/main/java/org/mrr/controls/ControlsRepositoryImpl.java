@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The class stores the controls registered for the current application.
+ * Repository class for the controls registered to the application.
+ * The class also implements a low level caching mechanism.
  */
 @Component
 class ControlsRepositoryImpl implements ControlsRepository {
