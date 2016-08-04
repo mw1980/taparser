@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.controls.api.ControlsAgent;
+import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
 import org.mrr.controls.api.TranslateControlsStrategy;
 import org.mrr.controls.api.UiControl;
@@ -14,13 +14,13 @@ import java.util.Map;
  * Controls delivery agent, that gets the controls from an csv file.
  */
 @Component
-class ControlsAgentImpl implements ControlsAgent {
+class ControlsSupplyAgentImpl implements ControlsSupplyAgent {
     private final LoadDescriptionsStrategy loadStrategy;
     private final TranslateControlsStrategy translateStrategy;
 
     @Autowired
-    public ControlsAgentImpl(final LoadDescriptionsStrategy loadStrategy,
-                             final TranslateControlsStrategy translateStrategy) {
+    public ControlsSupplyAgentImpl(final LoadDescriptionsStrategy loadStrategy,
+                                   final TranslateControlsStrategy translateStrategy) {
         this.loadStrategy = loadStrategy;
         this.translateStrategy = translateStrategy;
     }

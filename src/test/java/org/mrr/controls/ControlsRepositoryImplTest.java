@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.controls.api.ControlsAgent;
+import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.controls.api.UiControl;
 import org.mrr.controls.api.UiLocator;
 
@@ -22,7 +22,7 @@ public class ControlsRepositoryImplTest {
     private static final String CONTROL_NAME = "name";
 
     @Mock
-    private ControlsAgent agent;
+    private ControlsSupplyAgent agent;
 
     @Before
     public void setup(){

@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.controls.api.ControlsAgent;
+import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.controls.api.ControlsRepository;
 import org.mrr.controls.api.UiControl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,13 @@ import java.util.Map;
 @Component
 class ControlsRepositoryImpl implements ControlsRepository {
 
-    private final ControlsAgent agent;
+    private final ControlsSupplyAgent agent;
 
     //low level caching.
     private Map<String, UiControl> controls;
 
     @Autowired
-    public ControlsRepositoryImpl(final ControlsAgent agent) {
+    public ControlsRepositoryImpl(final ControlsSupplyAgent agent) {
         this.controls = new HashMap<>();
         this.agent = agent;
     }

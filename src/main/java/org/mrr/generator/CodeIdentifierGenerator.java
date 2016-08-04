@@ -28,7 +28,7 @@ public class CodeIdentifierGenerator {
      */
     public String generate(final String uiElement) {
         //TODO avoid null. Implement real logic here.
-        ///final UiControl identifier = new ControlsRepositoryImpl(new ControlsAgentImpl(this.filePath)).searchControlByName(uiElement);
+        ///final UiControl identifier = new ControlsRepositoryImpl(new ControlsSupplyAgentImpl(this.filePath)).searchControlByName(uiElement);
         final UiControl identifier = null;
         if (UNKNOWN.equals(identifier.identifiedBy())) {
             return "Cannot find the control: " + uiElement + " in the repository. The code cannot be generated";
