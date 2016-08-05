@@ -1,4 +1,4 @@
-package org.mrr;
+package org.mrr.core;
 
 /**
  * User interface supported action types.
@@ -11,7 +11,8 @@ public enum ActionType {
   SELECT_IN_DROPDOWN("Select in dropdown"),
   SELECT_CHECKBOX("Select checkbox"),
   DESELECT_CHECKBOX("Deselect checkbox"),
-  SELECT_RADIO_BUTTON("Select radio button");
+  SELECT_RADIO_BUTTON("Select radio button"),
+  UNKNOWN("");
 
   private final String actionText;
 
@@ -19,7 +20,7 @@ public enum ActionType {
     this.actionText = actionText;
   }
 
-  public final String getText() {
+  public final String text() {
     return actionText;
   }
 }

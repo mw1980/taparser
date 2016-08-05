@@ -1,53 +1,53 @@
 package org.mrr.parser;
 
 import org.junit.Test;
-import org.mrr.ActionType;
-import org.mrr.AutomationStep;
+import org.mrr.core.ActionType;
+import org.mrr.core.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ClickButtonStepParserTest {
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenParsingMalformedButtonStepDescription_shouldThrowDescriptionNotParsableException() {
-    new ClickButtonStepParser("Click button firstbutton secondbutton").validate();
+    new ClickButtonStepParser().validate("Click button firstbutton secondbutton");
   }
 
   @Test
   public void whenParsingWellFormedButtonStepDescription_shouldValidateWithoutException() {
-    new ClickButtonStepParser("Click button singlebutton").validate();
+    new ClickButtonStepParser().validate("Click button singlebutton");
   }
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenParsingUppercaseButtonDescription_shouldThrowDescriptionNotParsableException() {
-    new ClickButtonStepParser("Click Button firstButton").validate();
+    new ClickButtonStepParser().validate("Click Button firstButton");
   }
 
   @Test
   public void whenParsingCorrectButtonDescription_shouldIdentifyTheTargetCorrect() {
-    final AutomationStep calculated = new ClickButtonStepParser("Click button submitform").parse();
+    final AutomationStep calculated = new ClickButtonStepParser().parse("Click button submitform");
     final AutomationStep expected = new AutomationStep(ActionType.CLICK_BUTTON, "submitform", "");
     assertThat(calculated).isEqualTo(expected);
   }
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenParsingMalformedLinkStepDescription_shouldThrowDescriptionNotParsableException() {
-    new ClickButtonStepParser("Click link firstbutton secondbutton").validate();
+    new ClickButtonStepParser().validate("Click link firstbutton secondbutton");
   }
 
   @Test
   public void whenParsingWellFormedLinkStepDescription_shouldValidateWithoutException() {
-    new ClickButtonStepParser("Click link singlebutton").validate();
+    new ClickButtonStepParser().validate("Click link singlebutton");
   }
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenParsingUppercaseLinkDescription_shouldThrowDescriptionNotParsableException() {
-    new ClickButtonStepParser("Click Link firstButton").validate();
+    new ClickButtonStepParser().validate("Click Link firstButton");
   }
 
   @Test
   public void whenParsingCorrectLinkDescription_shouldIdentifyTheTargetCorrect() {
-    final AutomationStep calculated = new ClickButtonStepParser("Click link submitform").parse();
+    final AutomationStep calculated = new ClickButtonStepParser().parse("Click link submitform");
     assertThat(calculated).isEqualTo(new AutomationStep(ActionType.CLICK_BUTTON, "submitform", ""));
   }
 }

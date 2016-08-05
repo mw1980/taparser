@@ -1,52 +1,60 @@
 package org.mrr.parser;
 
-import org.mrr.ActionType;
+import org.mrr.core.ActionType;
+import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
+
+import static org.mrr.core.ActionType.CLICK_BUTTON;
+import static org.mrr.core.ActionType.CLICK_LINK;
 
 /**
  * Parses class for the step: "click button buttonname".
  */
-public class ClickButtonStepParser extends AbstractStepParser {
+@Component
+public class ClickButtonStepParser extends AbstractTestStepParserTemplate {
 
-  /**
-   * Default constructor.
-   * @param testStepDescription step description, in this form "click button buttonName".
-   */
-  public ClickButtonStepParser(final String testStepDescription) {
-    super(testStepDescription);
-  }
-
-  @Override
-  void validate() {
-    if (isNoClickDescription("button") && (isNoClickDescription("link"))) {
-      throw new UnparsableDescription("The test step description '" + getStepDescription()
-        + "' cannot be parsed to a click button step.");
+    @Override
+    protected void validate(final String description) {
+        if (isNoClickDescription("button", description) &&
+                (isNoClickDescription("link", description))) {
+            throw new DescriptionNotParsableException("The test step description '" + description
+                    + "' cannot be parsed to a click button step.");
+        }
     }
-  }
 
-  private boolean isNoClickDescription(String elementType) {
-    return !Pattern.matches("Click " + elementType + " [a-z]+", getStepDescription());
-  }
+    private boolean isNoClickDescription(final String elementType, final String description) {
+        return !Pattern.matches("Click " + elementType + " [a-z]+", description);
+    }
 
-  @Override
-  protected String parseTarget() {
-    final String[] descriptionWords = getStepDescription().split(" ");
+    @Override
+    protected ActionType parseActionType() {
+        return CLICK_BUTTON;
+    }
+
+    @Override
+    protected String parseTarget(final String description) {
+        final String[] descriptionWords = description.split(" ");
     /*
      * position 0: click
      * position 1: button
      * position 2: buttonName
      */
-    return descriptionWords[2];
-  }
+        return descriptionWords[2];
+    }
 
-  @Override
-  protected ActionType parseActionType() {
-    return ActionType.CLICK_BUTTON;
-  }
+    @Override
+    protected String parseValue(final String description) {
+        return "";
+    }
 
-  @Override
-  protected String parseValue() {
-    return "";
-  }
+    @Override
+    public boolean canParse(String description) {
+        return isClickAction(description.trim());
+    }
+
+    private boolean isClickAction(final String description) {
+        return description.startsWith(CLICK_BUTTON.text())
+                || description.startsWith(CLICK_LINK.text());
+    }
 }

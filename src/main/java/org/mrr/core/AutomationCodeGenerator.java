@@ -1,9 +1,9 @@
-package org.mrr;
+package org.mrr.core;
 
 import org.mrr.generator.AbstractCodeGenerator;
 import org.mrr.generator.CodeGeneratorFactory;
-import org.mrr.parser.AbstractStepParser;
-import org.mrr.parser.StepParserFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,15 +11,26 @@ import java.util.List;
 /**
  * The class generates selenium code for a text action.
  */
-class AutomationCodeGenerator {
+@Component
+public class AutomationCodeGenerator {
+    final TestStepParserAgent testStepParserAgent;
+
+    @Autowired
+    public AutomationCodeGenerator(final TestStepParserAgent stepParserAgent) {
+        this.testStepParserAgent = stepParserAgent;
+    }
+
   /**
    * The method delivers the automation code for a single action.
-   * @param actionText the "non technical" action text.
+   * @param description the "non technical" test step description.
+   *                    E.g. Click button submit
    * @return the test automation code for the input text.
    */
-  public String createAutomationCodeForSingleStep(final String actionText) {
-    final AbstractStepParser stepParserCommand = StepParserFactory.newInstance(actionText);
-    final AutomationStep automationBean = stepParserCommand.parse();
+  public String createAutomationCodeForSingleStep(final String description) {
+      //TODO: hide the parser from the enduser. move the both actions: findParser() and parse() to one single class
+      //that further delegates the calls to the corresponding beans.
+    final TestStepParser parser = testStepParserAgent.findParserForDescription(description);
+    final AutomationStep automationBean = parser.parse(description);
     final AbstractCodeGenerator codeGenerator = CodeGeneratorFactory.newInstance(automationBean);
     return codeGenerator.generateCode();
   }

@@ -1,4 +1,4 @@
-package org.mrr;
+package org.mrr.core;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

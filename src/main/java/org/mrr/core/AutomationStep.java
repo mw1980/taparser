@@ -1,4 +1,4 @@
-package org.mrr;
+package org.mrr.core;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -44,7 +44,7 @@ public class AutomationStep {
     @Override
     public String toString() {
         return "AutomationStep{"
-                + "identification criteria=" + type.getText()
+                + "identification criteria=" + type.text()
                 + ", target='" + target + '\''
                 + ", value='" + value + '\''
                 + '}';

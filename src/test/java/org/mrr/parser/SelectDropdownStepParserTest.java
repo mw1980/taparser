@@ -1,48 +1,48 @@
 package org.mrr.parser;
 
 import org.junit.Test;
-import org.mrr.ActionType;
-import org.mrr.AutomationStep;
+import org.mrr.core.ActionType;
+import org.mrr.core.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SelectDropdownStepParserTest {
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingEmptyDescription_shouldThrowDescriptionNotParsableException() {
-    new SelectDropdownStepParser("").validate();
+    new SelectDropdownStepParserTemplate().validate("");
   }
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingMalformedDescription_shouldThrowDescriptionNotParsableException() {
-    new SelectDropdownStepParser("Select dropdown mydropdown value \"5\"").validate();
+    new SelectDropdownStepParserTemplate().validate("Select dropdown mydropdown value \"5\"");
   }
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingMissingValueInDescription_shouldThrowDescriptionNotParsableException() {
-    new SelectDropdownStepParser("Select in dropdown mydropdown \"ui label\"").validate();
+    new SelectDropdownStepParserTemplate().validate("Select in dropdown mydropdown \"ui label\"");
   }
 
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithoutQuotationMarks_shouldThrowDescriptionNotParsableException() {
-    new SelectDropdownStepParser("Select in dropdown mydropdown value ui option").validate();
+    new SelectDropdownStepParserTemplate().validate("Select in dropdown mydropdown value ui option");
   }
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnExpectedAutomationBean() {
-    final AutomationStep parseResult = new SelectDropdownStepParser("Select in dropdown mydropdown value \"ui option\"").parse();
+    final AutomationStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"ui option\"");
     assertThat(parseResult).isEqualTo(new AutomationStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "ui option"));
   }
 
   @Test
   public void whenParsingCorrectDescriptionWithNumericalOptionValue_shouldReturnExpectedAutomationBean() {
-    final AutomationStep parseResult = new SelectDropdownStepParser("Select in dropdown mydropdown value \"3\"").parse();
+    final AutomationStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"3\"");
     assertThat(parseResult).isEqualTo(new AutomationStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "3"));
   }
 
   @Test
   public void whenParsingDescription_shouldReturnExpectedAutomationBeanWithCapitalLetters() {
-    final AutomationStep parseResult = new SelectDropdownStepParser("Select in dropdown mydropdown value \"Johnie Walker\"").parse();
+    final AutomationStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"Johnie Walker\"");
     assertThat(parseResult).isEqualTo(new AutomationStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "Johnie Walker"));
   }
 }

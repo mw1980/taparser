@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStep;
+import org.mrr.core.AutomationStep;
 
 /**
  * Code generator class for the step: select checkbox myCheckbox.

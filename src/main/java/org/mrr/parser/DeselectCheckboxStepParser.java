@@ -1,38 +1,40 @@
 package org.mrr.parser;
 
-import org.mrr.ActionType;
+import org.mrr.core.ActionType;
+import org.springframework.stereotype.Component;
+
+import static org.mrr.core.ActionType.DESELECT_CHECKBOX;
 
 /**
  * Parser class for the actions of type: "deselect checkbox mycheckbox".
  */
-public class DeselectCheckboxStepParser extends AbstractStepParser {
+@Component
+public class DeselectCheckboxStepParser extends AbstractTestStepParserTemplate {
 
-  /**
-   * Standard constructor.
-   * @param testStepDescription test step description, in this form: "deselect checkbox mycheckbox"
-   */
-  public DeselectCheckboxStepParser(final String testStepDescription) {
-    super(testStepDescription);
-  }
+    @Override
+    protected void validate(final String description) {
+        super.performBasicValidation("Deselect checkbox [a-zA-Z0-9]+", "deselect checkbox", description);
+    }
 
-  @Override
-  void validate() {
-    super.performBasicValidation("Deselect checkbox [a-zA-Z0-9]+", "deselect checkbox");
-  }
+    @Override
+    protected ActionType parseActionType() {
+        return DESELECT_CHECKBOX;
+    }
 
-  @Override
-  protected String parseTarget() {
-    final String[] splitDescription = getStepDescription().split(" ");
-    return splitDescription[2];
-  }
+    @Override
+    protected String parseTarget(final String description) {
+        final String[] splitDescription = description.split(" ");
+        return splitDescription[2];
+    }
 
-  @Override
-  protected ActionType parseActionType() {
-    return ActionType.DESELECT_CHECKBOX;
-  }
+    @Override
+    protected String parseValue(final String description) {
+        return "";
+    }
 
-  @Override
-  protected String parseValue() {
-    return "";
-  }
+    @Override
+    public boolean canParse(final String description) {
+        return description.trim().
+                startsWith(DESELECT_CHECKBOX.text());
+    }
 }

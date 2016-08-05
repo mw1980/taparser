@@ -3,8 +3,8 @@ package org.mrr.generator;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
-import org.mrr.ActionType;
-import org.mrr.AutomationStep;
+import org.mrr.core.ActionType;
+import org.mrr.core.AutomationStep;
 import org.mrr.CodeGeneratorBaseTest;
 
 public class EditTextfieldCodeGeneratorTest extends CodeGeneratorBaseTest {

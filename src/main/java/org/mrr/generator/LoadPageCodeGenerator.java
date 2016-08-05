@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStep;
+import org.mrr.core.AutomationStep;
 
 /**
  * Selenium Code Generator for the Load Page action steps.

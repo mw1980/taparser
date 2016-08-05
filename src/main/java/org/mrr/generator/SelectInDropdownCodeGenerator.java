@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
 
-import org.mrr.AutomationStep;
+import org.mrr.core.AutomationStep;
 
 /**
  * Test automation code generator for the operation: select in dropdown x value "y".

@@ -1,4 +1,4 @@
-package org.mrr;
+package org.mrr.core;
 
 /**
  * Exception thrown when the test case specification cannot be descriptionsAsText.

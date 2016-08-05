@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
-import org.mrr.ActionType;
-import org.mrr.AutomationStep;
+import org.mrr.core.ActionType;
+import org.mrr.core.AutomationStep;
 
 /**
  * Factory class for Code Generators.
@@ -32,6 +32,6 @@ public class CodeGeneratorFactory {
       return new DeselectCheckboxCodeGenerator(automationStep);
     }
     throw new CodeGeneratorNotIdentifiedException("The code generator for the action type: \""
-      + automationStep.actionType().getText() + "\" is not found.");
+      + automationStep.actionType().text() + "\" is not found.");
   }
 }

@@ -1,26 +1,26 @@
 package org.mrr.parser;
 
 import org.junit.Test;
-import org.mrr.ActionType;
-import org.mrr.AutomationStep;
+import org.mrr.core.ActionType;
+import org.mrr.core.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeselectCheckboxStepParserTest {
 
-  @Test (expected = UnparsableDescription.class)
+  @Test (expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithWrongCheckboxName_shouldThrowDescriptionNotParsableException(){
-    new DeselectCheckboxStepParser("Deselect checkbox my first checkbox").validate();
+    new DeselectCheckboxStepParser().validate("Deselect checkbox my first checkbox");
   }
 
-  @Test (expected = UnparsableDescription.class)
+  @Test (expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithMissingCheckbox_shouldThrowDescriptionNotParsableException(){
-    new DeselectCheckboxStepParser("Deselect agreeWithCookies").validate();
+    new DeselectCheckboxStepParser().validate("Deselect agreeWithCookies");
   }
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnExpectedBean(){
-    final AutomationStep parsedBean = new DeselectCheckboxStepParser("Deselect checkbox agreecookies").parse();
+    final AutomationStep parsedBean = new DeselectCheckboxStepParser().parse("Deselect checkbox agreecookies");
     assertThat(parsedBean).isEqualTo(new AutomationStep(ActionType.DESELECT_CHECKBOX, "agreecookies", ""));
   }
 }

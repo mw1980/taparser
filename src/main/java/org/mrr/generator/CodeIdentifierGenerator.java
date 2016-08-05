@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.Constants;
+import org.mrr.core.Constants_temp;
 import org.mrr.controls.api.UiControl;
 
 import static org.mrr.core.IdentificationCriteria.ID;
@@ -17,7 +17,7 @@ public class CodeIdentifierGenerator {
     }
 
     CodeIdentifierGenerator() {
-        this.filePath = Constants.IDS_PATH;
+        this.filePath = Constants_temp.IDS_PATH;
     }
 
     /**

@@ -1,28 +1,28 @@
 package org.mrr.parser;
 
 import org.junit.Test;
-import org.mrr.ActionType;
-import org.mrr.AutomationStep;
+import org.mrr.core.ActionType;
+import org.mrr.core.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for the class EditTextfieldStepParser.
+ * Tests for the class EditTextfieldStepParserTemplate.
  */
 public class EditTextfieldStepParserTest {
-  @Test(expected = UnparsableDescription.class)
+  @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithoutValue_shouldThrowDescriptionNotParsableException(){
-    new EditTextfieldStepParser("Set in textfield login \"user name\"").validate();
+    new EditTextfieldStepParserTemplate().validate("Set in textfield login \"user name\"");
   }
 
-  @Test (expected = UnparsableDescription.class)
+  @Test (expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithoutQuotationMarks_shouldThrowDescriptionNotParableException(){
-    new EditTextfieldStepParser("Set in textfied login value user").validate();
+    new EditTextfieldStepParserTemplate().validate("Set in textfied login value user");
   }
 
   @Test
   public void shouldParseBasicStepDescriptionTextAsExpected(){
-    AutomationStep calculated = new EditTextfieldStepParser("Set in textfield login value \"my user name\"").parse();
+    AutomationStep calculated = new EditTextfieldStepParserTemplate().parse("Set in textfield login value \"my user name\"");
     assertThat(calculated).isEqualTo(new AutomationStep(ActionType.EDIT_TEXT, "login", "my user name"));
   }
 }

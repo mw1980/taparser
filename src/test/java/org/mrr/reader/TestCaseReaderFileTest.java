@@ -3,8 +3,8 @@ package org.mrr.reader;
 import java.util.List;
 
 import org.junit.Test;
-import org.mrr.StepDescriptionsStore;
-import org.mrr.ReadSpecificationException;
+import org.mrr.core.StepDescriptionsStore;
+import org.mrr.core.ReadSpecificationException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;

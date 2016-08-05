@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.AutomationStep;
+import org.mrr.core.AutomationStep;
 
 /**
  * Selenium Code Generator for the operation "set value in edit text field".
