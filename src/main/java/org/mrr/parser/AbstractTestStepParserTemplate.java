@@ -2,7 +2,6 @@ package org.mrr.parser;
 
 import org.mrr.core.ActionType;
 import org.mrr.core.AutomationStep;
-import org.mrr.core.TestStepParser;
 
 import java.util.regex.Pattern;
 
@@ -10,7 +9,7 @@ import java.util.regex.Pattern;
  * Abstract class, contains the methods to parse test case description and create
  * ActionSteps objects from free text test case description.
  */
-public abstract class AbstractTestStepParserTemplate implements TestStepParser {
+abstract class AbstractTestStepParserTemplate implements TestStepParser {
 
     static final TestStepParser UNKNOWN = new TestStepParser() {
         @Override

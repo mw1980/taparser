@@ -12,12 +12,12 @@ import java.util.List;
  * The class generates selenium code for a text action.
  */
 @Component
-public class AutomationCodeGenerator {
-    final TestStepParserAgent testStepParserAgent;
+class AutomationCodeGenerator {
+    private final TestStepParserLogic parserLogic;
 
     @Autowired
-    public AutomationCodeGenerator(final TestStepParserAgent stepParserAgent) {
-        this.testStepParserAgent = stepParserAgent;
+    public AutomationCodeGenerator(final TestStepParserLogic testStepParserLogic) {
+        this.parserLogic = testStepParserLogic;
     }
 
   /**
@@ -26,12 +26,9 @@ public class AutomationCodeGenerator {
    *                    E.g. Click button submit
    * @return the test automation code for the input text.
    */
-  public String createAutomationCodeForSingleStep(final String description) {
-      //TODO: hide the parser from the enduser. move the both actions: findParser() and parse() to one single class
-      //that further delegates the calls to the corresponding beans.
-    final TestStepParser parser = testStepParserAgent.findParserForDescription(description);
-    final AutomationStep automationBean = parser.parse(description);
-    final AbstractCodeGenerator codeGenerator = CodeGeneratorFactory.newInstance(automationBean);
+   private String createAutomationCodeForSingleStep(final String description) {
+    final AutomationStep automationStep = parserLogic.createAutomationStepForDescription(description);
+    final AbstractCodeGenerator codeGenerator = CodeGeneratorFactory.newInstance(automationStep);
     return codeGenerator.generateCode();
   }
 
@@ -40,7 +37,7 @@ public class AutomationCodeGenerator {
    * @param location the path to the file that contains the action texts.
    * @return List of test automation commands for the test action steps descriptionsAsText in the external file.
    */
-  public List<String> createCodeForActionsInFile(final String location) {
+  List<String> createCodeForActionsInFile(final String location) {
     final List<String> result = new LinkedList<>();
     for (final String step : new StepDescriptionsStore(location).deliverStepsDescription()) {
       result.add(createAutomationCodeForSingleStep(step));

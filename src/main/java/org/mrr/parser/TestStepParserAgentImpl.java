@@ -1,7 +1,5 @@
 package org.mrr.parser;
 
-import org.mrr.core.TestStepParser;
-import org.mrr.core.TestStepParserAgent;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -14,7 +12,7 @@ import java.util.Map;
 import static org.mrr.parser.AbstractTestStepParserTemplate.UNKNOWN;
 
 @Component("testStepParserAgent")
-public class TestStepParserAgentImpl implements ApplicationContextAware, TestStepParserAgent {
+class TestStepParserAgentImpl implements ApplicationContextAware, TestStepParserAgent {
 
     private ApplicationContext context;
 

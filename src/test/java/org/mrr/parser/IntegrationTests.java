@@ -2,8 +2,6 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
-import org.mrr.core.TestStepParser;
-import org.mrr.core.TestStepParserAgent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
