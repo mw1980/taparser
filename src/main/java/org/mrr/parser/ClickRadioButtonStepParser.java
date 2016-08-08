@@ -1,16 +1,16 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
-import static org.mrr.core.ActionType.CLICK_BUTTON;
-import static org.mrr.core.ActionType.SELECT_RADIO_BUTTON;
+import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
+import static org.mrr.core.domain.ActionType.SELECT_RADIO_BUTTON;
 
 /**
  * Parser class for the action steps in form: "select radio button radioButtonOption".
  */
 @Component
-public class ClickRadioButtonStepParser extends AbstractTestStepParserTemplate {
+class ClickRadioButtonStepParser extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {

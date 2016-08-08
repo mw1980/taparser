@@ -6,7 +6,7 @@ public class LoadControlsException extends RuntimeException {
     super(message, exception);
   }
 
-  LoadControlsException(final String message) {
+  public LoadControlsException(final String message) {
     super(message);
   }
 }

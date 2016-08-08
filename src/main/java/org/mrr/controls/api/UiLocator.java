@@ -3,7 +3,7 @@ package org.mrr.controls.api;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.core.IdentificationCriteria;
+import org.mrr.core.domain.IdentificationCriteria;
 
 /**
  * The class stores the information needed to locate a control on a html page.

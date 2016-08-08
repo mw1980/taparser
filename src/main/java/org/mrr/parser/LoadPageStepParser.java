@@ -1,15 +1,15 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
-import static org.mrr.core.ActionType.LOAD_PAGE;
+import static org.mrr.core.domain.ActionType.LOAD_PAGE;
 
 /**
  * The class contains methods to generate automation steps from plain text.
  */
 @Component
-public class LoadPageStepParser extends AbstractTestStepParserTemplate {
+class LoadPageStepParser extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {

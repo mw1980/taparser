@@ -1,8 +1,8 @@
 package org.mrr.parser;
 
 import org.junit.Test;
-import org.mrr.core.ActionType;
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.ActionType;
+import org.mrr.core.domain.AutomationStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,15 +1,15 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
-import static org.mrr.core.ActionType.SELECT_IN_DROPDOWN;
+import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
 
 /**
  * Step parser for the actions of type select value in Dropdown.
  */
 @Component
-public class SelectDropdownStepParserTemplate extends AbstractTestStepParserTemplate {
+class SelectDropdownStepParserTemplate extends AbstractTestStepParserTemplate {
     @Override
     protected void validate(final String description) {
         final String regex = "Select in dropdown\\s\\w+\\svalue\\s\"[a-zA-Z0-9 ]+\"";

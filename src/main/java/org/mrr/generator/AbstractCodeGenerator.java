@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.AutomationStep;
 
 /**
  * Abstract class for Code Generators.

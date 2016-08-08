@@ -1,6 +1,6 @@
 package org.mrr.parser;
 
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.AutomationStep;
 
 /**
  * General interface for parsing string test description to AutomationStep objects.

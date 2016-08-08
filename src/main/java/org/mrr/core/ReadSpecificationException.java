@@ -5,13 +5,12 @@ package org.mrr.core;
  */
 public class ReadSpecificationException extends RuntimeException {
 
-  public ReadSpecificationException(final String message) {
+  ReadSpecificationException(final String message) {
     super(message);
   }
 
   public ReadSpecificationException(final String message, final Throwable cause) {
     super(message, cause);
   }
-
 
 }

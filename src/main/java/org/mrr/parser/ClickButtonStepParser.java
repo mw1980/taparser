@@ -1,18 +1,18 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
-import static org.mrr.core.ActionType.CLICK_BUTTON;
-import static org.mrr.core.ActionType.CLICK_LINK;
+import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
+import static org.mrr.core.domain.ActionType.CLICK_LINK;
 
 /**
  * Parses class for the step: "click button buttonname".
  */
 @Component
-public class ClickButtonStepParser extends AbstractTestStepParserTemplate {
+class ClickButtonStepParser extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {

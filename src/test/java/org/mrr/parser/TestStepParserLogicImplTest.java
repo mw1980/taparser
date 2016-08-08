@@ -4,12 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.AutomationStep;
 import org.mrr.core.TestStepParserLogic;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mrr.core.ActionType.CLICK_BUTTON;
+import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 
 public class TestStepParserLogicImplTest {
     private static final String DESCRIPTION = "Click Button myButton";

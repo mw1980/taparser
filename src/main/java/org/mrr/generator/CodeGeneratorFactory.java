@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
-import org.mrr.core.ActionType;
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.ActionType;
+import org.mrr.core.domain.AutomationStep;
 
 /**
  * Factory class for Code Generators.

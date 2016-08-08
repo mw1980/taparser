@@ -1,4 +1,4 @@
-package org.mrr.core;
+package org.mrr.core.domain;
 
 /**
  * User interface supported action types.

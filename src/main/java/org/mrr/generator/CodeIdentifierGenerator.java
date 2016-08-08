@@ -3,8 +3,8 @@ package org.mrr.generator;
 import org.mrr.core.Constants_temp;
 import org.mrr.controls.api.UiControl;
 
-import static org.mrr.core.IdentificationCriteria.ID;
-import static org.mrr.core.IdentificationCriteria.UNKNOWN;
+import static org.mrr.core.domain.IdentificationCriteria.ID;
+import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
 
 /**
  * Utility class. It contains methods to manipulate the user interface elements identifiers.

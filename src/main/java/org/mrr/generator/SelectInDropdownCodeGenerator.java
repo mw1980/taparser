@@ -1,21 +1,21 @@
 package org.mrr.generator;
 
 
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.AutomationStep;
 
 /**
  * Test automation code generator for the operation: select in dropdown x value "y".
  */
-public class SelectInDropdownCodeGenerator extends AbstractCodeGenerator {
+class SelectInDropdownCodeGenerator extends AbstractCodeGenerator {
   /**
    * Default Constructor.
    * @param automationStep The automation step to generate the test automation code for.
    */
-  public SelectInDropdownCodeGenerator(final AutomationStep automationStep) {
+  SelectInDropdownCodeGenerator(final AutomationStep automationStep) {
     super(automationStep);
   }
 
-  public SelectInDropdownCodeGenerator(final AutomationStep automationStep,
+  SelectInDropdownCodeGenerator(final AutomationStep automationStep,
                                        final CodeIdentifierGenerator codeIdentifierGenerator) {
     super(automationStep, codeIdentifierGenerator);
   }

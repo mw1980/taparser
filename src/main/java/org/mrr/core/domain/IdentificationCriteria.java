@@ -1,4 +1,6 @@
-package org.mrr.core;
+package org.mrr.core.domain;
+
+import org.mrr.core.LoadControlsException;
 
 /**
  * The enum contains the user interface identification criteria supported by the application.

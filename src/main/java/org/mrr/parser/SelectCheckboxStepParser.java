@@ -1,15 +1,15 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
-import static org.mrr.core.ActionType.SELECT_CHECKBOX;
+import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
 
 /**
  * Parser class for the action "Select checkbox".
  */
 @Component
-public class SelectCheckboxStepParser extends AbstractTestStepParserTemplate {
+class SelectCheckboxStepParser extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {

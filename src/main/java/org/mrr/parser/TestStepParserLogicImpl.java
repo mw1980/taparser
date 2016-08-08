@@ -1,6 +1,6 @@
 package org.mrr.parser;
 
-import org.mrr.core.AutomationStep;
+import org.mrr.core.domain.AutomationStep;
 import org.mrr.core.TestStepParserLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

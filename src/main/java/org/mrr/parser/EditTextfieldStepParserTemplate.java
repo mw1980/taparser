@@ -1,15 +1,15 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
-import static org.mrr.core.ActionType.EDIT_TEXT;
+import static org.mrr.core.domain.ActionType.EDIT_TEXT;
 
 /**
  * Parser class for the edit text field steps.
  */
 @Component
-public class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
+class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {

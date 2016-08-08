@@ -15,7 +15,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mrr.core.IdentificationCriteria.ID;
+import static org.mrr.core.domain.IdentificationCriteria.ID;
 
 public class ControlsRepositoryImplTest {
 

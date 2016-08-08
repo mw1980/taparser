@@ -1,5 +1,6 @@
 package org.mrr.core;
 
+import org.mrr.core.domain.AutomationStep;
 import org.mrr.generator.AbstractCodeGenerator;
 import org.mrr.generator.CodeGeneratorFactory;
 import org.springframework.beans.factory.annotation.Autowired;

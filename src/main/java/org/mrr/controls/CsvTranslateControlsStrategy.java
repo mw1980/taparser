@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.core.IdentificationCriteria;
+import org.mrr.core.domain.IdentificationCriteria;
 import org.mrr.controls.api.TranslateControlsStrategy;
 import org.mrr.controls.api.UiLocator;
 import org.mrr.controls.api.UiControl;

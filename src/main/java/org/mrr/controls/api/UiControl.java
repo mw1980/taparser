@@ -3,10 +3,10 @@ package org.mrr.controls.api;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.core.IdentificationCriteria;
+import org.mrr.core.domain.IdentificationCriteria;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.mrr.core.IdentificationCriteria.UNKNOWN;
+import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
 
 /**
  * Java representation of an user interface control.

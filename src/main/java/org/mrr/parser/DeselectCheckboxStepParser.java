@@ -1,15 +1,15 @@
 package org.mrr.parser;
 
-import org.mrr.core.ActionType;
+import org.mrr.core.domain.ActionType;
 import org.springframework.stereotype.Component;
 
-import static org.mrr.core.ActionType.DESELECT_CHECKBOX;
+import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
 
 /**
  * Parser class for the actions of type: "deselect checkbox mycheckbox".
  */
 @Component
-public class DeselectCheckboxStepParser extends AbstractTestStepParserTemplate {
+class DeselectCheckboxStepParser extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {
