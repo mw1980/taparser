@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
  * ActionSteps objects from free text test case description.
  */
 abstract class AbstractTestStepParserTemplate implements TestStepParser {
-
     static final TestStepParser UNKNOWN = new TestStepParser() {
         @Override
         public AutomationStep parse(String description) {
@@ -73,5 +72,4 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
                     + "\" is not a valid " + stepType + " step description.");
         }
     }
-
 }
