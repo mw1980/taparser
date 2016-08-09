@@ -38,7 +38,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
     }
 
     /**
-     * Validate the current
+     * Validate the free description of the test step.
      */
     protected abstract void validate(String description);
 
@@ -64,6 +64,10 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
      */
     protected abstract String parseValue(String description);
 
+    /**
+     * Returns true if the test step description looks handlebar.
+     * The method does not also validates the description.
+     */
     public abstract boolean canParse(String description);
 
     void performBasicValidation(final String regex, final String stepType, final String description) {
