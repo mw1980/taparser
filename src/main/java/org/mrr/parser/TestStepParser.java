@@ -1,16 +1,16 @@
 package org.mrr.parser;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 /**
- * General interface for parsing string test description to AutomationStep objects.
+ * General interface for parsing string test description to TestStep objects.
  */
 interface TestStepParser {
     /**
      * The main functionality of a test step parser is to parse the description of a test step to its corresponding
-     * AutomationStep object representation
+     * TestStep object representation
      */
-    AutomationStep parse(String description);
+    TestStep parse(String description);
 
     /**
      * Specifies if the current parser understands the free test description received as parameter.

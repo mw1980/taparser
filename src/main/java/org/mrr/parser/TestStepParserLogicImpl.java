@@ -1,6 +1,6 @@
 package org.mrr.parser;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 import org.mrr.core.TestStepParserLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ class TestStepParserLogicImpl implements TestStepParserLogic {
     }
 
     @Override
-    public AutomationStep createAutomationStepForDescription(final String description) {
+    public TestStep createAutomationStepForDescription(final String description) {
         final TestStepParser parser = parserAgent.findParserForDescription(description);
         return parser.parse(description);
     }

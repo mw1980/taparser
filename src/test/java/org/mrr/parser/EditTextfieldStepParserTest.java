@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +22,7 @@ public class EditTextfieldStepParserTest {
 
   @Test
   public void shouldParseBasicStepDescriptionTextAsExpected(){
-    AutomationStep calculated = new EditTextfieldStepParserTemplate().parse("Set in textfield login value \"my user name\"");
-    assertThat(calculated).isEqualTo(new AutomationStep(ActionType.EDIT_TEXT, "login", "my user name"));
+    TestStep calculated = new EditTextfieldStepParserTemplate().parse("Set in textfield login value \"my user name\"");
+    assertThat(calculated).isEqualTo(new TestStep(ActionType.EDIT_TEXT, "login", "my user name"));
   }
 }

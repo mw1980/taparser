@@ -11,4 +11,6 @@ import java.util.Map;
  */
 public interface ControlsLogic {
     Map<String, UiControl> loadControlsFromCsvFile();
+
+    UiControl findControlByName(String name);
 }

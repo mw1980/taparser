@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 import org.mrr.core.TestStepParserLogic;
 
 import static org.mockito.Mockito.verify;
@@ -21,7 +21,7 @@ public class TestStepParserLogicImplTest {
     public void setup(){
         MockitoAnnotations.initMocks(this);
         when(parserAgent.findParserForDescription(DESCRIPTION)).thenReturn(stepParser);
-        when(stepParser.parse(DESCRIPTION)).thenReturn(new AutomationStep(CLICK_BUTTON, "button", ""));
+        when(stepParser.parse(DESCRIPTION)).thenReturn(new TestStep(CLICK_BUTTON, "button", ""));
     }
 
     @Test

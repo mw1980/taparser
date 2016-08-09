@@ -1,7 +1,7 @@
 package org.mrr.parser;
 
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 import java.util.regex.Pattern;
 
@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 abstract class AbstractTestStepParserTemplate implements TestStepParser {
     static final TestStepParser UNKNOWN = new TestStepParser() {
         @Override
-        public AutomationStep parse(String description) {
-            return new AutomationStep(ActionType.UNKNOWN, "", "");
+        public TestStep parse(String description) {
+            return new TestStep(ActionType.UNKNOWN, "", "");
         }
 
         @Override
@@ -29,9 +29,9 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
      *
      * @return Automation step bean object parsed from the test step description.
      */
-    public AutomationStep parse(final String description) {
+    public TestStep parse(final String description) {
         validate(description);
-        return new AutomationStep(
+        return new TestStep(
                 parseActionType(),
                 parseTarget(description),
                 parseValue(description));

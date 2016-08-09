@@ -1,6 +1,6 @@
 package org.mrr.generator;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 /**
  * Selenium Code Generator for the operation "set value in edit text field".
@@ -9,21 +9,21 @@ class EditTextfieldCodeGenerator extends AbstractCodeGenerator {
 
   /**
    * Default Constructor.
-   * @param automationStep The automation step to generate the test automation code for.
+   * @param testStep The automation step to generate the test automation code for.
    */
-  EditTextfieldCodeGenerator(final AutomationStep automationStep) {
-    super(automationStep);
+  EditTextfieldCodeGenerator(final TestStep testStep) {
+    super(testStep);
   }
 
-  EditTextfieldCodeGenerator(final AutomationStep automationStep,
-                                    final CodeIdentifierGenerator codeIdentifierGenerator) {
-    super(automationStep, codeIdentifierGenerator);
+  EditTextfieldCodeGenerator(final TestStep testStep,
+                             final GenerateIdCodeDelegateImpl controlIdCodeGenerator) {
+    super(testStep, controlIdCodeGenerator);
   }
 
   @Override
   public String generateCode() {
     return "driver.findElement("
-      + getCodeIdentifierGenerator().generate(getAutomationTarget())
+            + getControlIdCodeGenerator().identificationFor(getAutomationTarget())
       + ").sendKeys(\"" + getAutomationValue() + "\");";
   }
 }

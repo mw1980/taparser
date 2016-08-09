@@ -1,6 +1,6 @@
 package org.mrr.core;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 import org.mrr.generator.AbstractCodeGenerator;
 import org.mrr.generator.CodeGeneratorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,8 @@ class AutomationCodeGenerator {
    * @return the test automation code for the input text.
    */
    private String createAutomationCodeForSingleStep(final String description) {
-    final AutomationStep automationStep = parserLogic.createAutomationStepForDescription(description);
-    final AbstractCodeGenerator codeGenerator = CodeGeneratorFactory.newInstance(automationStep);
+       final TestStep testStep = parserLogic.createAutomationStepForDescription(description);
+       final AbstractCodeGenerator codeGenerator = CodeGeneratorFactory.newInstance(testStep);
     return codeGenerator.generateCode();
   }
 

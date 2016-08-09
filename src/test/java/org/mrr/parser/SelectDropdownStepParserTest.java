@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,19 +30,19 @@ public class SelectDropdownStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnExpectedAutomationBean() {
-    final AutomationStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"ui option\"");
-    assertThat(parseResult).isEqualTo(new AutomationStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "ui option"));
+    final TestStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"ui option\"");
+    assertThat(parseResult).isEqualTo(new TestStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "ui option"));
   }
 
   @Test
   public void whenParsingCorrectDescriptionWithNumericalOptionValue_shouldReturnExpectedAutomationBean() {
-    final AutomationStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"3\"");
-    assertThat(parseResult).isEqualTo(new AutomationStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "3"));
+    final TestStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"3\"");
+    assertThat(parseResult).isEqualTo(new TestStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "3"));
   }
 
   @Test
   public void whenParsingDescription_shouldReturnExpectedAutomationBeanWithCapitalLetters() {
-    final AutomationStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"Johnie Walker\"");
-    assertThat(parseResult).isEqualTo(new AutomationStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "Johnie Walker"));
+    final TestStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"Johnie Walker\"");
+    assertThat(parseResult).isEqualTo(new TestStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "Johnie Walker"));
   }
 }

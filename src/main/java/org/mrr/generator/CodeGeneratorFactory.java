@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 /**
  * Factory class for Code Generators.
@@ -14,24 +14,24 @@ public class CodeGeneratorFactory {
 
   /**
    * Returns a code generator object for the automation step bean received as parameter.
-   * @param automationStep the automation step bean to generate automation code for.
+   * @param testStep the automation step bean to generate automation code for.
    * @return code generator object for the automation step bean.
    */
-  public static AbstractCodeGenerator newInstance(AutomationStep automationStep) {
-    if (ActionType.LOAD_PAGE.equals(automationStep.actionType())) {
-      return new LoadPageCodeGenerator(automationStep);
-    } else if (ActionType.EDIT_TEXT.equals(automationStep.actionType())) {
-      return new EditTextfieldCodeGenerator(automationStep);
-    } else if (ActionType.CLICK_BUTTON.equals(automationStep.actionType())) {
-      return new ClickButtonCodeGenerator(automationStep);
-    } else if (ActionType.SELECT_IN_DROPDOWN.equals(automationStep.actionType())) {
-      return new SelectInDropdownCodeGenerator(automationStep);
-    } else if (ActionType.SELECT_CHECKBOX.equals(automationStep.actionType())) {
-      return new SelectCheckboxCodeGenerator(automationStep);
-    } else if (ActionType.DESELECT_CHECKBOX.equals(automationStep.actionType())) {
-      return new DeselectCheckboxCodeGenerator(automationStep);
+  public static AbstractCodeGenerator newInstance(TestStep testStep) {
+    if (ActionType.LOAD_PAGE.equals(testStep.actionType())) {
+      return new LoadPageCodeGenerator(testStep);
+    } else if (ActionType.EDIT_TEXT.equals(testStep.actionType())) {
+      return new EditTextfieldCodeGenerator(testStep);
+    } else if (ActionType.CLICK_BUTTON.equals(testStep.actionType())) {
+      return new ClickButtonCodeGenerator(testStep);
+    } else if (ActionType.SELECT_IN_DROPDOWN.equals(testStep.actionType())) {
+      return new SelectInDropdownCodeGenerator(testStep);
+    } else if (ActionType.SELECT_CHECKBOX.equals(testStep.actionType())) {
+      return new SelectCheckboxCodeGenerator(testStep);
+    } else if (ActionType.DESELECT_CHECKBOX.equals(testStep.actionType())) {
+      return new DeselectCheckboxCodeGenerator(testStep);
     }
     throw new CodeGeneratorNotIdentifiedException("The code generator for the action type: \""
-      + automationStep.actionType().text() + "\" is not found.");
+            + testStep.actionType().text() + "\" is not found.");
   }
 }

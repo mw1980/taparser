@@ -1,11 +1,11 @@
 package org.mrr.generator;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
 import org.mrr.CodeGeneratorBaseTest;
+import org.mrr.core.domain.ActionType;
+import org.mrr.core.domain.TestStep;
+
+import static org.junit.Assert.assertEquals;
 
 public class LoadPageCodeGeneratorTest extends CodeGeneratorBaseTest {
 
@@ -15,7 +15,7 @@ public class LoadPageCodeGeneratorTest extends CodeGeneratorBaseTest {
     assertEquals("driver.get(\"www.google.com\");", loadPageCodeGenerator.generateCode());
   }
 
-  private AutomationStep newSampleAutomationBean() {
-    return new AutomationStep(ActionType.LOAD_PAGE, "", "www.google.com");
+  private TestStep newSampleAutomationBean() {
+    return new TestStep(ActionType.LOAD_PAGE, "", "www.google.com");
   }
 }

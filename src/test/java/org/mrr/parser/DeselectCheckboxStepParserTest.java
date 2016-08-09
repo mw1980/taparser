@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +20,7 @@ public class DeselectCheckboxStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnExpectedBean(){
-    final AutomationStep parsedBean = new DeselectCheckboxStepParser().parse("Deselect checkbox agreecookies");
-    assertThat(parsedBean).isEqualTo(new AutomationStep(ActionType.DESELECT_CHECKBOX, "agreecookies", ""));
+    final TestStep parsedBean = new DeselectCheckboxStepParser().parse("Deselect checkbox agreecookies");
+    assertThat(parsedBean).isEqualTo(new TestStep(ActionType.DESELECT_CHECKBOX, "agreecookies", ""));
   }
 }

@@ -22,4 +22,9 @@ class ControlsLogicImpl implements ControlsLogic {
     public Map<String, UiControl> loadControlsFromCsvFile() {
         return csvRepository.controls();
     }
+
+    @Override
+    public UiControl findControlByName(final String name) {
+        return csvRepository.searchControlByName(name);
+    }
 }

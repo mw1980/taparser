@@ -1,30 +1,23 @@
 package org.mrr.generator;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Selenium code generator for the actions of type: "Click button myButton".
  */
+@Component
 class ClickButtonCodeGenerator extends AbstractCodeGenerator {
-  /**
-   * Default Constructor.
-   * @param automationStep The automation step to generate the test automation code for.
-   */
-  ClickButtonCodeGenerator(final AutomationStep automationStep) {
-    super(automationStep);
-  }
 
-  /*
-    Use this constructor only if you need to set a custom code identifier generator.
-   */
-  ClickButtonCodeGenerator(final AutomationStep automationStep,
-                                  final CodeIdentifierGenerator codeIdentifierGenerator) {
-    super(automationStep, codeIdentifierGenerator);
-  }
+    ClickButtonCodeGenerator(final TestStep testStep,
+                             @Autowired final GenerateIdCodeDelegateImpl controlIdCodeGenerator) {
+        super(testStep, controlIdCodeGenerator);
+    }
 
-  @Override
-  public String generateCode() {
-    return "driver.findElement("
-      + getCodeIdentifierGenerator().generate(getAutomationTarget()) + ").click();";
-  }
+    @Override
+    public String generateCode() {
+        return "driver.findElement("
+                + getControlIdCodeGenerator().identificationFor(getAutomationTarget()) + ").click();";
+    }
 }

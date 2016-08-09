@@ -1,32 +1,28 @@
 package org.mrr.generator;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 /**
  * Selenium code generator for the actions of type: "deselect checkbox mycheckbox".
  */
 class DeselectCheckboxCodeGenerator extends AbstractCodeGenerator {
 
-  /**
-   * Default Constructor.
-   * @param automationStep The automation step to generate the test automation code for.
-   */
-  DeselectCheckboxCodeGenerator(final AutomationStep automationStep) {
-    super(automationStep);
-  }
+    DeselectCheckboxCodeGenerator(final TestStep testStep) {
+        super(testStep);
+    }
 
-  /**
-   * Use this constructor only id you need to specify a specific code identifier generator.
-   */
-  DeselectCheckboxCodeGenerator(final AutomationStep automationStep,
-                                       final CodeIdentifierGenerator codeIdentifierGenerator) {
-    super(automationStep, codeIdentifierGenerator);
-  }
+    /**
+     * Use this constructor only id you need to specify a specific code identifier generator.
+     */
+    DeselectCheckboxCodeGenerator(final TestStep testStep,
+                                  final GenerateIdCodeDelegateImpl controlIdCodeGenerator) {
+        super(testStep, controlIdCodeGenerator);
+    }
 
-  @Override
-  public String generateCode() {
-    final String targetIdCode = getCodeIdentifierGenerator().generate(getAutomationTarget());
-    return "if (driver.findElement(" + targetIdCode
-      + ").isSelected()){driver.findElement(" + targetIdCode + ").click();}";
-  }
+    @Override
+    public String generateCode() {
+        final String targetIdCode = getControlIdCodeGenerator().identificationFor(getAutomationTarget());
+        return "if (driver.findElement(" + targetIdCode
+                + ").isSelected()){driver.findElement(" + targetIdCode + ").click();}";
+    }
 }

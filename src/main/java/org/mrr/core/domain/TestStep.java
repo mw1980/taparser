@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * - the value of the action (optional), e.g. the value to set in the text field,
  * the url of the page to descriptionsAsText, the value to check for in an edit field.
  */
-public class AutomationStep {
+public class TestStep {
     private final ActionType type;
     private final String target;
     private final String value;
@@ -23,7 +23,7 @@ public class AutomationStep {
      * @param target the target of the action, e.g.: the button to be clicked.
      * @param value  the value of the action, e.g.: the text to be written in textfield.
      */
-    public AutomationStep(final ActionType type, final String target, final String value) {
+    public TestStep(final ActionType type, final String target, final String value) {
         this.type = type;
         this.target = target;
         this.value = value;
@@ -43,7 +43,7 @@ public class AutomationStep {
 
     @Override
     public String toString() {
-        return "AutomationStep{"
+        return "TestStep{"
                 + "identification criteria=" + type.text()
                 + ", target='" + target + '\''
                 + ", value='" + value + '\''
@@ -60,7 +60,7 @@ public class AutomationStep {
             return false;
         }
 
-        final AutomationStep that = (AutomationStep) other;
+        final TestStep that = (TestStep) other;
 
         return new EqualsBuilder()
                 .append(type, that.type)

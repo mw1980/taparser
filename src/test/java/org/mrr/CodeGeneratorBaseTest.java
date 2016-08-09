@@ -3,7 +3,7 @@ package org.mrr;
 import static org.mrr.reader.TestConstants.TEST_ELEMENTS_IDENTIFIER_LOCATION;
 
 import org.junit.Before;
-import org.mrr.generator.CodeIdentifierGenerator;
+import org.mrr.generator.GenerateIdCodeDelegateImpl;
 
 /**
  * Base class for the generator tests.
@@ -11,11 +11,11 @@ import org.mrr.generator.CodeIdentifierGenerator;
  */
 public class CodeGeneratorBaseTest {
 
-  protected CodeIdentifierGenerator testCodeIdentifierGenerator;
+  protected GenerateIdCodeDelegateImpl testControlIdCodeGenerator;
 
   @Before
   public void setup(){
-    this.testCodeIdentifierGenerator = new CodeIdentifierGenerator(TEST_ELEMENTS_IDENTIFIER_LOCATION);
+    this.testControlIdCodeGenerator = new GenerateIdCodeDelegateImpl(TEST_ELEMENTS_IDENTIFIER_LOCATION);
   }
 
 

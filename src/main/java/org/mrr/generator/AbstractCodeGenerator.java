@@ -1,51 +1,44 @@
 package org.mrr.generator;
 
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 /**
  * Abstract class for Code Generators.
  */
 public abstract class AbstractCodeGenerator {
-  private final AutomationStep automationStep;
-  private final CodeIdentifierGenerator codeIdentifierGenerator;
+    private final TestStep testStep;
+    private final GenerateIdCodeDelegateImpl controlIdCodeGenerator;
 
-  /**
-   * Default Constructor.
-   * @param automationStep The automation step to generate the test automation code for.
-   */
-  AbstractCodeGenerator(final AutomationStep automationStep) {
-    this.automationStep = automationStep;
-    this.codeIdentifierGenerator = new CodeIdentifierGenerator();
-  }
+    /**
+     * Constructor for tests.
+     * Allows to set also the custom code identifier generator.
+     *
+     * @param testStep               The automation step to generate the test automation code for.
+     * @param controlIdCodeGenerator The custom code identifier generator.
+     */
 
-  /**
-   * Constructor for tests.
-   * Allows to set also the custom code identifier generator.
-   * @param automationStep The automation step to generate the test automation code for.
-   * @param codeIdentifierGenerator The custom code identifier generator.
-   */
+    AbstractCodeGenerator(final TestStep testStep,
+                          final GenerateIdCodeDelegateImpl controlIdCodeGenerator) {
+        this.testStep = testStep;
+        this.controlIdCodeGenerator = controlIdCodeGenerator;
+    }
 
-  AbstractCodeGenerator(final AutomationStep automationStep,
-                        final CodeIdentifierGenerator codeIdentifierGenerator) {
-    this.automationStep = automationStep;
-    this.codeIdentifierGenerator = codeIdentifierGenerator;
-  }
+    /**
+     * The action method. It generates the test automation code for the current automation step.
+     *
+     * @return the String representation of the test automation code for the current automation step.
+     */
+    public abstract String generateCode();
 
-  /**
-   * The action method. It generates the test automation code for the current automation step.
-   * @return the String representation of the test automation code for the current automation step.
-   */
-  public abstract String generateCode();
+    String getAutomationTarget() {
+        return testStep.target();
+    }
 
-  String getAutomationTarget() {
-    return automationStep.target();
-  }
+    String getAutomationValue() {
+        return testStep.value();
+    }
 
-  String getAutomationValue() {
-    return automationStep.value();
-  }
-
-  CodeIdentifierGenerator getCodeIdentifierGenerator() {
-    return this.codeIdentifierGenerator;
-  }
+    GenerateIdCodeDelegateImpl getControlIdCodeGenerator() {
+        return this.controlIdCodeGenerator;
+    }
 }

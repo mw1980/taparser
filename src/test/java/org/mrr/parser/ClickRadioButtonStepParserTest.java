@@ -2,7 +2,7 @@ package org.mrr.parser;
 
 import org.junit.Test;
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.AutomationStep;
+import org.mrr.core.domain.TestStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,7 +25,7 @@ public class ClickRadioButtonStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnBeanWithExpectedActionType() {
-    final AutomationStep automationBean = new ClickRadioButtonStepParser().parse("Select radio button 1");
-    assertThat(automationBean).isEqualTo(new AutomationStep(ActionType.CLICK_BUTTON, "1", ""));
+    final TestStep automationBean = new ClickRadioButtonStepParser().parse("Select radio button 1");
+    assertThat(automationBean).isEqualTo(new TestStep(ActionType.CLICK_BUTTON, "1", ""));
   }
 }
