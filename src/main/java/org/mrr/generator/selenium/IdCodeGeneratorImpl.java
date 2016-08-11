@@ -1,7 +1,8 @@
-package org.mrr.generator;
+package org.mrr.generator.selenium;
 
 import org.mrr.controls.api.UiControl;
 import org.mrr.core.ControlsLogic;
+import org.mrr.generator.IdCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,23 +10,24 @@ import static org.mrr.core.domain.IdentificationCriteria.ID;
 import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
 
 /**
- * Utility class. It contains methods to manipulate the user interface elements identifiers.
+ * Code generator for identification of the user interface controls.
  */
 @Component
-public class GenerateIdCodeDelegateImpl implements GenerateIdCodeDelegate {
+public class IdCodeGeneratorImpl implements IdCodeGenerator {
     private final ControlsLogic controlsLogic;
 
     @Autowired
-    public GenerateIdCodeDelegateImpl(final ControlsLogic controlsLogic) {
+    public IdCodeGeneratorImpl(final ControlsLogic controlsLogic) {
         this.controlsLogic = controlsLogic;
     }
 
     @Override
-    public String identificationFor(final String name) {
+    public String identificationCodeFor(final String name) {
         final UiControl control = controlsLogic.findControlByName(name);
-        if (controlIsFound(control)) {
+        if (isControlFound(control)) {
             return createIdentificationCode(control);
         } else {
+            //TODO throw exception here?
             return "Cannot find the control: " + name + " in the repository. The code cannot be generated";
         }
     }
@@ -38,7 +40,7 @@ public class GenerateIdCodeDelegateImpl implements GenerateIdCodeDelegate {
         return "Identification type not known.";
     }
 
-    private boolean controlIsFound(final UiControl control) {
+    private boolean isControlFound(final UiControl control) {
         return !UNKNOWN.equals(control.identifiedBy());
     }
 }

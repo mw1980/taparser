@@ -28,6 +28,6 @@ public class TestStepParserLogicImplTest {
     public void whenCreatingAutomationStep_shouldCallTheParserAgent(){
         final TestStepParserLogic parserLogic = new TestStepParserLogicImpl(parserAgent);
         parserLogic.createAutomationStepForDescription(DESCRIPTION);
-        verify(parserAgent.findParserForDescription(DESCRIPTION));
+        verify(parserAgent).findParserForDescription(DESCRIPTION);
     }
 }

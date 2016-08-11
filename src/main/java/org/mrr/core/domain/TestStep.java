@@ -29,6 +29,12 @@ public class TestStep {
         this.value = value;
     }
 
+    public TestStep(final ActionType type, final String target) {
+        this.type = type;
+        this.target = target;
+        this.value = "";
+    }
+
     public ActionType actionType() {
         return type;
     }

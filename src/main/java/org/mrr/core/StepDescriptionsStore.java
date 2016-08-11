@@ -12,8 +12,8 @@ import java.util.List;
 public class StepDescriptionsStore {
   private final String location;
 
-  public StepDescriptionsStore(final String lctn) {
-    this.location = lctn;
+  public StepDescriptionsStore(final String location) {
+    this.location = location;
   }
 
   /**
