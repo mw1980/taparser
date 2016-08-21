@@ -1,16 +1,18 @@
 package org.mrr.core.domain;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * This class encapsulates the elements of an test automation step:
  * It contains:
  * - the action type, e.g.: descriptionsAsText page, edit text field, check;
- * - the target of an action, e.g.: the id of an text field to be edited.
+ * - the target of an action, e.g.: the value of an text field to be edited.
  * - the value of the action (optional), e.g. the value to set in the text field,
  * the url of the page to descriptionsAsText, the value to check for in an edit field.
  */
+@EqualsAndHashCode
+@ToString
 public class TestStep {
     private final ActionType type;
     private final String target;
@@ -45,42 +47,5 @@ public class TestStep {
 
     public String value() {
         return value;
-    }
-
-    @Override
-    public String toString() {
-        return "TestStep{"
-                + "identification criteria=" + type.text()
-                + ", target='" + target + '\''
-                + ", value='" + value + '\''
-                + '}';
-    }
-
-    @Override
-    public boolean equals(final Object other) {
-        if (this == other) {
-            return true;
-        }
-
-        if (other == null || getClass() != other.getClass()) {
-            return false;
-        }
-
-        final TestStep that = (TestStep) other;
-
-        return new EqualsBuilder()
-                .append(type, that.type)
-                .append(target, that.target)
-                .append(value, that.value)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(type)
-                .append(target)
-                .append(value)
-                .toHashCode();
     }
 }

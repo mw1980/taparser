@@ -25,6 +25,6 @@ public class UiControl {
     }
 
     public String id() {
-        return locator.id();
+        return locator.value();
     }
 }

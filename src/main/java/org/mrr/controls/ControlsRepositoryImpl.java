@@ -34,12 +34,12 @@ class ControlsRepositoryImpl implements ControlsRepository {
     }
 
     private void initControlsIfNeeded() {
-        if (noControlsAvailable()) {
+        if (controlsUnavailable()) {
             this.controls = agent.supply();
         }
     }
 
-    private boolean noControlsAvailable() {
+    private boolean controlsUnavailable() {
         return this.controls.isEmpty();
     }
 

@@ -13,13 +13,13 @@ import org.mrr.core.domain.IdentificationCriteria;
 @ToString
 public class UiLocator {
     private final IdentificationCriteria identificationCriteria;
-    private final String id;
+    private final String value;
 
     IdentificationCriteria identificationCriteria() {
         return identificationCriteria;
     }
 
-    public String id() {
-        return id;
+    public String value() {
+        return value;
     }
 }
