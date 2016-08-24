@@ -14,8 +14,7 @@ class Main_temp {
     public static void main(String[] args) {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final AutomationCodeGenerator codeGenerator = context.getBean("automationCodeGenerator", AutomationCodeGenerator.class);
-        final String filePath = "src/main/resources/org/mrr/txt/FirstTestCase.txt";
-        final List<String> actionsInFile = codeGenerator.createCodeForActionsInFile(filePath);
+        final List<String> actionsInFile = codeGenerator.createCodeForActionsInFile();
         for (String action : actionsInFile) {
             System.out.println(action);
         }

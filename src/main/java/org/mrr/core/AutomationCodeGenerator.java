@@ -14,12 +14,15 @@ import java.util.List;
 class AutomationCodeGenerator {
     private final TestStepParserLogic parserLogic;
     private final TestCaseGeneratorLogic generatorLogic;
+    private final TestSpecificationStore testSpecificationStore;
 
     @Autowired
     public AutomationCodeGenerator(final TestStepParserLogic testStepParserLogic,
-                                   final TestCaseGeneratorLogic generatorLogic) {
+                                   final TestCaseGeneratorLogic generatorLogic,
+                                   final TestSpecificationStore specificationStore) {
         this.parserLogic = testStepParserLogic;
         this.generatorLogic = generatorLogic;
+        this.testSpecificationStore = specificationStore;
     }
 
     /**
@@ -37,12 +40,11 @@ class AutomationCodeGenerator {
     /**
      * Read all the action texts in the external file and generate the test automation code for them.
      *
-     * @param location the path to the file that contains the action texts.
      * @return List of test automation commands for the test actions described in the external file.
      */
-    List<String> createCodeForActionsInFile(final String location) {
+    List<String> createCodeForActionsInFile() {
         final List<String> result = new LinkedList<>();
-        for (final String step : new StepDescriptionsStore(location).deliverStepsDescription()) {
+        for (final String step : testSpecificationStore.deliverTestDescriptions()) {
             result.add(createCodeForSingleTestStep(step));
         }
         return result;
