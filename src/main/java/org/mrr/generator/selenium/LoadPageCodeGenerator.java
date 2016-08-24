@@ -1,7 +1,7 @@
 package org.mrr.generator.selenium;
 
-import org.mrr.core.TestCaseCodeGenerator;
 import org.mrr.core.domain.TestStep;
+import org.mrr.generator.TestCaseCodeGenerator;
 import org.springframework.stereotype.Component;
 
 import static org.mrr.core.domain.ActionType.LOAD_PAGE;

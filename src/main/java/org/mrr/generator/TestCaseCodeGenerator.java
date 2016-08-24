@@ -1,4 +1,4 @@
-package org.mrr.core;
+package org.mrr.generator;
 
 import org.mrr.core.domain.TestStep;
 

@@ -1,9 +1,9 @@
 package org.mrr.generator.selenium;
 
 
-import org.mrr.core.TestCaseCodeGenerator;
 import org.mrr.core.domain.TestStep;
 import org.mrr.generator.IdCodeGenerator;
+import org.mrr.generator.TestCaseCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

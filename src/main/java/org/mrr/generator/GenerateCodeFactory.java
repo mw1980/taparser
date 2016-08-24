@@ -1,6 +1,5 @@
 package org.mrr.generator;
 
-import org.mrr.core.TestCaseCodeGenerator;
 import org.mrr.core.domain.TestStep;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +12,7 @@ import java.util.Map;
  * Factory class for Code Generators.
  */
 @Component
-public class GenerateCodeFactory implements ApplicationContextAware {
+class GenerateCodeFactory implements ApplicationContextAware {
 
     private ApplicationContext context;
 
@@ -22,7 +21,7 @@ public class GenerateCodeFactory implements ApplicationContextAware {
         this.context = applicationContext;
     }
 
-    public TestCaseCodeGenerator findGenerator(final TestStep testStep) {
+    TestCaseCodeGenerator findGenerator(final TestStep testStep) {
         final Map<String, TestCaseCodeGenerator> generators = this.context.getBeansOfType(TestCaseCodeGenerator.class);
         for (final TestCaseCodeGenerator generator : generators.values()) {
             if (generator.canGenerate(testStep)) {

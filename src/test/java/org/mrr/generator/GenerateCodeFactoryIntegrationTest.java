@@ -3,7 +3,6 @@ package org.mrr.generator;
 import org.junit.Before;
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
-import org.mrr.core.TestCaseCodeGenerator;
 import org.mrr.core.domain.ActionType;
 import org.mrr.core.domain.TestStep;
 import org.mrr.generator.selenium.ClickButtonCodeGenerator;

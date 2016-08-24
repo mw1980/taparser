@@ -1,6 +1,5 @@
 package org.mrr.generator;
 
-import org.mrr.core.TestCaseCodeGenerator;
 import org.mrr.core.TestCaseGeneratorLogic;
 import org.mrr.core.domain.TestStep;
 import org.springframework.beans.factory.annotation.Autowired;
