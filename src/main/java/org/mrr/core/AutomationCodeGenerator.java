@@ -1,7 +1,6 @@
 package org.mrr.core;
 
 import org.mrr.core.domain.TestStep;
-import org.mrr.generator.GenerateCodeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,13 +13,13 @@ import java.util.List;
 @Component
 class AutomationCodeGenerator {
     private final TestStepParserLogic parserLogic;
-    private final GenerateCodeFactory generateCodeFactory;
+    private final TestCaseGeneratorLogic generatorLogic;
 
     @Autowired
     public AutomationCodeGenerator(final TestStepParserLogic testStepParserLogic,
-                                   final GenerateCodeFactory generateCodeFactory) {
+                                   final TestCaseGeneratorLogic generatorLogic) {
         this.parserLogic = testStepParserLogic;
-        this.generateCodeFactory = generateCodeFactory;
+        this.generatorLogic = generatorLogic;
     }
 
     /**
@@ -32,10 +31,7 @@ class AutomationCodeGenerator {
      */
     private String createCodeForSingleTestStep(final String description) {
         final TestStep testStep = parserLogic.createAutomationStepForDescription(description);
-        //TODO: implement generatorLogic class that automatically generates code for test step.
-        //the next 2 lines should be replaced by single call.
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
-        return codeGenerator.generateCode(testStep);
+        return generatorLogic.generateCode(testStep);
     }
 
     /**
