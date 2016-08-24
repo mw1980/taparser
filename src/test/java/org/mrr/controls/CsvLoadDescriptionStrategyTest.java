@@ -13,6 +13,6 @@ public class CsvLoadDescriptionStrategyTest {
     public void shouldTranslateIOExceptionToLoadControlsException(){
        final CsvLoadDescriptionStrategy loadStrategy = new CsvLoadDescriptionStrategy();
         ReflectionTestUtils.setField(loadStrategy,"location", "/not/existing/path");
-        loadStrategy.descriptionsAsText();
+        loadStrategy.loadDescriptions();
     }
 }

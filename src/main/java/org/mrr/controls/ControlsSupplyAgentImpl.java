@@ -32,7 +32,7 @@ class ControlsSupplyAgentImpl implements ControlsSupplyAgent {
      */
     @Override
     public Map<String, UiControl> supply() {
-        final List<String> descriptions = loadStrategy.descriptionsAsText();
+        final List<String> descriptions = loadStrategy.loadDescriptions();
         return translateStrategy.translate(descriptions);
     }
 }

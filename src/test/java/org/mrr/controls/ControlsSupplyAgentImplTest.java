@@ -28,7 +28,7 @@ public class ControlsSupplyAgentImplTest {
     public void whenCallingSupply_shouldDelegateCallToLoadDescriptionStrategy(){
         final ControlsSupplyAgentImpl agent = new ControlsSupplyAgentImpl(this.loadStrategy, this.translateStrategy);
         agent.supply();
-        verify(loadStrategy).descriptionsAsText();
+        verify(loadStrategy).loadDescriptions();
     }
 
     @Test

@@ -13,7 +13,7 @@ class LoadPageStepParser extends AbstractTestStepParserTemplate {
 
     @Override
     protected void validate(final String description) {
-        super.performBasicValidation("Load page\\s\\S+", "descriptionsAsText page", description);
+        super.performBasicValidation("Load page\\s\\S+", "loadDescriptions page", description);
     }
 
     @Override

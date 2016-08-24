@@ -6,10 +6,10 @@ import lombok.ToString;
 /**
  * This class encapsulates the elements of an test automation step:
  * It contains:
- * - the action type, e.g.: descriptionsAsText page, edit text field, check;
+ * - the action type, e.g.: load page, edit text field, check;
  * - the target of an action, e.g.: the value of an text field to be edited.
  * - the value of the action (optional), e.g. the value to set in the text field,
- * the url of the page to descriptionsAsText, the value to check for in an edit field.
+ * the url of the page to load, the value to check for in an edit field.
  */
 @EqualsAndHashCode
 @ToString

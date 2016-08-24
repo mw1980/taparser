@@ -21,7 +21,7 @@ class CsvLoadDescriptionStrategy implements LoadDescriptionsStrategy {
     private String location;
 
     @Override
-    public List<String> descriptionsAsText() {
+    public List<String> loadDescriptions() {
         try {
            return readAllLines(get(this.location), defaultCharset());
         } catch (final IOException e) {
