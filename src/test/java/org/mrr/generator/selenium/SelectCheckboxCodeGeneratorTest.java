@@ -19,7 +19,7 @@ public class SelectCheckboxCodeGeneratorTest {
 
     @Test
     @Ignore
-    public void whenParsingAutomationBeanWithUnknownTarget_shouldRaiseException() {
+    public void whenParsingTestStepWithUnknownTarget_shouldRaiseException() {
         final TestStep testStep = new TestStep(SELECT_CHECKBOX, "unknownTarget");
         new SelectCheckboxCodeGenerator(new IdCodeGeneratorStub()).generateCode(testStep);
     }

@@ -21,11 +21,6 @@ public class FileTestSpecificationStoreImpl implements TestSpecificationStore {
         this.location = specificationLocation;
     }
 
-    /**
-     * This method reads test cases from an external text file.
-     *
-     * @return List of Strings, each element contains a line in the text file.
-     */
     @Override
     public List<String> deliverTestDescriptions() {
         try {

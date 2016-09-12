@@ -29,19 +29,19 @@ public class SelectDropdownStepParserTest {
   }
 
   @Test
-  public void whenParsingCorrectDescription_shouldReturnExpectedAutomationBean() {
+  public void whenParsingCorrectDescription_shouldReturnExpectedTestStep() {
     final TestStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"ui option\"");
     assertThat(parseResult).isEqualTo(new TestStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "ui option"));
   }
 
   @Test
-  public void whenParsingCorrectDescriptionWithNumericalOptionValue_shouldReturnExpectedAutomationBean() {
+  public void whenParsingCorrectDescriptionWithNumericalOptionValue_shouldReturnExpectedTestStep() {
     final TestStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"3\"");
     assertThat(parseResult).isEqualTo(new TestStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "3"));
   }
 
   @Test
-  public void whenParsingDescription_shouldReturnExpectedAutomationBeanWithCapitalLetters() {
+  public void whenParsingDescription_shouldReturnExpectedTestStepWithCapitalLetters() {
     final TestStep parseResult = new SelectDropdownStepParserTemplate().parse("Select in dropdown mydropdown value \"Johnie Walker\"");
     assertThat(parseResult).isEqualTo(new TestStep(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "Johnie Walker"));
   }

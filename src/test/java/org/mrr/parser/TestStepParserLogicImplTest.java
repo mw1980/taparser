@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.domain.TestStep;
 import org.mrr.core.TestStepParserLogic;
+import org.mrr.core.domain.TestStep;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,9 +25,9 @@ public class TestStepParserLogicImplTest {
     }
 
     @Test
-    public void whenCreatingAutomationStep_shouldCallTheParserAgent(){
+    public void whenCreatingTestStep_shouldCallTheParserAgent() {
         final TestStepParserLogic parserLogic = new TestStepParserLogicImpl(parserAgent);
-        parserLogic.createAutomationStepForDescription(DESCRIPTION);
+        parserLogic.createTestStepForDescription(DESCRIPTION);
         verify(parserAgent).findParserForDescription(DESCRIPTION);
     }
 }

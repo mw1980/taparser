@@ -27,7 +27,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
      * Parses the action type, the action target and action values from test case description
      * and returns an automationStepBean object.
      *
-     * @return Automation step bean object parsed from the test step description.
+     * @return test step object parsed from the test step description.
      */
     public TestStep parse(final String description) {
         validate(description);
