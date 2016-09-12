@@ -14,7 +14,7 @@ public class SelectInDropdownCodeGeneratorTest {
     @Ignore
     public void whenGeneratingCodeForUiElementWithoutIdentifier_shouldThrowIdentifierValueNotFoundException() {
         final TestStep testStep = new TestStep(SELECT_IN_DROPDOWN, "withoutIdentifier");
-        final SelectInDropdownCodeGenerator codeGenerator = new SelectInDropdownCodeGenerator(new IdCodeGeneratorStub());
+        final SelectInDropdownCodeGenerator codeGenerator = new SelectInDropdownCodeGenerator(new LocatorCodeGeneratorStub());
         final String generateCode = codeGenerator.generateCode(testStep);
         assertTrue(generateCode.contains("Cannot find the control:"));
     }
@@ -22,7 +22,7 @@ public class SelectInDropdownCodeGeneratorTest {
     @Test
     public void whenGeneratingCodeForSelectDropdownOperation_shouldGenerateTheExpectedCode() {
         final TestStep testStep = new TestStep(SELECT_IN_DROPDOWN, "mydropdown", "ui option");
-        final SelectInDropdownCodeGenerator codeGenerator = new SelectInDropdownCodeGenerator(new IdCodeGeneratorStub());
+        final SelectInDropdownCodeGenerator codeGenerator = new SelectInDropdownCodeGenerator(new LocatorCodeGeneratorStub());
         final String code = codeGenerator.generateCode(testStep);
         assertThat(code).isEqualToIgnoringCase(
                 "new Select (driver.findElement(By.id(\"mydropdownHtmlId\"))).selectByVisibleText(\"ui option\");");

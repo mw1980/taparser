@@ -19,54 +19,54 @@ import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.EDIT_TEXT;
 import static org.mrr.core.domain.ActionType.LOAD_PAGE;
 
-public class GenerateCodeFactoryIntegrationTest {
-    private GenerateCodeFactory generateCodeFactory;
+public class CodeGeneratorFactoryIntegrationTest {
+    private CodeGeneratorFactory codeGeneratorFactory;
 
     @Before
     public void setup() {
         final ApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        generateCodeFactory = context.getBean("generateCodeFactory", GenerateCodeFactory.class);
+        codeGeneratorFactory = context.getBean("codeGeneratorFactory", CodeGeneratorFactory.class);
     }
 
     @Test
     public void whenCreatingInstanceForLoadPageTestStep_shouldReturnLoadPageCodeGenerator() {
         final TestStep testStep = new TestStep(LOAD_PAGE, "");
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof LoadPageCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForEditTextTestStep_shouldReturnEditTextCodeGenerator() {
         final TestStep testStep = new TestStep(EDIT_TEXT, "");
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof EditTextfieldCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForClickButtonTestStep_shouldReturnClickButtonCodeGenerator() {
         final TestStep testStep = new TestStep(CLICK_BUTTON, "");
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof ClickButtonCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForSelectInDropdownTestStep_shouldReturnSelectInDropdownGenerator() {
         final TestStep testStep = new TestStep(ActionType.SELECT_IN_DROPDOWN, "");
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof SelectInDropdownCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForSelectCheckboxTestStep_shouldReturnSelectCheckboxCodeGenerator() {
         final TestStep testStep = new TestStep(ActionType.SELECT_CHECKBOX, "");
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof SelectCheckboxCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForDeselectCheckboxTestStep_shouldReturnDeselectCheckboxCodeGenerator() {
         final TestStep testStep = new TestStep(ActionType.DESELECT_CHECKBOX, "");
-        final TestCaseCodeGenerator codeGenerator = generateCodeFactory.findGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof DeselectCheckboxCodeGenerator);
     }
 }

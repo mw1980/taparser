@@ -35,6 +35,6 @@ class DeselectCheckboxStepParser extends AbstractTestStepParserTemplate {
     @Override
     public boolean canParse(final String description) {
         return description.trim().
-                startsWith(DESELECT_CHECKBOX.text());
+                startsWith(DESELECT_CHECKBOX.description());
     }
 }

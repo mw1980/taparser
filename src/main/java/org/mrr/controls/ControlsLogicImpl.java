@@ -1,8 +1,8 @@
 package org.mrr.controls;
 
 import org.mrr.controls.api.ControlsRepository;
-import org.mrr.controls.api.UiControl;
 import org.mrr.core.ControlsLogic;
+import org.mrr.core.domain.UiControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +25,6 @@ class ControlsLogicImpl implements ControlsLogic {
 
     @Override
     public UiControl findControlByName(final String name) {
-        return csvRepository.searchControlByName(name);
+        return csvRepository.findControlByName(name);
     }
 }

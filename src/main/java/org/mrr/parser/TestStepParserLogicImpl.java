@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 class TestStepParserLogicImpl implements TestStepParserLogic {
-    private final TestStepParserAgent parserAgent;
+    private final TestStepParserFactory parserFactory;
 
     @Autowired
-    public TestStepParserLogicImpl(final TestStepParserAgent stepParserAgent) {
-        this.parserAgent = stepParserAgent;
+    public TestStepParserLogicImpl(final TestStepParserFactory stepParserFactory) {
+        this.parserFactory = stepParserFactory;
     }
 
     @Override
     public TestStep createTestStepForDescription(final String description) {
-        final TestStepParser parser = parserAgent.findParserForDescription(description);
+        final TestStepParser parser = parserFactory.deliverParserForDescription(description);
         return parser.parse(description);
     }
 }

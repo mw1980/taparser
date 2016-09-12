@@ -1,9 +1,8 @@
-package org.mrr.controls.api;
+package org.mrr.core.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.core.domain.IdentificationCriteria;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;

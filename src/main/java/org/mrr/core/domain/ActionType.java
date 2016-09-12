@@ -1,7 +1,7 @@
 package org.mrr.core.domain;
 
 /**
- * User interface supported action types.
+ * The class defines the supported user interface actions.
  */
 public enum ActionType {
   LOAD_PAGE("Load page"),
@@ -14,13 +14,13 @@ public enum ActionType {
   SELECT_RADIO_BUTTON("Select radio button"),
   UNKNOWN("");
 
-  private final String actionText;
+  private final String description;
 
-  ActionType(final String actionText) {
-    this.actionText = actionText;
+  ActionType(final String description) {
+    this.description = description;
   }
 
-  public final String text() {
-    return actionText;
+  public final String description() {
+    return description;
   }
 }

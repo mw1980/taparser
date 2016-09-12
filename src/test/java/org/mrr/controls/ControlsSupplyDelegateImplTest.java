@@ -5,19 +5,19 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
-import org.mrr.controls.api.TranslateControlsStrategy;
+import org.mrr.controls.api.TranslateControlsDelegate;
 
 import java.util.Collections;
 
 import static org.mockito.Mockito.verify;
 
-public class ControlsSupplyAgentImplTest {
+public class ControlsSupplyDelegateImplTest {
 
     @Mock
     private LoadDescriptionsStrategy loadStrategy;
 
     @Mock
-    private TranslateControlsStrategy translateStrategy;
+    private TranslateControlsDelegate translateStrategy;
 
     @Before
     public void setup(){
@@ -26,14 +26,14 @@ public class ControlsSupplyAgentImplTest {
 
     @Test
     public void whenCallingSupply_shouldDelegateCallToLoadDescriptionStrategy(){
-        final ControlsSupplyAgentImpl agent = new ControlsSupplyAgentImpl(this.loadStrategy, this.translateStrategy);
+        final ControlsSupplyDelegateImpl agent = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
         agent.supply();
         verify(loadStrategy).loadDescriptions();
     }
 
     @Test
     public void whenCallingSupply_shouldDelegateCallToTranslateDescriptionStrategy(){
-        final ControlsSupplyAgentImpl agent = new ControlsSupplyAgentImpl(this.loadStrategy, this.translateStrategy);
+        final ControlsSupplyDelegateImpl agent = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
         agent.supply();
         verify(translateStrategy).translate(Collections.<String>emptyList());
     }

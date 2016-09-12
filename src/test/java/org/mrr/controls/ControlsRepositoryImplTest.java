@@ -4,9 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.controls.api.ControlsSupplyAgent;
-import org.mrr.controls.api.UiControl;
-import org.mrr.controls.api.UiLocator;
+import org.mrr.controls.api.ControlsSupplyDelegate;
+import org.mrr.core.domain.UiControl;
+import org.mrr.core.domain.UiLocator;
 
 import java.util.Map;
 
@@ -22,7 +22,7 @@ public class ControlsRepositoryImplTest {
     private static final String CONTROL_NAME = "name";
 
     @Mock
-    private ControlsSupplyAgent agent;
+    private ControlsSupplyDelegate agent;
 
     @Before
     public void setup(){
@@ -57,7 +57,7 @@ public class ControlsRepositoryImplTest {
     @Test
     public void whenSearchingForControlByName_shouldCallTheControlsAgent(){
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
-        repository.searchControlByName("");
+        repository.findControlByName("");
         verify(agent).supply();
     }
 
@@ -65,8 +65,8 @@ public class ControlsRepositoryImplTest {
     public void whenSearchingForControlByName_shouldCacheTheResult(){
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
         when(agent.supply()).thenReturn(notEmptyControlsMap());
-        repository.searchControlByName("");
-        repository.searchControlByName("");
+        repository.findControlByName("");
+        repository.findControlByName("");
         verify(agent).supply();
     }
 
@@ -75,7 +75,7 @@ public class ControlsRepositoryImplTest {
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
         assertThat(
                 UiControl.NO_CONTROL,
-                equalTo(repository.searchControlByName("name")));
+                equalTo(repository.findControlByName("name")));
     }
 
     @Test
@@ -84,6 +84,6 @@ public class ControlsRepositoryImplTest {
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
         assertThat(
                 notEmptyControl(),
-                equalTo(repository.searchControlByName(CONTROL_NAME)));
+                equalTo(repository.findControlByName(CONTROL_NAME)));
     }
 }

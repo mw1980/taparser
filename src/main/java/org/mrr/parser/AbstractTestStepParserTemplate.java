@@ -7,17 +7,17 @@ import java.util.regex.Pattern;
 
 /**
  * Abstract class, contains the methods to parse test case description and create
- * ActionSteps objects from free text test case description.
+ * ActionSteps objects from free description test case description.
  */
 abstract class AbstractTestStepParserTemplate implements TestStepParser {
     static final TestStepParser UNKNOWN = new TestStepParser() {
         @Override
-        public TestStep parse(String description) {
+        public TestStep parse(final String description) {
             return new TestStep(ActionType.UNKNOWN, "", "");
         }
 
         @Override
-        public boolean canParse(String description) {
+        public boolean canParse(final String description) {
             return false;
         }
     };
@@ -58,7 +58,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
 
     /**
      * The method returns the value that the test step action should set.
-     * E.g. the value to be set in a text field.
+     * E.g. the value to be set in a description field.
      *
      * @return the value of the action
      */

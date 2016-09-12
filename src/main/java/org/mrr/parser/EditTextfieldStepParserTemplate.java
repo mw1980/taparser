@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import static org.mrr.core.domain.ActionType.EDIT_TEXT;
 
 /**
- * Parser class for the edit text field steps.
+ * Parser class for the edit description field steps.
  */
 @Component
 class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
@@ -14,7 +14,7 @@ class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
     @Override
     protected void validate(final String description) {
         final String regex = "Set in textfield\\s\\w+\\svalue\\s\"[a-zA-Z0-9_ ]+\"";
-        super.performBasicValidation(regex, "edit text field", description);
+        super.performBasicValidation(regex, "edit description field", description);
     }
 
     @Override
@@ -38,6 +38,6 @@ class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
     public boolean canParse(String description) {
         return description.
                 trim()
-                .startsWith(EDIT_TEXT.text());
+                .startsWith(EDIT_TEXT.description());
     }
 }

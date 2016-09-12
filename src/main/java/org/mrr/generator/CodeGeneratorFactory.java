@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * Factory class for Code Generators.
+ * Factory class for code generators.
  */
 @Component
-class GenerateCodeFactory implements ApplicationContextAware {
+class CodeGeneratorFactory implements ApplicationContextAware {
 
     private ApplicationContext context;
 
@@ -21,9 +21,9 @@ class GenerateCodeFactory implements ApplicationContextAware {
         this.context = applicationContext;
     }
 
-    TestCaseCodeGenerator findGenerator(final TestStep testStep) {
-        final Map<String, TestCaseCodeGenerator> generators = this.context.getBeansOfType(TestCaseCodeGenerator.class);
-        for (final TestCaseCodeGenerator generator : generators.values()) {
+    TestStepCodeGenerator deliverGenerator(final TestStep testStep) {
+        final Map<String, TestStepCodeGenerator> generators = this.context.getBeansOfType(TestStepCodeGenerator.class);
+        for (final TestStepCodeGenerator generator : generators.values()) {
             if (generator.canGenerate(testStep)) {
                 return generator;
             }

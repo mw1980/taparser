@@ -11,7 +11,7 @@ public class SelectCheckboxCodeGeneratorTest {
 
     @Test
     public void shouldGenerateExpectedCode() {
-        final SelectCheckboxCodeGenerator codeGenerator = new SelectCheckboxCodeGenerator(new IdCodeGeneratorStub());
+        final SelectCheckboxCodeGenerator codeGenerator = new SelectCheckboxCodeGenerator(new LocatorCodeGeneratorStub());
         final TestStep testStep = new TestStep(SELECT_CHECKBOX, "agreeCookies");
         final String expectedCode = "if (!driver.findElement(By.id(\"agreeCookiesHtmlId\")).isSelected()){driver.findElement(By.id(\"agreeCookiesHtmlId\")).click();}";
         assertThat(codeGenerator.generateCode(testStep)).isEqualTo(expectedCode);
@@ -21,6 +21,6 @@ public class SelectCheckboxCodeGeneratorTest {
     @Ignore
     public void whenParsingTestStepWithUnknownTarget_shouldRaiseException() {
         final TestStep testStep = new TestStep(SELECT_CHECKBOX, "unknownTarget");
-        new SelectCheckboxCodeGenerator(new IdCodeGeneratorStub()).generateCode(testStep);
+        new SelectCheckboxCodeGenerator(new LocatorCodeGeneratorStub()).generateCode(testStep);
     }
 }

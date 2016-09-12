@@ -2,8 +2,8 @@ package org.mrr.controls;
 
 import org.junit.Test;
 import org.mrr.core.LoadControlsException;
-import org.mrr.controls.api.UiControl;
-import org.mrr.controls.api.UiLocator;
+import org.mrr.core.domain.UiControl;
+import org.mrr.core.domain.UiLocator;
 
 import java.util.Collections;
 import java.util.Map;
@@ -15,13 +15,13 @@ import static org.junit.Assert.assertThat;
 import static org.mrr.core.domain.IdentificationCriteria.ID;
 
 /**
- * Tests for the class CsvTranslateControlsStrategy.
+ * Tests for the class CsvTranslateControlsDelegate.
  */
-public class CsvTranslateControlsStrategyTest {
+public class CsvTranslateControlsDelegateTest {
 
     @Test
     public void shouldTranslateValidElementAsExpected() {
-        final CsvTranslateControlsStrategy translator = new CsvTranslateControlsStrategy();
+        final CsvTranslateControlsDelegate translator = new CsvTranslateControlsDelegate();
         final Map<String, UiControl> calculated = translator.translate(singletonList("name id elementId"));
         final Map<String, UiControl> expected = singletonMap(
                 "name",
@@ -33,7 +33,7 @@ public class CsvTranslateControlsStrategyTest {
 
     @Test
     public void whenTranslatingEmptyList_shouldReturnEmptyUiControlMap(){
-        final CsvTranslateControlsStrategy translator = new CsvTranslateControlsStrategy();
+        final CsvTranslateControlsDelegate translator = new CsvTranslateControlsDelegate();
         assertThat(
                 translator.translate(Collections.<String>emptyList()),
                 equalTo(Collections.<String, UiControl>emptyMap())
@@ -43,7 +43,7 @@ public class CsvTranslateControlsStrategyTest {
 
     @Test (expected = LoadControlsException.class)
     public void whenTranslatingInvalidIdentificationCriteria_shouldThrowException(){
-        final CsvTranslateControlsStrategy translator = new CsvTranslateControlsStrategy();
+        final CsvTranslateControlsDelegate translator = new CsvTranslateControlsDelegate();
         translator.translate(singletonList("name otherIdentificationType elementId"));
     }
 }

@@ -3,9 +3,9 @@ package org.mrr.generator;
 import org.mrr.core.domain.TestStep;
 
 /**
- * Abstract class for Code Generators.
+ * Code generator main interface.
  */
-public interface TestCaseCodeGenerator {
+public interface TestStepCodeGenerator {
     /**
      * Generates the test automation code for the test step received as parameter.
      */

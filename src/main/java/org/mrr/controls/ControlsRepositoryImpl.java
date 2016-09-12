@@ -1,12 +1,11 @@
 package org.mrr.controls;
 
-import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.controls.api.ControlsRepository;
-import org.mrr.controls.api.UiControl;
+import org.mrr.controls.api.ControlsSupplyDelegate;
+import org.mrr.core.domain.UiControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,15 +15,14 @@ import java.util.Map;
 @Component
 class ControlsRepositoryImpl implements ControlsRepository {
 
-    private final ControlsSupplyAgent agent;
+    private final ControlsSupplyDelegate supplyDelegate;
 
     //low level caching.
     private Map<String, UiControl> controls;
 
     @Autowired
-    public ControlsRepositoryImpl(final ControlsSupplyAgent agent) {
-        this.controls = new HashMap<>();
-        this.agent = agent;
+    public ControlsRepositoryImpl(final ControlsSupplyDelegate supplyDelegate) {
+        this.supplyDelegate = supplyDelegate;
     }
 
     @Override
@@ -35,16 +33,16 @@ class ControlsRepositoryImpl implements ControlsRepository {
 
     private void initControlsIfNeeded() {
         if (controlsUnavailable()) {
-            this.controls = agent.supply();
+            this.controls = supplyDelegate.supply();
         }
     }
 
     private boolean controlsUnavailable() {
-        return this.controls.isEmpty();
+        return this.controls == null || this.controls.isEmpty();
     }
 
     @Override
-    public UiControl searchControlByName(final String name) {
+    public UiControl findControlByName(final String name) {
         initControlsIfNeeded();
         if (this.controls.containsKey(name)) {
             return this.controls.get(name);

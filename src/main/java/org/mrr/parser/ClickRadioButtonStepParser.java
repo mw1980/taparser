@@ -38,6 +38,6 @@ class ClickRadioButtonStepParser extends AbstractTestStepParserTemplate {
     @Override
     public boolean canParse(final String description) {
         return description.trim()
-                .startsWith(SELECT_RADIO_BUTTON.text());
+                .startsWith(SELECT_RADIO_BUTTON.description());
     }
 }

@@ -1,9 +1,9 @@
 package org.mrr.controls;
 
+import org.mrr.controls.api.TranslateControlsDelegate;
 import org.mrr.core.domain.IdentificationCriteria;
-import org.mrr.controls.api.TranslateControlsStrategy;
-import org.mrr.controls.api.UiLocator;
-import org.mrr.controls.api.UiControl;
+import org.mrr.core.domain.UiControl;
+import org.mrr.core.domain.UiLocator;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The class translates a plain text descriptions to a java control.
+ * The class translates a plain description descriptions to a java control.
  */
 
 @Component
-class CsvTranslateControlsStrategy implements TranslateControlsStrategy {
+class CsvTranslateControlsDelegate implements TranslateControlsDelegate {
 
     @Override
     public Map<String, UiControl> translate(final List<String> descriptions) {

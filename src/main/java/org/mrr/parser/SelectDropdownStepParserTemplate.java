@@ -37,6 +37,6 @@ class SelectDropdownStepParserTemplate extends AbstractTestStepParserTemplate {
     public boolean canParse(final String description) {
         return description.
                 trim().
-                startsWith(SELECT_IN_DROPDOWN.text());
+                startsWith(SELECT_IN_DROPDOWN.description());
     }
 }

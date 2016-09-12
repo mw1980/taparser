@@ -1,9 +1,8 @@
-package org.mrr.controls.api;
+package org.mrr.core.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.core.domain.IdentificationCriteria;
 
 /**
  * The class stores the information needed to locate a control on a html page.

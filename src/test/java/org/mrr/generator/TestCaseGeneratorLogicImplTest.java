@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
 import org.junit.Test;
-import org.mrr.core.TestCaseGeneratorLogic;
+import org.mrr.core.TestStepGeneratorLogic;
 import org.mrr.core.domain.TestStep;
 
 import static org.mockito.Mockito.mock;
@@ -14,23 +14,23 @@ public class TestCaseGeneratorLogicImplTest {
     @Test
     public void whenGeneratingCode_shouldCallTheGeneratorFactory(){
         final TestStep testStep = new TestStep(CLICK_BUTTON, "", "");
-        final GenerateCodeFactory factoryMock = mock(GenerateCodeFactory.class);
-        when(factoryMock.findGenerator(testStep)).thenReturn(mock(TestCaseCodeGenerator.class));
+        final CodeGeneratorFactory factoryMock = mock(CodeGeneratorFactory.class);
+        when(factoryMock.deliverGenerator(testStep)).thenReturn(mock(TestStepCodeGenerator.class));
 
-        final TestCaseGeneratorLogic generatorLogic = new TestCaseGeneratorLogicImpl(factoryMock);
+        final TestStepGeneratorLogic generatorLogic = new TestStepGeneratorLogicImpl(factoryMock);
         generatorLogic.generateCode(testStep);
 
-        verify(factoryMock).findGenerator(testStep);
+        verify(factoryMock).deliverGenerator(testStep);
     }
 
     @Test
     public void whenGeneratingCode_shouldCallTheGenerator(){
         final TestStep testStep = new TestStep(CLICK_BUTTON, "", "");
-        final GenerateCodeFactory factoryMock = mock(GenerateCodeFactory.class);
-        final TestCaseCodeGenerator generatorMock = mock(TestCaseCodeGenerator.class);
-        when(factoryMock.findGenerator(testStep)).thenReturn(generatorMock);
+        final CodeGeneratorFactory factoryMock = mock(CodeGeneratorFactory.class);
+        final TestStepCodeGenerator generatorMock = mock(TestStepCodeGenerator.class);
+        when(factoryMock.deliverGenerator(testStep)).thenReturn(generatorMock);
 
-        final TestCaseGeneratorLogic generatorLogic = new TestCaseGeneratorLogicImpl(factoryMock);
+        final TestStepGeneratorLogic generatorLogic = new TestStepGeneratorLogicImpl(factoryMock);
         generatorLogic.generateCode(testStep);
     }
 }

@@ -36,6 +36,6 @@ class SelectCheckboxStepParser extends AbstractTestStepParserTemplate {
     public boolean canParse(final String description) {
         return description.
                 trim().
-                startsWith(SELECT_CHECKBOX.text());
+                startsWith(SELECT_CHECKBOX.description());
     }
 }

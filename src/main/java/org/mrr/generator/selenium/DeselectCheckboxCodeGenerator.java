@@ -1,8 +1,8 @@
 package org.mrr.generator.selenium;
 
 import org.mrr.core.domain.TestStep;
-import org.mrr.generator.IdCodeGenerator;
-import org.mrr.generator.TestCaseCodeGenerator;
+import org.mrr.generator.LocatorCodeGenerator;
+import org.mrr.generator.TestStepCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,18 +12,18 @@ import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
  * Selenium code generator for the actions of type: "deselect checkbox mycheckbox".
  */
 @Component
-public class DeselectCheckboxCodeGenerator implements TestCaseCodeGenerator {
+public class DeselectCheckboxCodeGenerator implements TestStepCodeGenerator {
 
-    private final IdCodeGenerator idCodeGenerator;
+    private final LocatorCodeGenerator locatorCodeGenerator;
 
     @Autowired
-    DeselectCheckboxCodeGenerator(final IdCodeGenerator idCodeGenerator) {
-        this.idCodeGenerator = idCodeGenerator;
+    DeselectCheckboxCodeGenerator(final LocatorCodeGenerator locatorCodeGenerator) {
+        this.locatorCodeGenerator = locatorCodeGenerator;
     }
 
     @Override
     public String generateCode(final TestStep testStep) {
-        final String identificationCode = idCodeGenerator.identificationCodeFor(testStep.target());
+        final String identificationCode = locatorCodeGenerator.identificationCodeFor(testStep.target());
         return "if (driver.findElement("
                 + identificationCode
                 + ").isSelected()){driver.findElement("

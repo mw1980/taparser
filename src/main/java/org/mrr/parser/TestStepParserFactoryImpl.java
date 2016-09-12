@@ -12,7 +12,7 @@ import java.util.Map;
 import static org.mrr.parser.AbstractTestStepParserTemplate.UNKNOWN;
 
 @Component("testStepParserAgent")
-class TestStepParserAgentImpl implements ApplicationContextAware, TestStepParserAgent {
+class TestStepParserFactoryImpl implements ApplicationContextAware, TestStepParserFactory {
 
     private ApplicationContext context;
 
@@ -22,7 +22,7 @@ class TestStepParserAgentImpl implements ApplicationContextAware, TestStepParser
     }
 
     @Override
-    public TestStepParser findParserForDescription(final String description) {
+    public TestStepParser deliverParserForDescription(final String description) {
         for (final TestStepParser parser : registeredTestStepParsers()) {
             if (parser.canParse(description)) {
                 return parser;

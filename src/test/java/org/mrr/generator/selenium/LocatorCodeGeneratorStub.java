@@ -1,11 +1,11 @@
 package org.mrr.generator.selenium;
 
-import org.mrr.generator.IdCodeGenerator;
+import org.mrr.generator.LocatorCodeGenerator;
 
 /**
- * Stub implementation of the IdCodeGenerator interface.
+ * Stub implementation of the LocatorCodeGenerator interface.
  */
-class IdCodeGeneratorStub implements IdCodeGenerator {
+class LocatorCodeGeneratorStub implements LocatorCodeGenerator {
     @Override
     public String identificationCodeFor(final String name) {
         return "By.id(\"" + name + "HtmlId\")";

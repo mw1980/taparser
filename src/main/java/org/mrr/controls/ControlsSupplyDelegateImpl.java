@@ -1,9 +1,9 @@
 package org.mrr.controls;
 
-import org.mrr.controls.api.ControlsSupplyAgent;
+import org.mrr.controls.api.ControlsSupplyDelegate;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
-import org.mrr.controls.api.TranslateControlsStrategy;
-import org.mrr.controls.api.UiControl;
+import org.mrr.controls.api.TranslateControlsDelegate;
+import org.mrr.core.domain.UiControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,15 +14,15 @@ import java.util.Map;
  * Controls delivery agent, that gets the controls from an csv file.
  */
 @Component
-class ControlsSupplyAgentImpl implements ControlsSupplyAgent {
+class ControlsSupplyDelegateImpl implements ControlsSupplyDelegate {
     private final LoadDescriptionsStrategy loadStrategy;
-    private final TranslateControlsStrategy translateStrategy;
+    private final TranslateControlsDelegate translateDelegate;
 
     @Autowired
-    public ControlsSupplyAgentImpl(final LoadDescriptionsStrategy loadStrategy,
-                                   final TranslateControlsStrategy translateStrategy) {
+    public ControlsSupplyDelegateImpl(final LoadDescriptionsStrategy loadStrategy,
+                                      final TranslateControlsDelegate translateDelegate) {
         this.loadStrategy = loadStrategy;
-        this.translateStrategy = translateStrategy;
+        this.translateDelegate = translateDelegate;
     }
 
     /**
@@ -33,6 +33,6 @@ class ControlsSupplyAgentImpl implements ControlsSupplyAgent {
     @Override
     public Map<String, UiControl> supply() {
         final List<String> descriptions = loadStrategy.loadDescriptions();
-        return translateStrategy.translate(descriptions);
+        return translateDelegate.translate(descriptions);
     }
 }

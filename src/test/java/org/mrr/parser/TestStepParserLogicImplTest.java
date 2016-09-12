@@ -14,13 +14,14 @@ import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 public class TestStepParserLogicImplTest {
     private static final String DESCRIPTION = "Click Button myButton";
 
-    @Mock private TestStepParserAgent parserAgent;
+    @Mock
+    private TestStepParserFactory parserAgent;
     @Mock private TestStepParser stepParser;
 
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(parserAgent.findParserForDescription(DESCRIPTION)).thenReturn(stepParser);
+        when(parserAgent.deliverParserForDescription(DESCRIPTION)).thenReturn(stepParser);
         when(stepParser.parse(DESCRIPTION)).thenReturn(new TestStep(CLICK_BUTTON, "button", ""));
     }
 
@@ -28,6 +29,6 @@ public class TestStepParserLogicImplTest {
     public void whenCreatingTestStep_shouldCallTheParserAgent() {
         final TestStepParserLogic parserLogic = new TestStepParserLogicImpl(parserAgent);
         parserLogic.createTestStepForDescription(DESCRIPTION);
-        verify(parserAgent).findParserForDescription(DESCRIPTION);
+        verify(parserAgent).deliverParserForDescription(DESCRIPTION);
     }
 }

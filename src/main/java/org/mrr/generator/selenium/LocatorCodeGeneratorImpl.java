@@ -1,8 +1,8 @@
 package org.mrr.generator.selenium;
 
-import org.mrr.controls.api.UiControl;
 import org.mrr.core.ControlsLogic;
-import org.mrr.generator.IdCodeGenerator;
+import org.mrr.core.domain.UiControl;
+import org.mrr.generator.LocatorCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +13,11 @@ import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
  * Code generator for identification of the user interface controls.
  */
 @Component
-public class IdCodeGeneratorImpl implements IdCodeGenerator {
+public class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
     private final ControlsLogic controlsLogic;
 
     @Autowired
-    public IdCodeGeneratorImpl(final ControlsLogic controlsLogic) {
+    public LocatorCodeGeneratorImpl(final ControlsLogic controlsLogic) {
         this.controlsLogic = controlsLogic;
     }
 

@@ -13,8 +13,8 @@ import java.util.List;
 class Main_temp {
     public static void main(String[] args) {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final ParserLogicImpl codeGenerator = context.getBean("parserLogicImpl", ParserLogicImpl.class);
-        final List<String> actionsInFile = codeGenerator.parseSpecification();
+        final SpecificationConvertLogicImpl specificationParser = context.getBean("specificationConvertLogicImpl", SpecificationConvertLogicImpl.class);
+        final List<String> actionsInFile = specificationParser.parseSpecification();
         for (String action : actionsInFile) {
             System.out.println(action);
         }

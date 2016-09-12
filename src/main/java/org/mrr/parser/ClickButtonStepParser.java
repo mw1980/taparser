@@ -54,7 +54,7 @@ class ClickButtonStepParser extends AbstractTestStepParserTemplate {
     }
 
     private boolean isClickAction(final String description) {
-        return description.startsWith(CLICK_BUTTON.text())
-                || description.startsWith(CLICK_LINK.text());
+        return description.startsWith(CLICK_BUTTON.description())
+                || description.startsWith(CLICK_LINK.description());
     }
 }

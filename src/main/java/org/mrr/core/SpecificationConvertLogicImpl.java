@@ -8,15 +8,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-class ParserLogicImpl implements ParserLogic {
+class SpecificationConvertLogicImpl implements SpecificationConvertLogic {
     private final TestStepParserLogic parserLogic;
-    private final TestCaseGeneratorLogic generatorLogic;
+    private final TestStepGeneratorLogic generatorLogic;
     private final TestSpecificationStore specificationStore;
 
     @Autowired
-    public ParserLogicImpl(final TestStepParserLogic testStepParserLogic,
-                           final TestCaseGeneratorLogic generatorLogic,
-                           final TestSpecificationStore specificationStore) {
+    public SpecificationConvertLogicImpl(final TestStepParserLogic testStepParserLogic,
+                                         final TestStepGeneratorLogic generatorLogic,
+                                         final TestSpecificationStore specificationStore) {
         this.parserLogic = testStepParserLogic;
         this.generatorLogic = generatorLogic;
         this.specificationStore = specificationStore;
@@ -33,8 +33,8 @@ class ParserLogicImpl implements ParserLogic {
 
     /*
      * The method delivers the automation code for a single action.
-     * @param description the "non technical" test step description. E.g. Click button submit
-     * @return the test automation code for the non technical description.
+     * @param description the free text description of the test step. E.g. Click button submit
+     * @return the test automation code for the free text description.
      */
     private String createCodeForSingleTestStep(final String description) {
         final TestStep testStep = parserLogic.createTestStepForDescription(description);
