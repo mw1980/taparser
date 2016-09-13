@@ -29,7 +29,7 @@ public class ClickButtonCodeGenerator implements TestStepCodeGenerator {
     }
 
     @Override
-    public boolean canGenerate(final TestStep testStep) {
+    public boolean canHandle(final TestStep testStep) {
         return CLICK_BUTTON.equals(testStep.actionType());
     }
 

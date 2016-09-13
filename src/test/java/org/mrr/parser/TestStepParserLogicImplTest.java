@@ -21,7 +21,7 @@ public class TestStepParserLogicImplTest {
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(parserAgent.deliverParserForDescription(DESCRIPTION)).thenReturn(stepParser);
+        when(parserAgent.deliverParser(DESCRIPTION)).thenReturn(stepParser);
         when(stepParser.parse(DESCRIPTION)).thenReturn(new TestStep(CLICK_BUTTON, "button", ""));
     }
 
@@ -29,6 +29,6 @@ public class TestStepParserLogicImplTest {
     public void whenCreatingTestStep_shouldCallTheParserAgent() {
         final TestStepParserLogic parserLogic = new TestStepParserLogicImpl(parserAgent);
         parserLogic.createTestStepForDescription(DESCRIPTION);
-        verify(parserAgent).deliverParserForDescription(DESCRIPTION);
+        verify(parserAgent).deliverParser(DESCRIPTION);
     }
 }

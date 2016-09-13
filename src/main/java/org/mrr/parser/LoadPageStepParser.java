@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import static org.mrr.core.domain.ActionType.LOAD_PAGE;
 
 /**
- * The class contains methods to generate automation steps from plain description.
+ * The class contains methods to generate test steps from plain description.
  */
 @Component
 class LoadPageStepParser extends AbstractTestStepParserTemplate {
@@ -36,7 +36,7 @@ class LoadPageStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    public boolean canParse(final String description) {
+    public boolean canHandle(final String description) {
         return description.trim().startsWith(LOAD_PAGE.description());
     }
 }

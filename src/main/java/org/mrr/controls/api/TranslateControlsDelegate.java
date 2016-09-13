@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Translator class. Contains methods to parse control data description to ui control object.
+ * Defines the methods to parse control data descriptions to ui control objects.
  */
 public interface TranslateControlsDelegate {
     /**

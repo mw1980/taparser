@@ -32,7 +32,7 @@ public class SelectCheckboxCodeGenerator implements TestStepCodeGenerator {
     }
 
     @Override
-    public boolean canGenerate(final TestStep testStep) {
+    public boolean canHandle(final TestStep testStep) {
         return SELECT_CHECKBOX.equals(testStep.actionType());
     }
 }

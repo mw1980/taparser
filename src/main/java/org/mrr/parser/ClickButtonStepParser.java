@@ -49,7 +49,7 @@ class ClickButtonStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    public boolean canParse(String description) {
+    public boolean canHandle(String description) {
         return isClickAction(description.trim());
     }
 

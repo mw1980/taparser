@@ -15,5 +15,5 @@ public interface TestStepCodeGenerator {
      * Returns true if it can generate the code the test step received as parameter.
      * Otherwise returns false.
      */
-    boolean canGenerate(TestStep testStep);
+    boolean canHandle(TestStep testStep);
 }

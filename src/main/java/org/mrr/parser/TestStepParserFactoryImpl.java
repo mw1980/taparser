@@ -22,9 +22,9 @@ class TestStepParserFactoryImpl implements ApplicationContextAware, TestStepPars
     }
 
     @Override
-    public TestStepParser deliverParserForDescription(final String description) {
+    public TestStepParser deliverParser(final String description) {
         for (final TestStepParser parser : registeredTestStepParsers()) {
-            if (parser.canParse(description)) {
+            if (parser.canHandle(description)) {
                 return parser;
             }
         }

@@ -10,7 +10,7 @@ import static org.mrr.core.domain.IdentificationCriteria.ID;
 import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
 
 /**
- * Code generator for identification of the user interface controls.
+ * Code generator for identification of the user interface controls on the Gui.
  */
 @Component
 public class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {

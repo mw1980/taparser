@@ -24,7 +24,7 @@ class CodeGeneratorFactory implements ApplicationContextAware {
     TestStepCodeGenerator deliverGenerator(final TestStep testStep) {
         final Map<String, TestStepCodeGenerator> generators = this.context.getBeansOfType(TestStepCodeGenerator.class);
         for (final TestStepCodeGenerator generator : generators.values()) {
-            if (generator.canGenerate(testStep)) {
+            if (generator.canHandle(testStep)) {
                 return generator;
             }
         }

@@ -29,7 +29,7 @@ public class EditTextfieldCodeGenerator implements TestStepCodeGenerator {
     }
 
     @Override
-    public boolean canGenerate(final TestStep testStep) {
+    public boolean canHandle(final TestStep testStep) {
         return EDIT_TEXT.equals(testStep.actionType());
     }
 }

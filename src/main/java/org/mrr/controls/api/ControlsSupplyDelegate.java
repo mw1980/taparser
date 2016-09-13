@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public interface ControlsSupplyDelegate {
     /**
-     * Returns the user interface controls currently registered into the system.
+     * Returns the registered user interface controls.
      * @return a map that contains the control names as keys and the ui controls as values.
      */
     Map<String, UiControl> supply();

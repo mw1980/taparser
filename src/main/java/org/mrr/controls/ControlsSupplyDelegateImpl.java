@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Controls delivery agent, that gets the controls from an csv file.
+ * Controls supply class, loads the control descriptions from external resource and parse them to UiControls map.
  */
 @Component
 class ControlsSupplyDelegateImpl implements ControlsSupplyDelegate {
@@ -26,9 +26,9 @@ class ControlsSupplyDelegateImpl implements ControlsSupplyDelegate {
     }
 
     /**
-     * Returns the list of controls defined in the external csv file at the current location.
+     * Returns the controls defined in the external source.
      *
-     * @return List of controls.
+     * @return map of controls. The keys are the control names.
      */
     @Override
     public Map<String, UiControl> supply() {

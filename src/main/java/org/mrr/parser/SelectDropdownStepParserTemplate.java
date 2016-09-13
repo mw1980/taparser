@@ -34,7 +34,7 @@ class SelectDropdownStepParserTemplate extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    public boolean canParse(final String description) {
+    public boolean canHandle(final String description) {
         return description.
                 trim().
                 startsWith(SELECT_IN_DROPDOWN.description());

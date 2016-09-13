@@ -3,7 +3,7 @@ package org.mrr.core;
 import org.mrr.core.domain.TestStep;
 
 /**
- * Base interface for generate code classes.
+ * Base interface for classes that generate automation code, like selenium.
  */
 public interface TestStepGeneratorLogic {
     /**

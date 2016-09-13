@@ -35,7 +35,7 @@ class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    public boolean canParse(String description) {
+    public boolean canHandle(String description) {
         return description.
                 trim()
                 .startsWith(EDIT_TEXT.description());

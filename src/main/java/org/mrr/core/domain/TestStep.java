@@ -7,7 +7,7 @@ import lombok.ToString;
  * The java representation of a test step.
  * It contains:
  * - the action type, like: load page, edit description field, check;
- * - the target of an action, like: the value of an description field to be edited.
+ * - the target of an action, like: the value of a description field to be edited.
  * - the value of the action (optional), like: the value to set in the description field,
  * the url of the page to load, the value to check for in an edit field.
  */
@@ -25,9 +25,7 @@ public class TestStep {
     }
 
     public TestStep(final ActionType type, final String target) {
-        this.type = type;
-        this.target = target;
-        this.value = "";
+        this(type, target, "");
     }
 
     public ActionType actionType() {

@@ -17,7 +17,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
         }
 
         @Override
-        public boolean canParse(final String description) {
+        public boolean canHandle(final String description) {
             return false;
         }
     };
@@ -25,7 +25,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
     /**
      * The action method of the step parser.
      * Parses the action type, the action target and action values from test case description
-     * and returns an automationStepBean object.
+     * and returns an TestStep object.
      *
      * @return test step object parsed from the test step description.
      */
@@ -38,7 +38,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
     }
 
     /**
-     * Validate the free description of the test step.
+     * Validates the free description of the test step.
      */
     protected abstract void validate(String description);
 
@@ -68,7 +68,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
      * Returns true if the test step description looks handlebar.
      * The method does not also validates the description.
      */
-    public abstract boolean canParse(String description);
+    public abstract boolean canHandle(String description);
 
     void performBasicValidation(final String regex, final String stepType, final String description) {
         if (!Pattern.matches(regex, description)) {

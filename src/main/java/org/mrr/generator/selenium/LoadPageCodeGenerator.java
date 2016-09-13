@@ -20,7 +20,7 @@ public class LoadPageCodeGenerator implements TestStepCodeGenerator {
     }
 
     @Override
-    public boolean canGenerate(final TestStep testStep) {
+    public boolean canHandle(final TestStep testStep) {
         return LOAD_PAGE.equals(testStep.actionType());
     }
 }

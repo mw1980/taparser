@@ -15,5 +15,5 @@ interface TestStepParser {
     /**
      * Specifies if the current parser understands the free test description received as parameter.
      */
-    boolean canParse(String description);
+    boolean canHandle(String description);
 }

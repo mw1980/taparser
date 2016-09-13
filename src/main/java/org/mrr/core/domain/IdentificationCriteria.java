@@ -3,7 +3,8 @@ package org.mrr.core.domain;
 import org.mrr.core.LoadControlsException;
 
 /**
- * The enum contains the user interface identification criteria supported by the application.
+ * The enum contains the way a user interface control is identified on the Gui.
+ * Example: byId, byName, byXPath.
  */
 public enum IdentificationCriteria {
   ID, UNKNOWN;

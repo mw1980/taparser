@@ -32,7 +32,7 @@ public class DeselectCheckboxCodeGenerator implements TestStepCodeGenerator {
     }
 
     @Override
-    public boolean canGenerate(final TestStep testStep) {
+    public boolean canHandle(final TestStep testStep) {
         return DESELECT_CHECKBOX.equals(testStep.actionType());
     }
 }
