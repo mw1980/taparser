@@ -6,6 +6,7 @@ import org.mrr.generator.TestStepCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 
 /**
@@ -23,14 +24,12 @@ public class ClickButtonCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        return "driver.findElement("
-                + locatorCodeGenerator.identificationCodeFor(testStep.target())
-                + ").click();";
+        return format("driver.findElement(%s).click();",
+                locatorCodeGenerator.identificationCodeFor(testStep.target()));
     }
 
     @Override
     public boolean canHandle(final TestStep testStep) {
         return CLICK_BUTTON.equals(testStep.actionType());
     }
-
 }

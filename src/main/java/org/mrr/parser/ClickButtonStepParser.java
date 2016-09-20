@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
+import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.CLICK_LINK;
 
@@ -18,13 +19,13 @@ class ClickButtonStepParser extends AbstractTestStepParserTemplate {
     protected void validate(final String description) {
         if (isNoClickDescription("button", description) &&
                 (isNoClickDescription("link", description))) {
-            throw new DescriptionNotParsableException("The test step description '" + description
-                    + "' cannot be parsed to a click button step.");
+            throw new DescriptionNotParsableException(
+                    format("The test step description '%s' cannot be parsed to a click button step.", description));
         }
     }
 
     private boolean isNoClickDescription(final String elementType, final String description) {
-        return !Pattern.matches("Click " + elementType + " [a-z]+", description);
+        return !Pattern.matches(format("Click %s [a-z]+", elementType), description);
     }
 
     @Override

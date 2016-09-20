@@ -14,9 +14,7 @@ public class LoadPageCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        return "driver.get(\""
-                + testStep.value()
-                + "\");";
+        return String.format("driver.get(\"%s\");", testStep.value());
     }
 
     @Override

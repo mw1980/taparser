@@ -23,9 +23,9 @@ public class EditTextfieldCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        return "driver.findElement("
-                + locatorCodeGenerator.identificationCodeFor(testStep.target())
-                + ").sendKeys(\"" + testStep.value() + "\");";
+        return String.format("driver.findElement(%s).sendKeys(\"%s\");",
+                locatorCodeGenerator.identificationCodeFor(testStep.target()),
+                testStep.value());
     }
 
     @Override

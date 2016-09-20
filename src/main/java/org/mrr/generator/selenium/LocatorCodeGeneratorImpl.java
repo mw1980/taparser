@@ -12,6 +12,7 @@ import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
 /**
  * Code generator for identification of the user interface controls on the Gui.
  */
+@SuppressWarnings("unused")
 @Component
 public class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
     private final ControlsLogic controlsLogic;
@@ -28,13 +29,14 @@ public class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
             return createIdentificationCode(control);
         } else {
             //TODO throw exception here?
-            return "Cannot find the control: " + name + " in the repository. The code cannot be generated";
+            return String.format("Cannot find the control: %s in the repository. The code cannot be generated",
+                    name);
         }
     }
 
     private String createIdentificationCode(final UiControl control) {
         if (ID.equals(control.identifiedBy())) {
-            return "By.id(\"" + control.id() + "\")";
+            return String.format("By.id(\"%s\")", control.id());
         }
         //TODO: throw exception here?
         return "Identification type not known.";

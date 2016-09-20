@@ -8,6 +8,6 @@ import org.mrr.generator.LocatorCodeGenerator;
 class LocatorCodeGeneratorStub implements LocatorCodeGenerator {
     @Override
     public String identificationCodeFor(final String name) {
-        return "By.id(\"" + name + "HtmlId\")";
+        return String.format("By.id(\"%sHtmlId\")", name);
     }
 }

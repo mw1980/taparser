@@ -3,9 +3,8 @@ package org.mrr.reader;
 /**
  * The class contains the constants
  */
-public class TestConstants {
-  public static final String TEST_RESOURCE_FOLDER_LOCATION = "src/test/resources/org/mrr/reader/txt/";
-  public static final String TEST_ELEMENTS_IDENTIFIER_LOCATION = "src/test/resources/org/mrr/reader/txt/" + "ElementIdentifiers.csv";
+class TestConstants {
+  static final String TEST_RESOURCE_FOLDER_LOCATION = "src/test/resources/org/mrr/reader/txt/";
 
   private TestConstants() {
     //Utility class, hide the constructor.

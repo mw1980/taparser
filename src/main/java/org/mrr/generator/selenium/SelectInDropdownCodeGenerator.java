@@ -7,6 +7,7 @@ import org.mrr.generator.TestStepCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
 
 /**
@@ -24,11 +25,9 @@ public class SelectInDropdownCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        return "new Select (driver.findElement("
-                + locatorCodeGenerator.identificationCodeFor(testStep.target())
-                + ")).selectByVisibleText(\""
-                + testStep.value()
-                + "\");";
+        return format("new Select (driver.findElement(%s)).selectByVisibleText(\"%s\");",
+                locatorCodeGenerator.identificationCodeFor(testStep.target()),
+                testStep.value());
     }
 
     @Override

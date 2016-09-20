@@ -72,9 +72,10 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
 
     void performBasicValidation(final String regex, final String stepType, final String description) {
         if (!Pattern.matches(regex, description)) {
-            throw new DescriptionNotParsableException("The description: \"" + description
-                    + "\" is not a valid " + stepType + " step description.");
+            throw new DescriptionNotParsableException(
+                    String.format("The description: \"%s\" is not a valid %s step description.",
+                            description,
+                            stepType));
         }
     }
-
 }

@@ -23,12 +23,13 @@ public class SelectCheckboxCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        final String checkboxIdCode = locatorCodeGenerator.identificationCodeFor(testStep.target());
-        return "if (!driver.findElement("
-                + checkboxIdCode
-                + ").isSelected()){driver.findElement("
-                + checkboxIdCode
-                + ").click();}";
+        return String.format("if (!driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
+                identificationCode(testStep),
+                identificationCode(testStep));
+    }
+
+    private String identificationCode(final TestStep testStep) {
+        return locatorCodeGenerator.identificationCodeFor(testStep.target());
     }
 
     @Override
