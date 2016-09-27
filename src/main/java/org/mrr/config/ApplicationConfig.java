@@ -1,5 +1,7 @@
 package org.mrr.config;
 
+import org.mrr.controls.CsvLoadDescriptionStrategy;
+import org.mrr.controls.api.LoadDescriptionsStrategy;
 import org.mrr.specification.FileTestSpecificationStoreImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,13 +15,20 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:/config.properties")
 @Configuration
 @ComponentScan("org.mrr")
-
 public class ApplicationConfig {
     @Value("${test.specification.location}")
-    private String testSpecificationLocation;
+    private String specificationLocation;
+
+    @Value("${test.controls.location}")
+    private String controlsLocation;
 
     @Bean
     public FileTestSpecificationStoreImpl fileTestSpecificationStore() {
-        return new FileTestSpecificationStoreImpl(testSpecificationLocation);
+        return new FileTestSpecificationStoreImpl(specificationLocation);
+    }
+
+    @Bean
+    public LoadDescriptionsStrategy loadDescriptionsStrategy() {
+        return new CsvLoadDescriptionStrategy(controlsLocation);
     }
 }

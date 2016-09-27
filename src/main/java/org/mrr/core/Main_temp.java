@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Temporary runnable main class.
  */
-//TODO remove it.
+//TODO remove it when a real client is available.
 class Main_temp {
     public static void main(String[] args) {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
