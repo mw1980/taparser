@@ -1,22 +1,23 @@
 package org.mrr.generator.selenium;
 
-import org.junit.Ignore;
 import org.junit.Test;
+import org.mrr.core.LoadControlsException;
 import org.mrr.core.domain.TestStep;
+import org.mrr.generator.LocatorCodeGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
 
 public class SelectInDropdownCodeGeneratorTest {
 
-    @Test
-    @Ignore
+    @Test(expected = LoadControlsException.class)
     public void whenGeneratingCodeForUiElementWithoutIdentifier_shouldThrowIdentifierValueNotFoundException() {
-        final TestStep testStep = new TestStep(SELECT_IN_DROPDOWN, "withoutIdentifier");
-        final SelectInDropdownCodeGenerator codeGenerator = new SelectInDropdownCodeGenerator(new LocatorCodeGeneratorStub());
-        final String generateCode = codeGenerator.generateCode(testStep);
-        assertTrue(generateCode.contains("Cannot find the control:"));
+        final LocatorCodeGenerator mockLocatorGenerator = mock(LocatorCodeGenerator.class);
+        when(mockLocatorGenerator.identificationCodeFor("withoutIdentifier")).thenThrow(new LoadControlsException("control not found"));
+        final SelectInDropdownCodeGenerator codeGenerator = new SelectInDropdownCodeGenerator(mockLocatorGenerator);
+        codeGenerator.generateCode(new TestStep(SELECT_IN_DROPDOWN, "withoutIdentifier"));
     }
 
     @Test

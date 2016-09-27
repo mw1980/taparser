@@ -1,6 +1,5 @@
 package org.mrr.generator.selenium;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mrr.core.domain.TestStep;
 
@@ -18,7 +17,6 @@ public class SelectCheckboxCodeGeneratorTest {
     }
 
     @Test
-    @Ignore
     public void whenParsingTestStepWithUnknownTarget_shouldRaiseException() {
         final TestStep testStep = new TestStep(SELECT_CHECKBOX, "unknownTarget");
         new SelectCheckboxCodeGenerator(new LocatorCodeGeneratorStub()).generateCode(testStep);

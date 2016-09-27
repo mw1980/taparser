@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static org.mrr.core.domain.IdentificationCriteria.ID;
-import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
+import static org.mrr.core.domain.UiControl.NO_CONTROL;
 
 /**
  * Code generator for identification of the user interface controls on the Gui.
  */
 @Component
-public class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
+class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
     private final ControlsLogic controlsLogic;
 
     @Autowired
@@ -44,6 +44,6 @@ public class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
     }
 
     private boolean isControlFound(final UiControl control) {
-        return !UNKNOWN.equals(control.identifiedBy());
+        return !NO_CONTROL.equals(control);
     }
 }

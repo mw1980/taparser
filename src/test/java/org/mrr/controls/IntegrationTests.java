@@ -1,6 +1,5 @@
 package org.mrr.controls;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
 import org.mrr.controls.api.ControlsSupplyDelegate;
@@ -17,26 +16,23 @@ import static org.junit.Assert.assertNotNull;
 
 public class IntegrationTests {
     @Test
-    @Ignore
     public void checkSpringInjection(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        ControlsSupplyDelegate controlsSupplyDelegate = context.getBean("controlsSupplyAgentImpl", ControlsSupplyDelegateImpl.class);
+        ControlsSupplyDelegate controlsSupplyDelegate = context.getBean("controlsSupplyDelegateImpl", ControlsSupplyDelegateImpl.class);
         final Map<String, UiControl> controls = controlsSupplyDelegate.supply();
         assertThat(controls, notNullValue());
     }
 
     @Test
-    @Ignore
     public void shouldLoadDescriptionsStrategyerFirstElementAsExpected(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final CsvLoadDescriptionStrategy loadStrategy = context.getBean("csvLoadDescriptionStrategy", CsvLoadDescriptionStrategy.class);
+        final CsvLoadDescriptionStrategy loadStrategy = context.getBean("loadDescriptionStrategy", CsvLoadDescriptionStrategy.class);
         final List<String> descriptions = loadStrategy.loadDescriptions();
         assertNotNull(descriptions);
         System.out.println(descriptions);
     }
 
     @Test
-    @Ignore
     public void shouldLoadUiElementsWhenCalledFromControlsLogicClass(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final ControlsLogicImpl controlsLogic = context.getBean("controlsLogicImpl", ControlsLogicImpl.class);
