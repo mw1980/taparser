@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * The main converter interface.
  */
-interface SpecificationConvertLogic {
+public interface ParseSpecificationLogic {
     /**
      * Converts all the action descriptions from the specification store to automation commands.
      *

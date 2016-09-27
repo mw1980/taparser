@@ -1,5 +1,9 @@
-package org.mrr.core;
+package org.mrr.specification;
 
+import org.mrr.core.ParseSpecificationLogic;
+import org.mrr.core.TestSpecificationStore;
+import org.mrr.core.TestStepGeneratorLogic;
+import org.mrr.core.TestStepParserLogic;
 import org.mrr.core.domain.TestStep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,15 +12,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-class SpecificationConvertLogicImpl implements SpecificationConvertLogic {
+public class ParseSpecificationLogicImpl implements ParseSpecificationLogic {
     private final TestStepParserLogic parserLogic;
     private final TestStepGeneratorLogic generatorLogic;
     private final TestSpecificationStore specificationStore;
 
     @Autowired
-    public SpecificationConvertLogicImpl(final TestStepParserLogic testStepParserLogic,
-                                         final TestStepGeneratorLogic generatorLogic,
-                                         final TestSpecificationStore specificationStore) {
+    public ParseSpecificationLogicImpl(final TestStepParserLogic testStepParserLogic,
+                                       final TestStepGeneratorLogic generatorLogic,
+                                       final TestSpecificationStore specificationStore) {
         this.parserLogic = testStepParserLogic;
         this.generatorLogic = generatorLogic;
         this.specificationStore = specificationStore;
