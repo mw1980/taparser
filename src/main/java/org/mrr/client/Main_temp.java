@@ -1,4 +1,4 @@
-package org.mrr.core;
+package org.mrr.client;
 
 import org.mrr.config.ApplicationConfig;
 import org.mrr.specification.ParseSpecificationLogicImpl;

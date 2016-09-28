@@ -33,8 +33,8 @@ public class ControlsSupplyDelegateImplTest {
 
     @Test
     public void whenCallingSupply_shouldDelegateCallToTranslateDescriptionStrategy(){
-        final ControlsSupplyDelegateImpl agent = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
-        agent.supply();
+        final ControlsSupplyDelegateImpl controlsDelegate = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
+        controlsDelegate.supply();
         verify(translateStrategy).translate(Collections.<String>emptyList());
     }
 }

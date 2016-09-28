@@ -1,5 +1,6 @@
 package org.mrr.core.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -13,16 +14,11 @@ import lombok.ToString;
  */
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
 public class TestStep {
     private final ActionType type;
     private final String target;
     private final String value;
-
-    public TestStep(final ActionType type, final String target, final String value) {
-        this.type = type;
-        this.target = target;
-        this.value = value;
-    }
 
     public TestStep(final ActionType type, final String target) {
         this(type, target, "");

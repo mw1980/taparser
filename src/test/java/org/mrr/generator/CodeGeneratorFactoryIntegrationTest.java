@@ -69,4 +69,9 @@ public class CodeGeneratorFactoryIntegrationTest {
         final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
         assertTrue(codeGenerator instanceof DeselectCheckboxCodeGenerator);
     }
+
+    @Test(expected = NoCodeGeneratorFoundException.class)
+    public void whenCreatingGeneratorForUnknownAction_shouldThrowException() {
+        codeGeneratorFactory.deliverGenerator(new TestStep(ActionType.UNKNOWN, ""));
+    }
 }

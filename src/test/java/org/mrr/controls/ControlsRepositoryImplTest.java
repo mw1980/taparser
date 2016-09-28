@@ -16,13 +16,14 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mrr.core.domain.IdentificationCriteria.ID;
+import static org.mrr.core.domain.UiControl.NO_CONTROL;
 
 public class ControlsRepositoryImplTest {
 
     private static final String CONTROL_NAME = "name";
 
     @Mock
-    private ControlsSupplyDelegate agent;
+    private ControlsSupplyDelegate supplyDelegate;
 
     @Before
     public void setup(){
@@ -31,19 +32,19 @@ public class ControlsRepositoryImplTest {
 
     @Test
     public void whenAskingForControls_shouldCallTheControlsAgent(){
-        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
+        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.supplyDelegate);
         repository.controls();
-        verify(agent).supply();
+        verify(supplyDelegate).supply();
     }
 
     @Test
     public void whenAskingForControls_shouldCashTheResult(){
-        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
-        when(agent.supply()).thenReturn(notEmptyControlsMap());
-        //the second call should return the cached values, not call the controls agent for the second time.
+        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.supplyDelegate);
+        when(supplyDelegate.supply()).thenReturn(notEmptyControlsMap());
+        //the second call should return the cached values, not call the controls supplyDelegate for the second time.
         repository.controls();
         repository.controls();
-        verify(agent).supply();
+        verify(supplyDelegate).supply();
     }
 
     private Map<String, UiControl> notEmptyControlsMap() {
@@ -51,37 +52,37 @@ public class ControlsRepositoryImplTest {
     }
 
     private UiControl notEmptyControl() {
-        return new UiControl(CONTROL_NAME, new UiLocator(ID, "nameTF"));
+        return new UiControl(CONTROL_NAME, new UiLocator(ID, "nameHtmlId"));
     }
 
     @Test
-    public void whenSearchingForControlByName_shouldCallTheControlsAgent(){
-        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
+    public void whenSearchingForControlByName_shouldCallTheControlsSupplyDelegate() {
+        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.supplyDelegate);
         repository.findControlByName("");
-        verify(agent).supply();
+        verify(supplyDelegate).supply();
     }
 
     @Test
     public void whenSearchingForControlByName_shouldCacheTheResult(){
-        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
-        when(agent.supply()).thenReturn(notEmptyControlsMap());
+        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.supplyDelegate);
+        when(supplyDelegate.supply()).thenReturn(notEmptyControlsMap());
         repository.findControlByName("");
         repository.findControlByName("");
-        verify(agent).supply();
+        verify(supplyDelegate).supply();
     }
 
     @Test
     public void whenControlNoFound_shouldReturnTheNoControlUiObject(){
-        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
+        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.supplyDelegate);
         assertThat(
-                UiControl.NO_CONTROL,
-                equalTo(repository.findControlByName("name")));
+                NO_CONTROL,
+                equalTo(repository.findControlByName(CONTROL_NAME)));
     }
 
     @Test
     public void whenSearchingForAvailableObject_shouldReturnCorrectObject(){
-        when(agent.supply()).thenReturn(notEmptyControlsMap());
-        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.agent);
+        when(supplyDelegate.supply()).thenReturn(notEmptyControlsMap());
+        final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.supplyDelegate);
         assertThat(
                 notEmptyControl(),
                 equalTo(repository.findControlByName(CONTROL_NAME)));

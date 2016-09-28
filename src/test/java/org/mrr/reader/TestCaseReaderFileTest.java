@@ -7,7 +7,8 @@ import org.mrr.specification.FileTestSpecificationStoreImpl;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.mrr.reader.TestConstants.TEST_RESOURCE_FOLDER_LOCATION;
+
 
 public class TestCaseReaderFileTest {
 
@@ -18,13 +19,13 @@ public class TestCaseReaderFileTest {
 
   @Test
   public void whenReadingFromEmptyFile_shouldReturnEmptyList() {
-    List<String> testCases = new FileTestSpecificationStoreImpl(TestConstants.TEST_RESOURCE_FOLDER_LOCATION + "/EmptyTestCase.txt").deliverTestDescriptions();
-    assertTrue(testCases.isEmpty());
+    final List<String> testCases = new FileTestSpecificationStoreImpl(TEST_RESOURCE_FOLDER_LOCATION + "/EmptyTestCase.txt").deliverTestDescriptions();
+    assertThat(testCases).isEmpty();
   }
 
   @Test
   public void whenReadingFromSampleFile_shouldReturnExpectedListElements() {
-    List<String> testCasesFromFile = new FileTestSpecificationStoreImpl(TestConstants.TEST_RESOURCE_FOLDER_LOCATION + "FirstTestCase.txt").deliverTestDescriptions();
+    final List<String> testCasesFromFile = new FileTestSpecificationStoreImpl(TEST_RESOURCE_FOLDER_LOCATION + "FirstTestCase.txt").deliverTestDescriptions();
     assertThat(testCasesFromFile.size()).isEqualTo(8);
     assertThat(testCasesFromFile.get(0)).isEqualTo("Load page http://www.google.com");
   }

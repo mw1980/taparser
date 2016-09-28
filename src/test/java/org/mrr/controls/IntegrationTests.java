@@ -29,7 +29,6 @@ public class IntegrationTests {
         final CsvLoadDescriptionStrategy loadStrategy = context.getBean("loadDescriptionStrategy", CsvLoadDescriptionStrategy.class);
         final List<String> descriptions = loadStrategy.loadDescriptions();
         assertNotNull(descriptions);
-        System.out.println(descriptions);
     }
 
     @Test

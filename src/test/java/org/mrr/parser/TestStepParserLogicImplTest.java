@@ -16,7 +16,9 @@ public class TestStepParserLogicImplTest {
 
     @Mock
     private TestStepParserFactory parserAgent;
-    @Mock private TestStepParser stepParser;
+
+    @Mock
+    private TestStepParser stepParser;
 
     @Before
     public void setup(){
