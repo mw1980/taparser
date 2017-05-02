@@ -6,28 +6,27 @@ import org.mrr.core.domain.UiControl;
 import org.mrr.core.domain.UiLocator;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.stream.Collectors.toMap;
+
 /**
- * The class translates a plain description descriptions to a java control.
+ * The class implements the translation logic from controls plain text descriptions to java controls.
  */
 
 @Component
 class CsvTranslateControlsDelegate implements TranslateControlsDelegate {
+    private static final String SEPARATOR = " ";
 
     @Override
     public Map<String, UiControl> translate(final List<String> descriptions) {
-        final Map<String, UiControl> result = new HashMap<>();
-        for (final String description : descriptions) {
-            final String[] words = description.split(" ");
-            result.put(name(words), control(words));
-        }
-        return result;
+        return descriptions.stream()
+                .map(description -> description.split(SEPARATOR))
+                .collect(toMap(this::name, this::control));
     }
 
-    private String name(final String[] words){
+    private String name(final String[] words) {
         return words[0];
     }
 

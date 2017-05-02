@@ -18,18 +18,18 @@ class EditTextfieldStepParserTemplate extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected ActionType parseActionType() {
+    protected ActionType actionType() {
         return EDIT_TEXT;
     }
 
     @Override
-    protected String parseTarget(final String description) {
+    protected String targetFrom(final String description) {
         final String[] testCaseWords = description.split(" ");
         return testCaseWords[3];
     }
 
     @Override
-    protected String parseValue(final String description) {
+    protected String valueFrom(final String description) {
         final String[] actionTokens = description.split("value ");
         return actionTokens[1].replace("\"", "");
     }

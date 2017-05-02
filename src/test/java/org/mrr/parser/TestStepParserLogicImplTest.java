@@ -23,14 +23,14 @@ public class TestStepParserLogicImplTest {
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(parserAgent.deliverParser(DESCRIPTION)).thenReturn(stepParser);
+        when(parserAgent.parserForDescription(DESCRIPTION)).thenReturn(stepParser);
         when(stepParser.parse(DESCRIPTION)).thenReturn(new TestStep(CLICK_BUTTON, "button", ""));
     }
 
     @Test
     public void whenCreatingTestStep_shouldCallTheParserAgent() {
         final TestStepParserLogic parserLogic = new TestStepParserLogicImpl(parserAgent);
-        parserLogic.createTestStepForDescription(DESCRIPTION);
-        verify(parserAgent).deliverParser(DESCRIPTION);
+        parserLogic.testStepForDescription(DESCRIPTION);
+        verify(parserAgent).parserForDescription(DESCRIPTION);
     }
 }

@@ -12,5 +12,5 @@ public interface TranslateControlsDelegate {
     /**
      * Returns a map consisting with key = user interface control names and value = user interface control.
      */
-    Map<String, UiControl> translate(List<String> description);
+    Map<String, UiControl> translate(List<String> descriptions);
 }

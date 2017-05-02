@@ -8,8 +8,9 @@ import org.mrr.core.domain.TestStep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Component
 public class ParseSpecificationLogicImpl implements ParseSpecificationLogic {
@@ -28,11 +29,9 @@ public class ParseSpecificationLogicImpl implements ParseSpecificationLogic {
 
     @Override
     public List<String> parseSpecification() {
-        final List<String> result = new LinkedList<>();
-        for (final String step : specificationStore.deliverTestDescriptions()) {
-            result.add(createCodeForSingleTestStep(step));
-        }
-        return result;
+        return specificationStore.testDescriptions().stream()
+                .map(this::codeForSingleTestStep)
+                .collect(toList());
     }
 
     /*
@@ -40,8 +39,8 @@ public class ParseSpecificationLogicImpl implements ParseSpecificationLogic {
      * @param description the free text description of the test step. E.g. Click button submit
      * @return the test automation code for the free text description.
      */
-    private String createCodeForSingleTestStep(final String description) {
-        final TestStep testStep = parserLogic.createTestStepForDescription(description);
-        return generatorLogic.generateCode(testStep);
+    private String codeForSingleTestStep(final String description) {
+        final TestStep testStep = parserLogic.testStepForDescription(description);
+        return generatorLogic.automationCodeFor(testStep);
     }
 }

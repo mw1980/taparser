@@ -17,17 +17,17 @@ class LoadPageStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected ActionType parseActionType() {
+    protected ActionType actionType() {
         return LOAD_PAGE;
     }
 
     @Override
-    protected String parseTarget(final String description) {
+    protected String targetFrom(final String description) {
         return "";
     }
 
     @Override
-    protected String parseValue(final String description) {
+    protected String valueFrom(final String description) {
         //Expected:
         // - on position 0 the action description: ""
         // - on position 1 the action target: "http://www.myWebPage.com"

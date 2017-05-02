@@ -10,7 +10,7 @@ import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.CLICK_LINK;
 
 /**
- * Parses class for the step: "click button buttonname".
+ * Parses class for the step: "click button button_name".
  */
 @Component
 class ClickButtonStepParser extends AbstractTestStepParserTemplate {
@@ -29,12 +29,12 @@ class ClickButtonStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected ActionType parseActionType() {
+    protected ActionType actionType() {
         return CLICK_BUTTON;
     }
 
     @Override
-    protected String parseTarget(final String description) {
+    protected String targetFrom(final String description) {
         final String[] descriptionWords = description.split(" ");
     /*
      * position 0: click
@@ -45,7 +45,7 @@ class ClickButtonStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected String parseValue(final String description) {
+    protected String valueFrom(final String description) {
         return "";
     }
 

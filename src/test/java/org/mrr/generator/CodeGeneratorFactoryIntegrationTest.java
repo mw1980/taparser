@@ -31,47 +31,47 @@ public class CodeGeneratorFactoryIntegrationTest {
     @Test
     public void whenCreatingInstanceForLoadPageTestStep_shouldReturnLoadPageCodeGenerator() {
         final TestStep testStep = new TestStep(LOAD_PAGE, "");
-        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.codeGeneratorForTestStep(testStep);
         assertTrue(codeGenerator instanceof LoadPageCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForEditTextTestStep_shouldReturnEditTextCodeGenerator() {
         final TestStep testStep = new TestStep(EDIT_TEXT, "");
-        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.codeGeneratorForTestStep(testStep);
         assertTrue(codeGenerator instanceof EditTextfieldCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForClickButtonTestStep_shouldReturnClickButtonCodeGenerator() {
         final TestStep testStep = new TestStep(CLICK_BUTTON, "");
-        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.codeGeneratorForTestStep(testStep);
         assertTrue(codeGenerator instanceof ClickButtonCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForSelectInDropdownTestStep_shouldReturnSelectInDropdownGenerator() {
         final TestStep testStep = new TestStep(ActionType.SELECT_IN_DROPDOWN, "");
-        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.codeGeneratorForTestStep(testStep);
         assertTrue(codeGenerator instanceof SelectInDropdownCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForSelectCheckboxTestStep_shouldReturnSelectCheckboxCodeGenerator() {
         final TestStep testStep = new TestStep(ActionType.SELECT_CHECKBOX, "");
-        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.codeGeneratorForTestStep(testStep);
         assertTrue(codeGenerator instanceof SelectCheckboxCodeGenerator);
     }
 
     @Test
     public void whenCreatingInstanceForDeselectCheckboxTestStep_shouldReturnDeselectCheckboxCodeGenerator() {
         final TestStep testStep = new TestStep(ActionType.DESELECT_CHECKBOX, "");
-        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.deliverGenerator(testStep);
+        final TestStepCodeGenerator codeGenerator = codeGeneratorFactory.codeGeneratorForTestStep(testStep);
         assertTrue(codeGenerator instanceof DeselectCheckboxCodeGenerator);
     }
 
     @Test(expected = NoCodeGeneratorFoundException.class)
     public void whenCreatingGeneratorForUnknownAction_shouldThrowException() {
-        codeGeneratorFactory.deliverGenerator(new TestStep(ActionType.UNKNOWN, ""));
+        codeGeneratorFactory.codeGeneratorForTestStep(new TestStep(ActionType.UNKNOWN, ""));
     }
 }

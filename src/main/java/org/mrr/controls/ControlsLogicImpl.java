@@ -11,20 +11,20 @@ import java.util.Map;
 @Component
 class ControlsLogicImpl implements ControlsLogic {
 
-    private final ControlsRepository csvRepository;
+    private final ControlsRepository controlsRepository;
 
     @Autowired
-    public ControlsLogicImpl(final ControlsRepository csvRepository) {
-        this.csvRepository = csvRepository;
+    public ControlsLogicImpl(final ControlsRepository repository) {
+        this.controlsRepository = repository;
     }
 
     @Override
-    public Map<String, UiControl> loadControlsFromCsvFile() {
-        return csvRepository.controls();
+    public Map<String, UiControl> allControls() {
+        return controlsRepository.controls();
     }
 
     @Override
-    public UiControl findControlByName(final String name) {
-        return csvRepository.findControlByName(name);
+    public UiControl controlWithName(final String name) {
+        return controlsRepository.findControlByName(name);
     }
 }

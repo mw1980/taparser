@@ -11,5 +11,5 @@ public interface TestStepGeneratorLogic {
      *
      * @return the string automation code (for instance selenium) for the given test step object.
      */
-    String generateCode(TestStep testStep);
+    String automationCodeFor(TestStep testStep);
 }

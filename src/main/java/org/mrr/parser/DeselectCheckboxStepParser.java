@@ -17,18 +17,18 @@ class DeselectCheckboxStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected ActionType parseActionType() {
+    protected ActionType actionType() {
         return DESELECT_CHECKBOX;
     }
 
     @Override
-    protected String parseTarget(final String description) {
+    protected String targetFrom(final String description) {
         final String[] splitDescription = description.split(" ");
         return splitDescription[2];
     }
 
     @Override
-    protected String parseValue(final String description) {
+    protected String valueFrom(final String description) {
         return "";
     }
 

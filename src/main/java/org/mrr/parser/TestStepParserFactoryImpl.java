@@ -22,17 +22,15 @@ class TestStepParserFactoryImpl implements ApplicationContextAware, TestStepPars
     }
 
     @Override
-    public TestStepParser deliverParser(final String description) {
-        for (final TestStepParser parser : registeredTestStepParsers()) {
-            if (parser.canHandle(description)) {
-                return parser;
-            }
-        }
-        return UNKNOWN;
+    public TestStepParser parserForDescription(final String description) {
+        return registeredTestStepParsers().stream()
+                .filter(parser -> parser.canHandle(description))
+                .findFirst()
+                .orElse(UNKNOWN);
     }
 
     private Collection<TestStepParser> registeredTestStepParsers() {
         final Map<String, TestStepParser> parsers = this.context.getBeansOfType(TestStepParser.class);
-        return parsers == null ? new ArrayList<TestStepParser>() : parsers.values();
+        return parsers == null ? new ArrayList<>() : parsers.values();
     }
 }

@@ -35,6 +35,6 @@ public class ControlsSupplyDelegateImplTest {
     public void whenCallingSupply_shouldDelegateCallToTranslateDescriptionStrategy(){
         final ControlsSupplyDelegateImpl controlsDelegate = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
         controlsDelegate.supply();
-        verify(translateStrategy).translate(Collections.<String>emptyList());
+        verify(translateStrategy).translate(Collections.emptyList());
     }
 }

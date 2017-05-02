@@ -26,8 +26,7 @@ public class SelectInDropdownCodeGenerator implements TestStepCodeGenerator {
     @Override
     public String generateCode(final TestStep testStep) {
         return format("new Select (driver.findElement(%s)).selectByVisibleText(\"%s\");",
-                locatorCodeGenerator.identificationCodeFor(testStep.target()),
-                testStep.value());
+                locatorCodeGenerator.identificationCodeFor(testStep.target()), testStep.value());
     }
 
     @Override

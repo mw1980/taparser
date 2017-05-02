@@ -36,7 +36,7 @@ public class ParseSpecificationLogicImplTest {
     @Test
     public void whenParsingSpecification_shouldLoadDescriptionsFromSpecificationStore() {
         parseSpecificationLogic().parseSpecification();
-        verify(specificationStore).deliverTestDescriptions();
+        verify(specificationStore).testDescriptions();
     }
 
     private ParseSpecificationLogicImpl parseSpecificationLogic() {
@@ -45,17 +45,17 @@ public class ParseSpecificationLogicImplTest {
 
     @Test
     public void whenParsingSpecification_shouldParseDescriptionToTestStep() {
-        when(specificationStore.deliverTestDescriptions()).thenReturn(singletonList(TEST_DESCRIPTION));
+        when(specificationStore.testDescriptions()).thenReturn(singletonList(TEST_DESCRIPTION));
         parseSpecificationLogic().parseSpecification();
-        verify(parserLogic).createTestStepForDescription(TEST_DESCRIPTION);
+        verify(parserLogic).testStepForDescription(TEST_DESCRIPTION);
     }
 
     @Test
     public void whenParsingSpecification_shouldGenerateTestStepCode() {
-        when(specificationStore.deliverTestDescriptions()).thenReturn(singletonList(TEST_DESCRIPTION));
-        when(parserLogic.createTestStepForDescription(TEST_DESCRIPTION)).thenReturn(testStep());
+        when(specificationStore.testDescriptions()).thenReturn(singletonList(TEST_DESCRIPTION));
+        when(parserLogic.testStepForDescription(TEST_DESCRIPTION)).thenReturn(testStep());
         parseSpecificationLogic().parseSpecification();
-        verify(generatorLogic).generateCode(testStep());
+        verify(generatorLogic).automationCodeFor(testStep());
     }
 
     private TestStep testStep() {

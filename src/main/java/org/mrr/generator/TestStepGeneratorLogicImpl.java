@@ -16,8 +16,8 @@ class TestStepGeneratorLogicImpl implements TestStepGeneratorLogic {
     }
 
     @Override
-    public String generateCode(final TestStep testStep) {
-        final TestStepCodeGenerator generator = generatorFactory.deliverGenerator(testStep);
+    public String automationCodeFor(final TestStep testStep) {
+        final TestStepCodeGenerator generator = generatorFactory.codeGeneratorForTestStep(testStep);
         return generator.generateCode(testStep);
     }
 }

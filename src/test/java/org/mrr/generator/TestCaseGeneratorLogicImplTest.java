@@ -15,12 +15,12 @@ public class TestCaseGeneratorLogicImplTest {
     public void whenGeneratingCode_shouldCallTheGeneratorFactory(){
         final TestStep testStep = new TestStep(CLICK_BUTTON, "", "");
         final CodeGeneratorFactory factoryMock = mock(CodeGeneratorFactory.class);
-        when(factoryMock.deliverGenerator(testStep)).thenReturn(mock(TestStepCodeGenerator.class));
+        when(factoryMock.codeGeneratorForTestStep(testStep)).thenReturn(mock(TestStepCodeGenerator.class));
 
         final TestStepGeneratorLogic generatorLogic = new TestStepGeneratorLogicImpl(factoryMock);
-        generatorLogic.generateCode(testStep);
+        generatorLogic.automationCodeFor(testStep);
 
-        verify(factoryMock).deliverGenerator(testStep);
+        verify(factoryMock).codeGeneratorForTestStep(testStep);
     }
 
     @Test
@@ -28,9 +28,9 @@ public class TestCaseGeneratorLogicImplTest {
         final TestStep testStep = new TestStep(CLICK_BUTTON, "", "");
         final CodeGeneratorFactory factoryMock = mock(CodeGeneratorFactory.class);
         final TestStepCodeGenerator generatorMock = mock(TestStepCodeGenerator.class);
-        when(factoryMock.deliverGenerator(testStep)).thenReturn(generatorMock);
+        when(factoryMock.codeGeneratorForTestStep(testStep)).thenReturn(generatorMock);
 
         final TestStepGeneratorLogic generatorLogic = new TestStepGeneratorLogicImpl(factoryMock);
-        generatorLogic.generateCode(testStep);
+        generatorLogic.automationCodeFor(testStep);
     }
 }

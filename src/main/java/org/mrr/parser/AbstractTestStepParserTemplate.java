@@ -5,6 +5,8 @@ import org.mrr.core.domain.TestStep;
 
 import java.util.regex.Pattern;
 
+import static java.lang.String.format;
+
 /**
  * Abstract class, contains the methods to parse test case description and create
  * ActionSteps objects from free description test case description.
@@ -32,9 +34,9 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
     public TestStep parse(final String description) {
         validate(description);
         return new TestStep(
-                parseActionType(),
-                parseTarget(description),
-                parseValue(description));
+                actionType(),
+                targetFrom(description),
+                valueFrom(description));
     }
 
     /**
@@ -47,14 +49,14 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
      *
      * @return the test case action type.
      */
-    protected abstract ActionType parseActionType();
+    protected abstract ActionType actionType();
 
     /**
      * The method identifies the target of test step action from the current test case description.
      *
      * @return the test case action target as string.
      */
-    protected abstract String parseTarget(String description);
+    protected abstract String targetFrom(String description);
 
     /**
      * The method returns the value that the test step action should set.
@@ -62,7 +64,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
      *
      * @return the value of the action
      */
-    protected abstract String parseValue(String description);
+    protected abstract String valueFrom(String description);
 
     /**
      * Returns true if the test step description looks handlebar.
@@ -73,7 +75,7 @@ abstract class AbstractTestStepParserTemplate implements TestStepParser {
     void performBasicValidation(final String regex, final String stepType, final String description) {
         if (!Pattern.matches(regex, description)) {
             throw new DescriptionNotParsableException(
-                    String.format("The description: \"%s\" is not a valid %s step description.",
+                    format("The description: \"%s\" is not a valid %s step description.",
                             description,
                             stepType));
         }

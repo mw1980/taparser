@@ -35,7 +35,7 @@ public class IntegrationTests {
     public void shouldLoadUiElementsWhenCalledFromControlsLogicClass(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final ControlsLogicImpl controlsLogic = context.getBean("controlsLogicImpl", ControlsLogicImpl.class);
-        final Map<String, UiControl> controls = controlsLogic.loadControlsFromCsvFile();
+        final Map<String, UiControl> controls = controlsLogic.allControls();
         assertThat(controls, notNullValue());
     }
 }

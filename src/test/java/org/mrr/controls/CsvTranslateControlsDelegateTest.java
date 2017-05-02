@@ -25,8 +25,7 @@ public class CsvTranslateControlsDelegateTest {
         final Map<String, UiControl> calculated = translator.translate(singletonList("name id elementId"));
         final Map<String, UiControl> expected = singletonMap(
                 "name",
-                new UiControl("name",
-                        new UiLocator(ID, "elementId")));
+                new UiControl("name", new UiLocator(ID, "elementId")));
 
         assertThat(calculated, equalTo(expected));
     }
@@ -35,7 +34,7 @@ public class CsvTranslateControlsDelegateTest {
     public void whenTranslatingEmptyList_shouldReturnEmptyUiControlMap(){
         final CsvTranslateControlsDelegate translator = new CsvTranslateControlsDelegate();
         assertThat(
-                translator.translate(Collections.<String>emptyList()),
+                translator.translate(Collections.emptyList()),
                 equalTo(Collections.<String, UiControl>emptyMap())
         );
     }

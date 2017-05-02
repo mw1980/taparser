@@ -14,18 +14,18 @@ public class TestCaseReaderFileTest {
 
   @Test(expected = TestSpecificationException.class)
   public void whenReadingNotExistingFile_shouldThrowException() {
-    new FileTestSpecificationStoreImpl("NotExistingFile.txt").deliverTestDescriptions();
+    new FileTestSpecificationStoreImpl("NotExistingFile.txt").testDescriptions();
   }
 
   @Test
   public void whenReadingFromEmptyFile_shouldReturnEmptyList() {
-    final List<String> testCases = new FileTestSpecificationStoreImpl(TEST_RESOURCE_FOLDER_LOCATION + "/EmptyTestCase.txt").deliverTestDescriptions();
+    final List<String> testCases = new FileTestSpecificationStoreImpl(TEST_RESOURCE_FOLDER_LOCATION + "/EmptyTestCase.txt").testDescriptions();
     assertThat(testCases).isEmpty();
   }
 
   @Test
   public void whenReadingFromSampleFile_shouldReturnExpectedListElements() {
-    final List<String> testCasesFromFile = new FileTestSpecificationStoreImpl(TEST_RESOURCE_FOLDER_LOCATION + "FirstTestCase.txt").deliverTestDescriptions();
+    final List<String> testCasesFromFile = new FileTestSpecificationStoreImpl(TEST_RESOURCE_FOLDER_LOCATION + "FirstTestCase.txt").testDescriptions();
     assertThat(testCasesFromFile.size()).isEqualTo(8);
     assertThat(testCasesFromFile.get(0)).isEqualTo("Load page http://www.google.com");
   }

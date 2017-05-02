@@ -18,19 +18,19 @@ class ClickRadioButtonStepParser extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected ActionType parseActionType() {
+    protected ActionType actionType() {
         //From selenium point of view, the selection of a radio button is a radio button click.
         return CLICK_BUTTON;
     }
 
     @Override
-    protected String parseTarget(final String description) {
+    protected String targetFrom(final String description) {
         final String[] splitDescription = description.split(" ");
         return splitDescription[3];
     }
 
     @Override
-    protected String parseValue(final String description) {
+    protected String valueFrom(final String description) {
         return "";
     }
 

@@ -9,5 +9,5 @@ public interface TestStepParserLogic {
     /**
      * Parses the free text description of the test step and returns its corresponding TestStep object.
      */
-    TestStep createTestStepForDescription(String description);
+    TestStep testStepForDescription(String description);
 }

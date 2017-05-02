@@ -21,13 +21,11 @@ class CodeGeneratorFactory implements ApplicationContextAware {
         this.context = applicationContext;
     }
 
-    TestStepCodeGenerator deliverGenerator(final TestStep testStep) {
+    TestStepCodeGenerator codeGeneratorForTestStep(final TestStep testStep) {
         final Map<String, TestStepCodeGenerator> generators = this.context.getBeansOfType(TestStepCodeGenerator.class);
-        for (final TestStepCodeGenerator generator : generators.values()) {
-            if (generator.canHandle(testStep)) {
-                return generator;
-            }
-        }
-        throw new NoCodeGeneratorFoundException("No code generator registered for the test step: " + testStep);
+        return generators.values().stream()
+                .filter(generator -> generator.canHandle(testStep))
+                .findFirst()
+                .orElseThrow(() -> new NoCodeGeneratorFoundException("No code generator registered for the test step: " + testStep));
     }
 }

@@ -11,7 +11,7 @@ public class ControlsLogicImplTest {
     public void whenLoadingControls_shouldCallTheRepository() {
         final ControlsRepository repository = mock(ControlsRepository.class);
         final ControlsLogicImpl controlsLogic = new ControlsLogicImpl(repository);
-        controlsLogic.loadControlsFromCsvFile();
+        controlsLogic.allControls();
         verify(repository).controls();
     }
 
@@ -19,7 +19,7 @@ public class ControlsLogicImplTest {
     public void whenLoadingControlsByName_shouldCallTheRepository() {
         final ControlsRepository repository = mock(ControlsRepository.class);
         final ControlsLogicImpl controlsLogic = new ControlsLogicImpl(repository);
-        controlsLogic.findControlByName("name");
+        controlsLogic.controlWithName("name");
         verify(repository).findControlByName("name");
     }
 }

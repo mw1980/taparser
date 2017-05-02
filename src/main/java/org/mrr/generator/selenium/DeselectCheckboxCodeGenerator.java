@@ -6,6 +6,7 @@ import org.mrr.generator.TestStepCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
 
 /**
@@ -23,12 +24,13 @@ public class DeselectCheckboxCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        return String.format("if (driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
-                identificationCode(testStep),
-                identificationCode(testStep));
+        final String targetCode = identificationCodeFor(testStep);
+        return format("if (driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
+                targetCode,
+                targetCode);
     }
 
-    private String identificationCode(final TestStep testStep) {
+    private String identificationCodeFor(final TestStep testStep) {
         return locatorCodeGenerator.identificationCodeFor(testStep.target());
     }
 

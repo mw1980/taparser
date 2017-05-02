@@ -6,6 +6,7 @@ import org.mrr.generator.TestStepCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.EDIT_TEXT;
 
 /**
@@ -23,7 +24,7 @@ public class EditTextfieldCodeGenerator implements TestStepCodeGenerator {
 
     @Override
     public String generateCode(final TestStep testStep) {
-        return String.format("driver.findElement(%s).sendKeys(\"%s\");",
+        return format("driver.findElement(%s).sendKeys(\"%s\");",
                 locatorCodeGenerator.identificationCodeFor(testStep.target()),
                 testStep.value());
     }

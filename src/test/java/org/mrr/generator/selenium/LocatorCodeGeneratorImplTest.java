@@ -30,7 +30,7 @@ public class LocatorCodeGeneratorImplTest {
 
     @Test(expected = CodeGenerationException.class)
     public void whenUiControlTypeUnknown_shouldRaiseException() {
-        when(controlsLogic.findControlByName(NAME)).thenReturn(unknownControl());
+        when(controlsLogic.controlWithName(NAME)).thenReturn(unknownControl());
         new LocatorCodeGeneratorImpl(controlsLogic).identificationCodeFor(NAME);
     }
 
@@ -40,13 +40,13 @@ public class LocatorCodeGeneratorImplTest {
 
     @Test(expected = LoadControlsException.class)
     public void whenControlNotFound_shouldRaiseException() {
-        when(controlsLogic.findControlByName(NAME)).thenReturn(NO_CONTROL);
+        when(controlsLogic.controlWithName(NAME)).thenReturn(NO_CONTROL);
         new LocatorCodeGeneratorImpl(controlsLogic).identificationCodeFor(NAME);
     }
 
     @Test
     public void shouldGenerateExpectedCodeIfElementIdentifiedById() {
-        when(controlsLogic.findControlByName(NAME)).thenReturn(controlIdentifiedById());
+        when(controlsLogic.controlWithName(NAME)).thenReturn(controlIdentifiedById());
         assertEquals(
                 new LocatorCodeGeneratorImpl(controlsLogic).identificationCodeFor(NAME),
                 "By.id(\"controlHtmlId\")"

@@ -17,18 +17,18 @@ class SelectDropdownStepParserTemplate extends AbstractTestStepParserTemplate {
     }
 
     @Override
-    protected ActionType parseActionType() {
+    protected ActionType actionType() {
         return SELECT_IN_DROPDOWN;
     }
 
     @Override
-    protected String parseTarget(final String description) {
+    protected String targetFrom(final String description) {
         final String[] split = description.replaceAll("Select in dropdown ", "").split("value");
         return split[0].trim();
     }
 
     @Override
-    protected String parseValue(final String description) {
+    protected String valueFrom(final String description) {
         final String[] split = description.split("\"");
         return split[1];
     }

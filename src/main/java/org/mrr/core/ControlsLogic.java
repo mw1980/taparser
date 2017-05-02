@@ -11,15 +11,15 @@ import java.util.Map;
  */
 public interface ControlsLogic {
     /**
-     * Loads the controls defined in an external csv file.
+     * Loads the controls defined in an external source.
      *
      * @return Controls map with control names as key and UiControl objects as values.
      */
-    Map<String, UiControl> loadControlsFromCsvFile();
+    Map<String, UiControl> allControls();
 
     /**
      * Search control by name.
      * Returns the found object, if available, or a default object.
      */
-    UiControl findControlByName(String name);
+    UiControl controlWithName(String name);
 }

@@ -9,5 +9,5 @@ interface TestStepParserFactory {
      * If there is no test parser currently registered, that can parse the test description, it returns a not null
      * dummy object.
      */
-    TestStepParser deliverParser(String description);
+    TestStepParser parserForDescription(String description);
 }

@@ -22,7 +22,7 @@ public class FileTestSpecificationStoreImpl implements TestSpecificationStore {
     }
 
     @Override
-    public List<String> deliverTestDescriptions() {
+    public List<String> testDescriptions() {
         try {
             return Files.readAllLines(Paths.get(location), Charset.defaultCharset());
         } catch (final IOException e) {

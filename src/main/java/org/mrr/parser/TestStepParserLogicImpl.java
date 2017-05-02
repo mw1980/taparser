@@ -15,8 +15,8 @@ class TestStepParserLogicImpl implements TestStepParserLogic {
     }
 
     @Override
-    public TestStep createTestStepForDescription(final String description) {
-        final TestStepParser parser = parserFactory.deliverParser(description);
+    public TestStep testStepForDescription(final String description) {
+        final TestStepParser parser = parserFactory.parserForDescription(description);
         return parser.parse(description);
     }
 }

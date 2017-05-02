@@ -8,6 +8,7 @@ import org.mrr.generator.LocatorCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.String.format;
 import static org.mrr.core.domain.IdentificationCriteria.ID;
 import static org.mrr.core.domain.UiControl.NO_CONTROL;
 
@@ -24,26 +25,26 @@ class LocatorCodeGeneratorImpl implements LocatorCodeGenerator {
     }
 
     @Override
-    public String identificationCodeFor(final String name) {
-        final UiControl control = controlsLogic.findControlByName(name);
+    public String identificationCodeFor(final String controlName) {
+        final UiControl control = controlsLogic.controlWithName(controlName);
         if (isControlFound(control)) {
-            return createIdentificationCode(control);
+            return identificationCodeFor(control);
         } else {
             throw new LoadControlsException(
-                    String.format("Cannot find the control: %s in the repository. The code cannot be generated",
-                            name));
+                    format("Cannot find the control: %s in the repository. The code cannot be generated",
+                            controlName));
         }
-    }
-
-    private String createIdentificationCode(final UiControl control) {
-        if (ID.equals(control.identifiedBy())) {
-            return String.format("By.id(\"%s\")", control.id());
-        }
-        throw new CodeGenerationException(
-                String.format("Identification type for %s is unknown.", control.identifiedBy()));
     }
 
     private boolean isControlFound(final UiControl control) {
         return !NO_CONTROL.equals(control);
+    }
+
+    private String identificationCodeFor(final UiControl control) {
+        if (ID.equals(control.identifiedBy())) {
+            return format("By.id(\"%s\")", control.id());
+        }
+        throw new CodeGenerationException(
+                format("Identification type for %s is unknown.", control.identifiedBy()));
     }
 }

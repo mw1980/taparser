@@ -7,9 +7,9 @@ import java.util.List;
  */
 public interface TestSpecificationStore {
     /**
-     * This method reads test cases from an external source.
+     * This method reads plain text test cases from an external source.
      *
      * @return List of string objects, each item contains a test specification line.
      */
-    List<String> deliverTestDescriptions();
+    List<String> testDescriptions();
 }
