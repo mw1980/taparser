@@ -11,7 +11,7 @@ import java.util.Collections;
 
 import static org.mockito.Mockito.verify;
 
-public class ControlsSupplyDelegateImplTest {
+public class ControlsSupplyAgentImplTest {
 
     @Mock
     private LoadDescriptionsStrategy loadStrategy;
@@ -26,14 +26,14 @@ public class ControlsSupplyDelegateImplTest {
 
     @Test
     public void whenCallingSupply_shouldDelegateCallToLoadDescriptionStrategy(){
-        final ControlsSupplyDelegateImpl agent = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
+        final ControlsSupplyAgentImpl agent = new ControlsSupplyAgentImpl(this.loadStrategy, this.translateStrategy);
         agent.supply();
         verify(loadStrategy).loadDescriptions();
     }
 
     @Test
     public void whenCallingSupply_shouldDelegateCallToTranslateDescriptionStrategy(){
-        final ControlsSupplyDelegateImpl controlsDelegate = new ControlsSupplyDelegateImpl(this.loadStrategy, this.translateStrategy);
+        final ControlsSupplyAgentImpl controlsDelegate = new ControlsSupplyAgentImpl(this.loadStrategy, this.translateStrategy);
         controlsDelegate.supply();
         verify(translateStrategy).translate(Collections.emptyList());
     }

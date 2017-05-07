@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mrr.core.TestSpecificationStore;
-import org.mrr.core.TestStepGeneratorLogic;
-import org.mrr.core.TestStepParserLogic;
+import org.mrr.core.TestStepGenerateLogic;
+import org.mrr.core.TestStepParseLogic;
 import org.mrr.core.domain.TestStep;
 
 import static java.util.Collections.singletonList;
@@ -19,10 +19,10 @@ public class ParseSpecificationLogicImplTest {
     private static final String TEST_DESCRIPTION = "test description";
 
     @Mock
-    private TestStepParserLogic parserLogic;
+    private TestStepParseLogic parseLogic;
 
     @Mock
-    private TestStepGeneratorLogic generatorLogic;
+    private TestStepGenerateLogic generateLogic;
 
     @Mock
     private TestSpecificationStore specificationStore;
@@ -40,22 +40,22 @@ public class ParseSpecificationLogicImplTest {
     }
 
     private ParseSpecificationLogicImpl parseSpecificationLogic() {
-        return new ParseSpecificationLogicImpl(parserLogic, generatorLogic, specificationStore);
+        return new ParseSpecificationLogicImpl(parseLogic, generateLogic, specificationStore);
     }
 
     @Test
     public void whenParsingSpecification_shouldParseDescriptionToTestStep() {
         when(specificationStore.testDescriptions()).thenReturn(singletonList(TEST_DESCRIPTION));
         parseSpecificationLogic().parseSpecification();
-        verify(parserLogic).testStepForDescription(TEST_DESCRIPTION);
+        verify(parseLogic).testStepForDescription(TEST_DESCRIPTION);
     }
 
     @Test
     public void whenParsingSpecification_shouldGenerateTestStepCode() {
         when(specificationStore.testDescriptions()).thenReturn(singletonList(TEST_DESCRIPTION));
-        when(parserLogic.testStepForDescription(TEST_DESCRIPTION)).thenReturn(testStep());
+        when(parseLogic.testStepForDescription(TEST_DESCRIPTION)).thenReturn(testStep());
         parseSpecificationLogic().parseSpecification();
-        verify(generatorLogic).automationCodeFor(testStep());
+        verify(generateLogic).automationCodeFor(testStep());
     }
 
     private TestStep testStep() {

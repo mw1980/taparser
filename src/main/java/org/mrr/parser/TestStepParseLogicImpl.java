@@ -1,16 +1,16 @@
 package org.mrr.parser;
 
-import org.mrr.core.TestStepParserLogic;
+import org.mrr.core.TestStepParseLogic;
 import org.mrr.core.domain.TestStep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-class TestStepParserLogicImpl implements TestStepParserLogic {
+class TestStepParseLogicImpl implements TestStepParseLogic {
     private final TestStepParserFactory parserFactory;
 
     @Autowired
-    public TestStepParserLogicImpl(final TestStepParserFactory stepParserFactory) {
+    public TestStepParseLogicImpl(final TestStepParserFactory stepParserFactory) {
         this.parserFactory = stepParserFactory;
     }
 

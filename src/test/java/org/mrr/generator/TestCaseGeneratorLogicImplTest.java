@@ -1,7 +1,7 @@
 package org.mrr.generator;
 
 import org.junit.Test;
-import org.mrr.core.TestStepGeneratorLogic;
+import org.mrr.core.TestStepGenerateLogic;
 import org.mrr.core.domain.TestStep;
 
 import static org.mockito.Mockito.mock;
@@ -13,24 +13,28 @@ public class TestCaseGeneratorLogicImplTest {
 
     @Test
     public void whenGeneratingCode_shouldCallTheGeneratorFactory(){
-        final TestStep testStep = new TestStep(CLICK_BUTTON, "", "");
-        final CodeGeneratorFactory factoryMock = mock(CodeGeneratorFactory.class);
-        when(factoryMock.codeGeneratorForTestStep(testStep)).thenReturn(mock(TestStepCodeGenerator.class));
+        final CodeGeneratorFactory factory = mock(CodeGeneratorFactory.class);
+        when(factory.codeGeneratorForTestStep(aTestStep())).thenReturn(mock(TestStepCodeGenerator.class));
 
-        final TestStepGeneratorLogic generatorLogic = new TestStepGeneratorLogicImpl(factoryMock);
-        generatorLogic.automationCodeFor(testStep);
+        final TestStepGenerateLogic underTest = new TestStepGenerateLogicImpl(factory);
+        underTest.automationCodeFor(aTestStep());
 
-        verify(factoryMock).codeGeneratorForTestStep(testStep);
+        verify(factory).codeGeneratorForTestStep(aTestStep());
+    }
+
+    private TestStep aTestStep() {
+        return new TestStep(CLICK_BUTTON, "", "");
     }
 
     @Test
     public void whenGeneratingCode_shouldCallTheGenerator(){
-        final TestStep testStep = new TestStep(CLICK_BUTTON, "", "");
-        final CodeGeneratorFactory factoryMock = mock(CodeGeneratorFactory.class);
-        final TestStepCodeGenerator generatorMock = mock(TestStepCodeGenerator.class);
-        when(factoryMock.codeGeneratorForTestStep(testStep)).thenReturn(generatorMock);
+        final CodeGeneratorFactory factory = mock(CodeGeneratorFactory.class);
+        final TestStepCodeGenerator generate = mock(TestStepCodeGenerator.class);
+        when(factory.codeGeneratorForTestStep(aTestStep())).thenReturn(generate);
 
-        final TestStepGeneratorLogic generatorLogic = new TestStepGeneratorLogicImpl(factoryMock);
-        generatorLogic.automationCodeFor(testStep);
+        final TestStepGenerateLogic underTest = new TestStepGenerateLogicImpl(factory);
+        underTest.automationCodeFor(aTestStep());
+
+        verify(generate).generateCode(aTestStep());
     }
 }

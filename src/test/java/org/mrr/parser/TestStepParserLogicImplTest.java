@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.TestStepParserLogic;
+import org.mrr.core.TestStepParseLogic;
 import org.mrr.core.domain.TestStep;
 
 import static org.mockito.Mockito.verify;
@@ -15,7 +15,7 @@ public class TestStepParserLogicImplTest {
     private static final String DESCRIPTION = "Click Button myButton";
 
     @Mock
-    private TestStepParserFactory parserAgent;
+    private TestStepParserFactory factory;
 
     @Mock
     private TestStepParser stepParser;
@@ -23,14 +23,14 @@ public class TestStepParserLogicImplTest {
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(parserAgent.parserForDescription(DESCRIPTION)).thenReturn(stepParser);
+        when(factory.parserForDescription(DESCRIPTION)).thenReturn(stepParser);
         when(stepParser.parse(DESCRIPTION)).thenReturn(new TestStep(CLICK_BUTTON, "button", ""));
     }
 
     @Test
     public void whenCreatingTestStep_shouldCallTheParserAgent() {
-        final TestStepParserLogic parserLogic = new TestStepParserLogicImpl(parserAgent);
-        parserLogic.testStepForDescription(DESCRIPTION);
-        verify(parserAgent).parserForDescription(DESCRIPTION);
+        final TestStepParseLogic parseLogic = new TestStepParseLogicImpl(factory);
+        parseLogic.testStepForDescription(DESCRIPTION);
+        verify(factory).parserForDescription(DESCRIPTION);
     }
 }

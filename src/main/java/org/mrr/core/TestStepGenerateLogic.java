@@ -5,7 +5,7 @@ import org.mrr.core.domain.TestStep;
 /**
  * Base interface for classes that generate automation code, like selenium.
  */
-public interface TestStepGeneratorLogic {
+public interface TestStepGenerateLogic {
     /**
      * Generates the automation code for the test step object received as parameter.
      *

@@ -2,7 +2,7 @@ package org.mrr.controls;
 
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
-import org.mrr.controls.api.ControlsSupplyDelegate;
+import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.core.domain.UiControl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,8 +18,8 @@ public class IntegrationTests {
     @Test
     public void checkSpringInjection(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        ControlsSupplyDelegate controlsSupplyDelegate = context.getBean("controlsSupplyDelegateImpl", ControlsSupplyDelegateImpl.class);
-        final Map<String, UiControl> controls = controlsSupplyDelegate.supply();
+        ControlsSupplyAgent controlsSupplyAgent = context.getBean("controlsSupplyAgentImpl", ControlsSupplyAgentImpl.class);
+        final Map<String, UiControl> controls = controlsSupplyAgent.supply();
         assertThat(controls, notNullValue());
     }
 

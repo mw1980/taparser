@@ -1,6 +1,6 @@
 package org.mrr.controls;
 
-import org.mrr.controls.api.ControlsSupplyDelegate;
+import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.controls.api.LoadDescriptionsStrategy;
 import org.mrr.controls.api.TranslateControlsDelegate;
 import org.mrr.core.domain.UiControl;
@@ -14,13 +14,13 @@ import java.util.Map;
  * Controls supply class, loads the control descriptions from external resource and parse them to UiControls map.
  */
 @Component
-class ControlsSupplyDelegateImpl implements ControlsSupplyDelegate {
+class ControlsSupplyAgentImpl implements ControlsSupplyAgent {
     private final LoadDescriptionsStrategy loadStrategy;
     private final TranslateControlsDelegate translateDelegate;
 
     @Autowired
-    public ControlsSupplyDelegateImpl(final LoadDescriptionsStrategy loadStrategy,
-                                      final TranslateControlsDelegate translateDelegate) {
+    public ControlsSupplyAgentImpl(final LoadDescriptionsStrategy loadStrategy,
+                                   final TranslateControlsDelegate translateDelegate) {
         this.loadStrategy = loadStrategy;
         this.translateDelegate = translateDelegate;
     }

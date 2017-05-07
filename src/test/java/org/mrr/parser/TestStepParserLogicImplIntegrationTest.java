@@ -13,7 +13,7 @@ public class TestStepParserLogicImplIntegrationTest {
     @Test
     public void whenStartingApplicationContext_shouldAutowireTheParserLogic(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final TestStepParserLogicImpl parserLogic = context.getBean("testStepParserLogicImpl", TestStepParserLogicImpl.class);
+        final TestStepParseLogicImpl parserLogic = context.getBean("testStepParseLogicImpl", TestStepParseLogicImpl.class);
         assertThat(parserLogic, notNullValue());
     }
 }

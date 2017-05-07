@@ -1,12 +1,14 @@
 package org.mrr.controls;
 
 import org.mrr.controls.api.ControlsRepository;
-import org.mrr.controls.api.ControlsSupplyDelegate;
+import org.mrr.controls.api.ControlsSupplyAgent;
 import org.mrr.core.domain.UiControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+
+import static org.apache.commons.collections.MapUtils.isEmpty;
 
 /**
  * Repository class for the controls registered to the application.
@@ -15,14 +17,14 @@ import java.util.Map;
 @Component
 class ControlsRepositoryImpl implements ControlsRepository {
 
-    private final ControlsSupplyDelegate supplyDelegate;
+    private final ControlsSupplyAgent supplyAgent;
 
     //low level caching.
     private Map<String, UiControl> controls;
 
     @Autowired
-    public ControlsRepositoryImpl(final ControlsSupplyDelegate supplyDelegate) {
-        this.supplyDelegate = supplyDelegate;
+    public ControlsRepositoryImpl(final ControlsSupplyAgent controlsSupplyAgent) {
+        this.supplyAgent = controlsSupplyAgent;
     }
 
     @Override
@@ -32,13 +34,9 @@ class ControlsRepositoryImpl implements ControlsRepository {
     }
 
     private void initControlsIfNeeded() {
-        if (controlsUnavailable()) {
-            this.controls = supplyDelegate.supply();
+        if (isEmpty(this.controls)) {
+            this.controls = supplyAgent.supply();
         }
-    }
-
-    private boolean controlsUnavailable() {
-        return this.controls == null || this.controls.isEmpty();
     }
 
     @Override

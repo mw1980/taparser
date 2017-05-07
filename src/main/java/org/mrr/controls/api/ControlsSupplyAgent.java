@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * The interface declares the contract for the classes that deliver user interface control objects.
  */
-public interface ControlsSupplyDelegate {
+public interface ControlsSupplyAgent {
     /**
      * Returns the registered user interface controls.
      * @return a map that contains the control names as keys and the ui controls as values.

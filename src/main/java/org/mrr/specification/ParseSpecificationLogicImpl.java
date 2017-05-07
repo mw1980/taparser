@@ -2,8 +2,8 @@ package org.mrr.specification;
 
 import org.mrr.core.ParseSpecificationLogic;
 import org.mrr.core.TestSpecificationStore;
-import org.mrr.core.TestStepGeneratorLogic;
-import org.mrr.core.TestStepParserLogic;
+import org.mrr.core.TestStepGenerateLogic;
+import org.mrr.core.TestStepParseLogic;
 import org.mrr.core.domain.TestStep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,15 +14,15 @@ import static java.util.stream.Collectors.toList;
 
 @Component
 public class ParseSpecificationLogicImpl implements ParseSpecificationLogic {
-    private final TestStepParserLogic parserLogic;
-    private final TestStepGeneratorLogic generatorLogic;
+    private final TestStepParseLogic parserLogic;
+    private final TestStepGenerateLogic generatorLogic;
     private final TestSpecificationStore specificationStore;
 
     @Autowired
-    public ParseSpecificationLogicImpl(final TestStepParserLogic testStepParserLogic,
-                                       final TestStepGeneratorLogic generatorLogic,
+    public ParseSpecificationLogicImpl(final TestStepParseLogic testStepParseLogic,
+                                       final TestStepGenerateLogic generatorLogic,
                                        final TestSpecificationStore specificationStore) {
-        this.parserLogic = testStepParserLogic;
+        this.parserLogic = testStepParseLogic;
         this.generatorLogic = generatorLogic;
         this.specificationStore = specificationStore;
     }
