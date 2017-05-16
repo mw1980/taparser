@@ -11,20 +11,20 @@ import java.util.Map;
 @Component
 public class ControlsLogicImpl implements ControlsLogic {
 
-    private final ControlsRepository controlsRepository;
+    private final ControlsRepository repository;
 
     @Autowired
     public ControlsLogicImpl(final ControlsRepository repository) {
-        this.controlsRepository = repository;
+        this.repository = repository;
     }
 
     @Override
     public Map<String, UiControl> allControls() {
-        return controlsRepository.controls();
+        return repository.controls();
     }
 
     @Override
     public UiControl controlWithName(final String name) {
-        return controlsRepository.findControlByName(name);
+        return repository.findControlByName(name);
     }
 }

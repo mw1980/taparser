@@ -3,10 +3,10 @@ package org.mrr.reader.txt.controls;
 import org.mrr.core.domain.IdentificationCriteria;
 import org.mrr.core.domain.UiControl;
 import org.mrr.core.domain.UiLocator;
-import org.mrr.reader.txt.controls.api.TranslateControlsDelegate;
+import org.mrr.reader.txt.controls.api.ControlDescriptions;
+import org.mrr.reader.txt.controls.api.RegisteredControls;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toMap;
@@ -16,12 +16,18 @@ import static java.util.stream.Collectors.toMap;
  */
 
 @Component
-class CsvTranslateControlsDelegate implements TranslateControlsDelegate {
+class CsvRegisteredControls implements RegisteredControls {
     private static final String SEPARATOR = " ";
 
+    private final ControlDescriptions descriptions;
+
+    CsvRegisteredControls(final ControlDescriptions controlsDescriptions) {
+        this.descriptions = controlsDescriptions;
+    }
+
     @Override
-    public Map<String, UiControl> translate(final List<String> descriptions) {
-        return descriptions.stream()
+    public Map<String, UiControl> all() {
+        return descriptions.allRegistered().stream()
                 .map(description -> description.split(SEPARATOR))
                 .collect(toMap(this::name, this::control));
     }

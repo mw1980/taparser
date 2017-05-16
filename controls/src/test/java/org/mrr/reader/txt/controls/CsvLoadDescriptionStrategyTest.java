@@ -7,7 +7,7 @@ public class CsvLoadDescriptionStrategyTest {
 
     @Test(expected = LoadControlsException.class)
     public void shouldTranslateIOExceptionToLoadControlsException() {
-        final CsvLoadDescriptionStrategy loadStrategy = new CsvLoadDescriptionStrategy("/not/existing/path");
-        loadStrategy.loadDescriptions();
+        final CsvControlDescriptions loadStrategy = new CsvControlDescriptions("/not/existing/path");
+        loadStrategy.allRegistered();
     }
 }
