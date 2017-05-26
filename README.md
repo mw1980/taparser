@@ -3,6 +3,7 @@ This is a toy project to generate the test automation code needed to automate th
 
 The idea of this software is to create test automation code for human readable test input, by breaking a bigger task into more actions that interact with a single UiComponent.
 Example: 
+
 Load page http://www.google.com
 Set in textfield user value "user name"
 Click button submit
