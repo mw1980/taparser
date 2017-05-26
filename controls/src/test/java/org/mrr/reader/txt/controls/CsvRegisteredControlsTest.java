@@ -25,10 +25,10 @@ public class CsvRegisteredControlsTest {
     @Test
     public void shouldTranslateValidElementAsExpected() {
         final ControlDescriptions descriptions = mock(ControlDescriptions.class);
-        when(descriptions.allRegistered()).thenReturn(singletonList("name id elementId"));
+        when(descriptions.allDescriptions()).thenReturn(singletonList("name id elementId"));
 
         final CsvRegisteredControls underTest = new CsvRegisteredControls(descriptions);
-        assertThat(underTest.all(), equalTo(
+        assertThat(underTest.allRegistered(), equalTo(
                 singletonMap("name",
                         new UiControl("name", new UiLocator(ID, "elementId")))));
     }
@@ -36,11 +36,11 @@ public class CsvRegisteredControlsTest {
     @Test
     public void whenTranslatingEmptyList_shouldReturnEmptyUiControlMap(){
         final ControlDescriptions descriptions = mock(ControlDescriptions.class);
-        when(descriptions.allRegistered()).thenReturn(emptyList());
+        when(descriptions.allDescriptions()).thenReturn(emptyList());
 
         final CsvRegisteredControls underTest = new CsvRegisteredControls(descriptions);
         assertThat(
-                underTest.all(),
+                underTest.allRegistered(),
                 equalTo(Collections.<String, UiControl>emptyMap())
         );
     }
@@ -48,8 +48,8 @@ public class CsvRegisteredControlsTest {
     @Test (expected = LoadControlsException.class)
     public void whenTranslatingInvalidIdentificationCriteria_shouldThrowException(){
         final ControlDescriptions descriptions = mock(ControlDescriptions.class);
-        when(descriptions.allRegistered()).thenReturn(singletonList("name otherIdentificationType elementId"));
+        when(descriptions.allDescriptions()).thenReturn(singletonList("name otherIdentificationType elementId"));
         final CsvRegisteredControls underTest = new CsvRegisteredControls(descriptions);
-        underTest.all();
+        underTest.allRegistered();
     }
 }

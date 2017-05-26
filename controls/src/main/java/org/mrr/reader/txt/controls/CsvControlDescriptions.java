@@ -23,7 +23,7 @@ public class CsvControlDescriptions implements ControlDescriptions {
     }
 
     @Override
-    public List<String> allRegistered() {
+    public List<String> allDescriptions() {
         try {
            return readAllLines(get(this.location), defaultCharset());
         } catch (final IOException e) {

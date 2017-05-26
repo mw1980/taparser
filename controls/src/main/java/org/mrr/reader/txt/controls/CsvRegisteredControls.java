@@ -26,8 +26,8 @@ class CsvRegisteredControls implements RegisteredControls {
     }
 
     @Override
-    public Map<String, UiControl> all() {
-        return descriptions.allRegistered().stream()
+    public Map<String, UiControl> allRegistered() {
+        return descriptions.allDescriptions().stream()
                 .map(description -> description.split(SEPARATOR))
                 .collect(toMap(this::name, this::control));
     }

@@ -20,6 +20,6 @@ public class ControlsLogicImplTest {
         final ControlsRepository repository = mock(ControlsRepository.class);
         final ControlsLogicImpl controlsLogic = new ControlsLogicImpl(repository);
         controlsLogic.controlWithName("name");
-        verify(repository).findControlByName("name");
+        verify(repository).controlWithName("name");
     }
 }

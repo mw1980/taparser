@@ -7,8 +7,8 @@ import java.util.List;
  */
 public interface ControlDescriptions {
     /**
-     * Loads all current registered controls as string descriptions.
+     * Loads all descriptions of the registered controls, as string descriptions.
      * @return a list with current known control descriptions.
      */
-    List<String> allRegistered();
+    List<String> allDescriptions();
 }

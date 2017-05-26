@@ -20,5 +20,5 @@ public interface ControlsRepository {
      * Searches for the control with the given name.
      * @return The UiControl, if found, or standard not null UiControl otherwise.
      */
-    UiControl findControlByName(String name);
+    UiControl controlWithName(String name);
 }

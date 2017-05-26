@@ -41,17 +41,17 @@ public class ControlsRepositoryImplTest {
     public void whenAskingForControls_shouldLoadFromRegisteredControls() {
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.registered);
         repository.controls();
-        verify(registered).all();
+        verify(registered).allRegistered();
     }
 
     @Test
     public void whenAskingForControls_shouldCashTheResult(){
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.registered);
-        when(registered.all()).thenReturn(notEmptyControlsMap());
+        when(registered.allRegistered()).thenReturn(notEmptyControlsMap());
         //the second call should return the cached values, not call the controls supplyAgent for the second time.
         repository.controls();
         repository.controls();
-        verify(registered).all();
+        verify(registered).allRegistered();
     }
 
     private Map<String, UiControl> notEmptyControlsMap() {
@@ -65,17 +65,17 @@ public class ControlsRepositoryImplTest {
     @Test
     public void whenSearchingForControlByName_shouldCallTheControlsSupplyDelegate() {
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.registered);
-        repository.findControlByName("");
-        verify(registered).all();
+        repository.controlWithName("");
+        verify(registered).allRegistered();
     }
 
     @Test
     public void whenSearchingForControlByName_shouldCacheTheResult(){
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.registered);
-        when(registered.all()).thenReturn(notEmptyControlsMap());
-        repository.findControlByName("");
-        repository.findControlByName("");
-        verify(registered).all();
+        when(registered.allRegistered()).thenReturn(notEmptyControlsMap());
+        repository.controlWithName("");
+        repository.controlWithName("");
+        verify(registered).allRegistered();
     }
 
     @Test
@@ -83,15 +83,15 @@ public class ControlsRepositoryImplTest {
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.registered);
         assertThat(
                 NO_CONTROL,
-                equalTo(repository.findControlByName(CONTROL_NAME)));
+                equalTo(repository.controlWithName(CONTROL_NAME)));
     }
 
     @Test
     public void whenSearchingForAvailableObject_shouldReturnCorrectObject(){
-        when(registered.all()).thenReturn(notEmptyControlsMap());
+        when(registered.allRegistered()).thenReturn(notEmptyControlsMap());
         final ControlsRepositoryImpl repository = new ControlsRepositoryImpl(this.registered);
         assertThat(
                 notEmptyControl(),
-                equalTo(repository.findControlByName(CONTROL_NAME)));
+                equalTo(repository.controlWithName(CONTROL_NAME)));
     }
 }

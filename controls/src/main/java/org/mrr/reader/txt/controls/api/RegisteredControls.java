@@ -11,5 +11,5 @@ public interface RegisteredControls {
     /**
      * Returns a map consisting with key = user interface control names and value = user interface control.
      */
-    Map<String, UiControl> all();
+    Map<String, UiControl> allRegistered();
 }

@@ -25,6 +25,6 @@ public class ControlsLogicImpl implements ControlsLogic {
 
     @Override
     public UiControl controlWithName(final String name) {
-        return repository.findControlByName(name);
+        return repository.controlWithName(name);
     }
 }

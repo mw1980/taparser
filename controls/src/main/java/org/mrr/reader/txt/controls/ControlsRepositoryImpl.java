@@ -11,7 +11,7 @@ import java.util.Map;
 import static org.apache.commons.collections.MapUtils.isEmpty;
 
 /**
- * Repository class for the controls allRegistered to the application.
+ * Repository class for the controls registered to the application.
  * The class also implements a low level caching mechanism.
  */
 @Component
@@ -35,12 +35,12 @@ class ControlsRepositoryImpl implements ControlsRepository {
 
     private void havingTheControlsInitialized() {
         if (isEmpty(this.controls)) {
-            this.controls = registered.all();
+            this.controls = registered.allRegistered();
         }
     }
 
     @Override
-    public UiControl findControlByName(final String name) {
+    public UiControl controlWithName(final String name) {
         havingTheControlsInitialized();
         return controls.getOrDefault(name, UiControl.NO_CONTROL);
     }

@@ -20,7 +20,7 @@ public class IntegrationTests {
     public void shouldLoadDescriptionsStrategyerFirstElementAsExpected(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final CsvControlDescriptions loadStrategy = context.getBean("controlDescriptions", CsvControlDescriptions.class);
-        assertNotNull(loadStrategy.allRegistered());
+        assertNotNull(loadStrategy.allDescriptions());
     }
 
     @Test
