@@ -3,7 +3,7 @@ package org.mrr.reader.txt.controls;
 import org.junit.Test;
 import org.mrr.core.LoadControlsException;
 import org.mrr.core.domain.UiControl;
-import org.mrr.core.domain.UiLocator;
+import org.mrr.core.domain.UiLocation;
 import org.mrr.reader.txt.controls.api.ControlDescriptions;
 
 import java.util.Collections;
@@ -30,7 +30,7 @@ public class CsvRegisteredControlsTest {
         final CsvRegisteredControls underTest = new CsvRegisteredControls(descriptions);
         assertThat(underTest.allRegistered(), equalTo(
                 singletonMap("name",
-                        new UiControl("name", new UiLocator(ID, "elementId")))));
+                        new UiControl("name", new UiLocation(ID, "elementId")))));
     }
 
     @Test

@@ -14,16 +14,16 @@ import static org.mrr.core.domain.IdentificationCriteria.UNKNOWN;
 @EqualsAndHashCode
 @ToString
 public class UiControl {
-    public static final UiControl NO_CONTROL = new UiControl(EMPTY, new UiLocator(UNKNOWN, EMPTY));
+    public static final UiControl NO_CONTROL = new UiControl(EMPTY, new UiLocation(UNKNOWN, EMPTY));
 
     private final String name;
-    private final UiLocator locator;
+    private final UiLocation location;
 
     public IdentificationCriteria identifiedBy() {
-        return locator.identificationCriteria();
+        return location.identificationCriteria();
     }
 
     public String id() {
-        return locator.value();
+        return location.value();
     }
 }

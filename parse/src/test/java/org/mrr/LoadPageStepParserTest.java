@@ -1,30 +1,30 @@
 package org.mrr;
 
 import org.junit.Test;
+import org.mrr.core.domain.Action;
 import org.mrr.core.domain.ActionType;
-import org.mrr.core.domain.TestStep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for the class LoadPageStepParser.
+ * Tests for the class LoadPageActionOperationParse.
  */
 public class LoadPageStepParserTest {
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingMissingUrlDescription_shouldThrowDescriptionNotParsableException() {
-    new LoadPageStepParser().validate("Load page");
+    new LoadPageActionOperationParse().validate("Load page");
   }
 
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingMissingPageDescription_shouldThrowDescriptionNotParsableException() {
-    new LoadPageStepParser().validate("Load http://www.google.com");
+    new LoadPageActionOperationParse().validate("Load http://www.google.com");
   }
 
   @Test
   public void whenParsingLoadAction_shouldReturnLoadActionTypeValueAndNoActionTarget() {
-    final TestStep testStep = new LoadPageStepParser().parse("Load page http://www.google.de");
-    final TestStep expected = new TestStep(ActionType.LOAD_PAGE, "", "http://www.google.de");
-    assertThat(testStep).isEqualTo(expected);
+    final Action action = new LoadPageActionOperationParse().actionFrom("Load page http://www.google.de");
+    final Action expected = new Action(ActionType.LOAD_PAGE, "", "http://www.google.de");
+    assertThat(action).isEqualTo(expected);
   }
 
 }

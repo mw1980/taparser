@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mrr.core.domain.UiControl;
-import org.mrr.core.domain.UiLocator;
+import org.mrr.core.domain.UiLocation;
 import org.mrr.reader.txt.controls.api.RegisteredControls;
 
 import java.util.Map;
@@ -59,7 +59,7 @@ public class ControlsRepositoryImplTest {
     }
 
     private UiControl notEmptyControl() {
-        return new UiControl(CONTROL_NAME, new UiLocator(ID, "nameHtmlId"));
+        return new UiControl(CONTROL_NAME, new UiLocation(ID, "nameHtmlId"));
     }
 
     @Test

@@ -11,7 +11,7 @@
     <modules>
         <module>core</module>
         <module>controls</module>
-        <module>generate</module>
+        <module>code</module>
         <module>parse</module>
         <module>specification</module>
         <module>config</module>

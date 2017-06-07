@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-import static org.mrr.AbstractTestStepParserTemplate.UNKNOWN;
+import static org.mrr.AbstractParseTestActionOperationTemplate.UNKNOWN;
 
 @Component("testStepParserAgent")
 public class TestStepParserFactoryImpl implements ApplicationContextAware, TestStepParserFactory {
@@ -22,15 +22,15 @@ public class TestStepParserFactoryImpl implements ApplicationContextAware, TestS
     }
 
     @Override
-    public TestStepParser parserForDescription(final String description) {
+    public ParseTestActionOperation parserForDescription(final String description) {
         return registeredTestStepParsers().stream()
                 .filter(parser -> parser.canHandle(description))
                 .findFirst()
                 .orElse(UNKNOWN);
     }
 
-    private Collection<TestStepParser> registeredTestStepParsers() {
-        final Map<String, TestStepParser> parsers = this.context.getBeansOfType(TestStepParser.class);
+    private Collection<ParseTestActionOperation> registeredTestStepParsers() {
+        final Map<String, ParseTestActionOperation> parsers = this.context.getBeansOfType(ParseTestActionOperation.class);
         return parsers == null ? new ArrayList<>() : parsers.values();
     }
 }

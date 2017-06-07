@@ -2,7 +2,7 @@ package org.mrr.reader.txt.controls;
 
 import org.mrr.core.domain.IdentificationCriteria;
 import org.mrr.core.domain.UiControl;
-import org.mrr.core.domain.UiLocator;
+import org.mrr.core.domain.UiLocation;
 import org.mrr.reader.txt.controls.api.ControlDescriptions;
 import org.mrr.reader.txt.controls.api.RegisteredControls;
 import org.springframework.stereotype.Component;
@@ -40,6 +40,6 @@ class CsvRegisteredControls implements RegisteredControls {
         final String name = name(words);
         final IdentificationCriteria type = IdentificationCriteria.forValue(words[1]);
         final String value = words[2];
-        return new UiControl(name, new UiLocator(type, value));
+        return new UiControl(name, new UiLocation(type, value));
     }
 }
