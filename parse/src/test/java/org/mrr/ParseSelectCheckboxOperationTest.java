@@ -6,7 +6,7 @@ import org.mrr.core.domain.Action;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
 
-public class SelectCheckboxStepParserTest {
+public class ParseSelectCheckboxOperationTest {
 
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingWrongCheckboxNameText_shouldThrowDescriptionNotParsableException() {
@@ -20,8 +20,8 @@ public class SelectCheckboxStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldParseAsExpected() {
+    final Action parsed = new ParseSelectCheckboxOperation().actionFrom("Select checkbox a");
     final Action expected = new Action(SELECT_CHECKBOX, "a", "");
-    final Action calculated = new ParseSelectCheckboxOperation().actionFrom("Select checkbox a");
-    assertThat(calculated).isEqualTo(expected);
+    assertThat(parsed).isEqualTo(expected);
   }
 }

@@ -9,22 +9,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Tests for the class LoadPageActionOperationParse.
  */
-public class LoadPageStepParserTest {
+public class ParseLoadPageActionOperationTest {
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingMissingUrlDescription_shouldThrowDescriptionNotParsableException() {
-    new LoadPageActionOperationParse().validate("Load page");
+    new ParseLoadPageActionOperation().validate("Load page");
   }
 
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingMissingPageDescription_shouldThrowDescriptionNotParsableException() {
-    new LoadPageActionOperationParse().validate("Load http://www.google.com");
+    new ParseLoadPageActionOperation().validate("Load http://www.google.com");
   }
 
   @Test
   public void whenParsingLoadAction_shouldReturnLoadActionTypeValueAndNoActionTarget() {
-    final Action action = new LoadPageActionOperationParse().actionFrom("Load page http://www.google.de");
+    final Action parsed = new ParseLoadPageActionOperation().actionFrom("Load page http://www.google.de");
     final Action expected = new Action(ActionType.LOAD_PAGE, "", "http://www.google.de");
-    assertThat(action).isEqualTo(expected);
+    assertThat(parsed).isEqualTo(expected);
   }
 
 }

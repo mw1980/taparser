@@ -13,7 +13,7 @@ import static org.mrr.core.domain.IdentificationCriteria.ID;
 import static org.mrr.core.domain.UiControl.NO_CONTROL;
 
 /**
- * Code generator for identification of the user interface controls on the Gui.
+ * Code generate operation to identify the user interface controls on the Gui.
  */
 @Component
 class DefaultCodeLocationLogic implements CodeLocationLogic {
@@ -42,7 +42,7 @@ class DefaultCodeLocationLogic implements CodeLocationLogic {
     private String identificationCodeFor(final UiControl control) {
         if (ID == control.identifiedBy()) {
             return format("By.id(\"%s\")", control.id());
-        }
+        }//extend here for other identification types
         throw new CodeException(
                 format("Identification type for %s is unknown.", control.identifiedBy()));
     }

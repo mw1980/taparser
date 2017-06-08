@@ -12,11 +12,11 @@ import static org.mockito.Mockito.when;
 import static org.mrr.core.TestActionDescription.EMPTY;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 
-public class TestStepParserLogicImplParseTest {
+public class DefaultParseTestActionLogicTest {
     private static final String DESCRIPTION = "";
 
     @Mock
-    private TestStepParserFactory factory;
+    private ParseTestActionFactory factory;
 
     @Mock
     private ParseTestActionOperation stepParser;
@@ -24,14 +24,14 @@ public class TestStepParserLogicImplParseTest {
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(factory.parserForDescription(DESCRIPTION)).thenReturn(stepParser);
-        when(stepParser.actionFrom(DESCRIPTION)).thenReturn(new Action(CLICK_BUTTON, "button", ""));
     }
 
     @Test
     public void whenCreatingTestStep_shouldCallTheParserAgent() {
-        final ParseTestActionLogic parseLogic = new DefaultParseTestActionLogic(factory);
-        parseLogic.actionFromDescription(EMPTY);
-        verify(factory).parserForDescription(EMPTY.description());
+        when(factory.parseOperationFromDescription(DESCRIPTION)).thenReturn(stepParser);
+        when(stepParser.actionFrom(DESCRIPTION)).thenReturn(new Action(CLICK_BUTTON, "button", ""));
+        final ParseTestActionLogic underTest = new DefaultParseTestActionLogic(factory);
+        underTest.actionFromDescription(EMPTY);
+        verify(factory).parseOperationFromDescription(EMPTY.description());
     }
 }

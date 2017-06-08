@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 import static java.lang.String.format;
 
 /**
- * Abstract class, contains the methods to parse test case description and create
- * ActionSteps objects from free description test case description.
+ * Abstract class, contains the methods to parse a {@link org.mrr.core.TestActionDescription} description and create
+ * {@link Action} objects from test action's description.
  */
 public abstract class AbstractParseTestActionOperationTemplate implements ParseTestActionOperation {
     public static final ParseTestActionOperation UNKNOWN = new ParseTestActionOperation() {
@@ -25,11 +25,9 @@ public abstract class AbstractParseTestActionOperationTemplate implements ParseT
     };
 
     /**
-     * The action method of the step parser.
-     * Parses the action type, the action target and action values from test case description
-     * and returns an Action object.
+     * The method delivers the {@link Action} object for a test action description.
      *
-     * @return test step object parsed from the test step description.
+     * @return {@link Action} object parsed from the test action's description.
      */
     public Action actionFrom(final String description) {
         validate(description);
@@ -76,8 +74,7 @@ public abstract class AbstractParseTestActionOperationTemplate implements ParseT
         if (!Pattern.matches(regex, description)) {
             throw new DescriptionNotParsableException(
                     format("The description: \"%s\" is not a valid %s step description.",
-                            description,
-                            stepType));
+                            description, stepType));
         }
     }
 }

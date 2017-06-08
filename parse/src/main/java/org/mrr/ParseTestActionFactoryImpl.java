@@ -5,14 +5,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+import static java.util.Collections.emptyList;
 import static org.mrr.AbstractParseTestActionOperationTemplate.UNKNOWN;
 
-@Component("testStepParserAgent")
-public class TestStepParserFactoryImpl implements ApplicationContextAware, TestStepParserFactory {
+@Component("parseTestActionFactory")
+public class ParseTestActionFactoryImpl implements ApplicationContextAware, ParseTestActionFactory {
 
     private ApplicationContext context;
 
@@ -22,7 +22,7 @@ public class TestStepParserFactoryImpl implements ApplicationContextAware, TestS
     }
 
     @Override
-    public ParseTestActionOperation parserForDescription(final String description) {
+    public ParseTestActionOperation parseOperationFromDescription(final String description) {
         return registeredTestStepParsers().stream()
                 .filter(parser -> parser.canHandle(description))
                 .findFirst()
@@ -30,7 +30,7 @@ public class TestStepParserFactoryImpl implements ApplicationContextAware, TestS
     }
 
     private Collection<ParseTestActionOperation> registeredTestStepParsers() {
-        final Map<String, ParseTestActionOperation> parsers = this.context.getBeansOfType(ParseTestActionOperation.class);
-        return parsers == null ? new ArrayList<>() : parsers.values();
+        final Map<String, ParseTestActionOperation> parseOperations = this.context.getBeansOfType(ParseTestActionOperation.class);
+        return parseOperations == null ? emptyList() : parseOperations.values();
     }
 }

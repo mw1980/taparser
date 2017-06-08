@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
 
 /**
- * Parser class for the action "Select checkbox".
+ * Parse operation class for the actions of type "Select checkbox".
  */
 @Component
 public class ParseSelectCheckboxOperation extends AbstractParseTestActionOperationTemplate {

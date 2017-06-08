@@ -6,7 +6,7 @@ import org.mrr.core.domain.ActionType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ClickButtonStepParserTest {
+public class ParseClickButtonOperationTest {
 
   @Test(expected = DescriptionNotParsableException.class)
   public void whenParsingMalformedButtonStepDescription_shouldThrowDescriptionNotParsableException() {
@@ -25,9 +25,9 @@ public class ClickButtonStepParserTest {
 
   @Test
   public void whenParsingCorrectButtonDescription_shouldIdentifyTheTargetCorrect() {
-    final Action calculated = new ParseClickButtonOperation().actionFrom("Click button submitform");
+    final Action parsed = new ParseClickButtonOperation().actionFrom("Click button submitform");
     final Action expected = new Action(ActionType.CLICK_BUTTON, "submitform", "");
-    assertThat(calculated).isEqualTo(expected);
+    assertThat(parsed).isEqualTo(expected);
   }
 
   @Test(expected = DescriptionNotParsableException.class)
@@ -47,7 +47,7 @@ public class ClickButtonStepParserTest {
 
   @Test
   public void whenParsingCorrectLinkDescription_shouldIdentifyTheTargetCorrect() {
-    final Action calculated = new ParseClickButtonOperation().actionFrom("Click link submitform");
-    assertThat(calculated).isEqualTo(new Action(ActionType.CLICK_BUTTON, "submitform", ""));
+    final Action parsed = new ParseClickButtonOperation().actionFrom("Click link submitform");
+    assertThat(parsed).isEqualTo(new Action(ActionType.CLICK_BUTTON, "submitform", ""));
   }
 }

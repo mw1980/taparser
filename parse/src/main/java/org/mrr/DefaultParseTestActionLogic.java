@@ -8,16 +8,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultParseTestActionLogic implements ParseTestActionLogic {
-    private final TestStepParserFactory factory;
+    private final ParseTestActionFactory factory;
 
     @Autowired
-    public DefaultParseTestActionLogic(final TestStepParserFactory stepParserFactory) {
+    public DefaultParseTestActionLogic(final ParseTestActionFactory stepParserFactory) {
         this.factory = stepParserFactory;
     }
 
     @Override
     public Action actionFromDescription(final TestActionDescription description) {
-        final ParseTestActionOperation parseOperation = factory.parserForDescription(description.description());
+        final ParseTestActionOperation parseOperation = factory.parseOperationFromDescription(description.description());
         return parseOperation.actionFrom(description.description());
     }
 }

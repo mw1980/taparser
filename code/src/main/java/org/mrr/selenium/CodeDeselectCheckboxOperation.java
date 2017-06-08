@@ -10,7 +10,7 @@ import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
 
 /**
- * Selenium code generator for the actions of type: "deselect checkbox mycheckbox".
+ * Code generate operation for the actions of type: "deselect checkbox my_checkbox".
  */
 @Component
 public class CodeDeselectCheckboxOperation implements CodeTestActionOperation {
@@ -26,8 +26,7 @@ public class CodeDeselectCheckboxOperation implements CodeTestActionOperation {
     public String codeFor(final Action action) {
         final String targetCode = identificationCodeFor(action);
         return format("if (driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
-                targetCode,
-                targetCode);
+                targetCode, targetCode);
     }
 
     private String identificationCodeFor(final Action action) {

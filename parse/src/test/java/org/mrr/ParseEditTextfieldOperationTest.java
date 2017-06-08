@@ -6,10 +6,7 @@ import org.mrr.core.domain.ActionType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Tests for the class EditTextfieldActionOperationTemplateParse.
- */
-public class EditTextfieldStepParserTest {
+public class ParseEditTextfieldOperationTest {
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithoutValue_shouldThrowDescriptionNotParsableException(){
     new ParseEditTextfieldOperation().validate("Set in textfield login \"user name\"");
@@ -22,7 +19,7 @@ public class EditTextfieldStepParserTest {
 
   @Test
   public void shouldParseBasicStepDescriptionTextAsExpected(){
-    Action calculated = new ParseEditTextfieldOperation().actionFrom("Set in textfield login value \"my user name\"");
-    assertThat(calculated).isEqualTo(new Action(ActionType.EDIT_TEXT, "login", "my user name"));
+    Action parsed = new ParseEditTextfieldOperation().actionFrom("Set in textfield login value \"my user name\"");
+    assertThat(parsed).isEqualTo(new Action(ActionType.EDIT_TEXT, "login", "my user name"));
   }
 }

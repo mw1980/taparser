@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import static org.mrr.core.domain.ActionType.LOAD_PAGE;
 
 /**
- * The class contains methods to generate test steps from plain description.
+ * The parse operation for the "load page" test actions.
  */
 @Component
-public class LoadPageActionOperationParse extends AbstractParseTestActionOperationTemplate {
+public class ParseLoadPageActionOperation extends AbstractParseTestActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import static org.mrr.core.domain.ActionType.EDIT_TEXT;
 
 /**
- * Parser class for the edit description field steps.
+ * Parse operation class for edit fields actions.
  */
 @Component
 public class ParseEditTextfieldOperation extends AbstractParseTestActionOperationTemplate {

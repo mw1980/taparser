@@ -10,7 +10,7 @@ import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.CLICK_LINK;
 
 /**
- * Parses class for the step: "click button button_name".
+ * Parse operation class for the actions of type: "click button button_name".
  */
 @Component
 public class ParseClickButtonOperation extends AbstractParseTestActionOperationTemplate {

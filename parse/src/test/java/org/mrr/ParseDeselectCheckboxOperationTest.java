@@ -6,7 +6,7 @@ import org.mrr.core.domain.ActionType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DeselectCheckboxStepParserTest {
+public class ParseDeselectCheckboxOperationTest {
 
   @Test (expected = DescriptionNotParsableException.class)
   public void whenValidatingDescriptionWithWrongCheckboxName_shouldThrowDescriptionNotParsableException(){
@@ -20,7 +20,7 @@ public class DeselectCheckboxStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnExpectedBean(){
-    final Action parsedBean = new ParseDeselectCheckboxOperation().actionFrom("Deselect checkbox agreecookies");
-    assertThat(parsedBean).isEqualTo(new Action(ActionType.DESELECT_CHECKBOX, "agreecookies", ""));
+    final Action parsed = new ParseDeselectCheckboxOperation().actionFrom("Deselect checkbox agreecookies");
+    assertThat(parsed).isEqualTo(new Action(ActionType.DESELECT_CHECKBOX, "agreecookies", ""));
   }
 }

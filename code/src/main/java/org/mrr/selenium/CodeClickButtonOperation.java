@@ -10,7 +10,7 @@ import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 
 /**
- * Selenium code generator for the actions of type: "Click button myButton".
+ * Code generate operation for the actions of type: "Click button myButton".
  */
 @Component
 public class CodeClickButtonOperation implements CodeTestActionOperation {

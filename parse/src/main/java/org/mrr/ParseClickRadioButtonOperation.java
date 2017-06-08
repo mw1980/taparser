@@ -7,7 +7,7 @@ import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.SELECT_RADIO_BUTTON;
 
 /**
- * Parser class for the action steps in form: "select radio button radioButtonOption".
+ * Parse Operation class for the actions of type: "select radio button radioButtonOption".
  */
 @Component
 public class ParseClickRadioButtonOperation extends AbstractParseTestActionOperationTemplate {

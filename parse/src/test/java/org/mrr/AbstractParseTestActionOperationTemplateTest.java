@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 import static org.mrr.core.domain.ActionType.UNKNOWN;
 
 
-public class AbstractTestStepParserTemplateParseTest {
+public class AbstractParseTestActionOperationTemplateTest {
     @Test
     public void nullObjectShouldParseDescriptionToUnknowTestStep() {
         final Action parsed = AbstractParseTestActionOperationTemplate.UNKNOWN.actionFrom("any description");

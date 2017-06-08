@@ -10,7 +10,7 @@ import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.EDIT_TEXT;
 
 /**
- * Selenium code generator for the operation "set value in edit description field".
+ * Code generate operation for the operation "set value in edit description field".
  */
 @Component
 public class CodeEditTextfieldOperation implements CodeTestActionOperation {

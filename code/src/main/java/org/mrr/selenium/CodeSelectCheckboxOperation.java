@@ -10,7 +10,7 @@ import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
 
 /**
- * Code generator class for the step: select checkbox myCheckbox.
+ * Code generate operation for the step: "select checkbox myCheckbox".
  */
 @Component
 public class CodeSelectCheckboxOperation implements CodeTestActionOperation {
@@ -24,14 +24,9 @@ public class CodeSelectCheckboxOperation implements CodeTestActionOperation {
 
     @Override
     public String codeFor(final Action action) {
-        final String targetCode = identificationCode(action);
+        final String targetCode = locationLogic.locationCodeFor(action.target());
         return format("if (!driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
-                targetCode,
-                targetCode);
-    }
-
-    private String identificationCode(final Action action) {
-        return locationLogic.locationCodeFor(action.target());
+                targetCode, targetCode);
     }
 
     @Override

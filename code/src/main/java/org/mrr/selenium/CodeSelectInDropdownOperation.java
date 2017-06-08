@@ -11,7 +11,7 @@ import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
 
 /**
- * Test automation code generator for the operation: select in dropdown x value "y".
+ * Code generate operation for the action: select in dropdown x value "y".
  */
 @Component
 public class CodeSelectInDropdownOperation implements CodeTestActionOperation {

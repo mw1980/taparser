@@ -6,7 +6,7 @@ import org.mrr.core.domain.ActionType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SelectDropdownStepParserTest {
+public class ParseSelectDropdownOperationTest {
 
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingEmptyDescription_shouldThrowDescriptionNotParsableException() {
@@ -30,19 +30,19 @@ public class SelectDropdownStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnExpectedTestStep() {
-    final Action parseResult = new ParseSelectDropdownOperation().actionFrom("Select in dropdown mydropdown value \"ui option\"");
-    assertThat(parseResult).isEqualTo(new Action(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "ui option"));
+    final Action parsed = new ParseSelectDropdownOperation().actionFrom("Select in dropdown mydropdown value \"ui option\"");
+    assertThat(parsed).isEqualTo(new Action(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "ui option"));
   }
 
   @Test
   public void whenParsingCorrectDescriptionWithNumericalOptionValue_shouldReturnExpectedTestStep() {
-    final Action parseResult = new ParseSelectDropdownOperation().actionFrom("Select in dropdown mydropdown value \"3\"");
-    assertThat(parseResult).isEqualTo(new Action(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "3"));
+    final Action parsed = new ParseSelectDropdownOperation().actionFrom("Select in dropdown mydropdown value \"3\"");
+    assertThat(parsed).isEqualTo(new Action(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "3"));
   }
 
   @Test
   public void whenParsingDescription_shouldReturnExpectedTestStepWithCapitalLetters() {
-    final Action parseResult = new ParseSelectDropdownOperation().actionFrom("Select in dropdown mydropdown value \"Johnie Walker\"");
-    assertThat(parseResult).isEqualTo(new Action(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "Johnie Walker"));
+    final Action parsed = new ParseSelectDropdownOperation().actionFrom("Select in dropdown mydropdown value \"Johnie Walker\"");
+    assertThat(parsed).isEqualTo(new Action(ActionType.SELECT_IN_DROPDOWN, "mydropdown", "Johnie Walker"));
   }
 }

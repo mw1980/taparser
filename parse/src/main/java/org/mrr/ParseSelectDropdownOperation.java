@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
 
 /**
- * Step parser for the actions of type select value in Dropdown.
+ * Parse operation for the actions of type "select value in dropdown".
  */
 @Component
 public class ParseSelectDropdownOperation extends AbstractParseTestActionOperationTemplate {

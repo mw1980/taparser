@@ -6,7 +6,7 @@ import org.mrr.core.domain.ActionType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ClickRadioButtonStepParserTest {
+public class ParseClickRadioButtonOperationTest {
 
   @Test(expected = DescriptionNotParsableException.class)
   public void whenValidatingWrongRadioButtonText_shouldThrowDescriptionNotParsableException() {
@@ -25,7 +25,7 @@ public class ClickRadioButtonStepParserTest {
 
   @Test
   public void whenParsingCorrectDescription_shouldReturnBeanWithExpectedActionType() {
-    final Action automationBean = new ParseClickRadioButtonOperation().actionFrom("Select radio button 1");
-    assertThat(automationBean).isEqualTo(new Action(ActionType.CLICK_BUTTON, "1", ""));
+    final Action parsed = new ParseClickRadioButtonOperation().actionFrom("Select radio button 1");
+    assertThat(parsed).isEqualTo(new Action(ActionType.CLICK_BUTTON, "1", ""));
   }
 }

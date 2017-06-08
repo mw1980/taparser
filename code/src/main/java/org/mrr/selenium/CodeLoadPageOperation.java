@@ -8,7 +8,7 @@ import static java.lang.String.format;
 import static org.mrr.core.domain.ActionType.LOAD_PAGE;
 
 /**
- * Selenium code generator for the "load page" action steps.
+ * Code generate operation for the "load page" actions.
  */
 @Component
 public class CodeLoadPageOperation implements CodeTestActionOperation {
