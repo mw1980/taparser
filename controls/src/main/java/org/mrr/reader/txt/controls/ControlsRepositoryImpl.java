@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-import static org.apache.commons.collections.MapUtils.isEmpty;
+import static org.apache.commons.collections4.MapUtils.isEmpty;
 
 /**
  * Repository class for the controls registered to the application.
