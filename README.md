@@ -36,16 +36,9 @@ Check the controls.api package for details.
 
 A default implementation for controls descriptions stored in "csv" format is provided. You should provide another implementation of the ControlDescriptions interface if you need another storage option for the control descriptions, like data base, or xml files.
 
-### The flow
-* The test specification is read from the external resource. The default implementation expects the test specification to be loaded from an external file, each line containing a single action. 
-
-* A parser reads each action and identifies the action type and searches for the matching action parser class, that creates a test step representation for the free action description.
-
-The java representation of the test step contains the action type, the action target and the potential value to be set / verified.
-Check the parse package for the implementation.
-
-* A code generator runs over the previous created TestSteps, searches for a matching code generator and generates the automation code for the free action description.
-
-The default implementation generates selenium code. 
-
-If you need to generate code for another testing framework, provide a matching implementation of the TestStepCodeGenerators.
+### Concepts
+A TestStep consists of more test actions.
+Each test action has a description, a java representation and a test automation code.
+* The test action description is read from an external source in a human readable form.
+* The java representation of the test action contains the action type, the action target and eventually a value to be set or read. The "parse operation" classes parse the free test description to java "Action" object.
+* The test automation code for the Action classes is provided by a suite of code operation classes. The default implementation is for Selenium framework.
