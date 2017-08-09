@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class Action {
-    static final Action EMPTY = new Action(ActionType.UNKNOWN, "", "");
+    public static final Action EMPTY = new Action(ActionType.UNKNOWN, "", "");
     private final ActionType type;
     private final String target;
     private final String value;

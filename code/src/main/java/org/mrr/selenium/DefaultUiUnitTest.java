@@ -2,15 +2,18 @@ package org.mrr.selenium;
 
 import org.apache.log4j.Logger;
 import org.mrr.api.CodeException;
+import org.mrr.api.PersistToFileOperation;
 import org.mrr.core.CodedTestAction;
+import org.mrr.core.TestSettings;
 import org.mrr.core.UiUnitTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static java.lang.String.format;
 
 /**
  * A user interface test.
@@ -19,42 +22,52 @@ import java.time.format.DateTimeFormatter;
 public class DefaultUiUnitTest implements UiUnitTest {
     private static final Logger LOG = Logger.getLogger(DefaultUiUnitTest.class);
 
-    private static final String SHORT_PACKAGE_PATH = "org.mrr";
-    private static final String GECKO_DRIVER_PATH = "/home/wamsiema/github/gecko/geckodriver";
-    private static final String COMPLETE_PACKAGE_PATH = "./execution/src/test/java/org/mrr/";
+    private final TestSettings settings;
+    private final PersistToFileOperation persistOperation;
+
+    @Autowired
+    public DefaultUiUnitTest(final TestSettings testSettings, final PersistToFileOperation persistToFileOperation) {
+        this.settings = testSettings;
+        this.persistOperation = persistToFileOperation;
+    }
 
     @Override
     public void persist(final Iterable<CodedTestAction> actions) {
         final String className = "Test_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY_MM_dd_hh_mm_ss"));
         saveCodeToTestFile(
                 className,
-                generateUnitTestCode(className, actions)
+                generatedUnitTestCode(className, actions)
         );
     }
 
-    private String generateUnitTestCode(final String className, final Iterable<CodedTestAction> actions) {
+    private String generatedUnitTestCode(final String className, final Iterable<CodedTestAction> actions) {
         final StringBuilder testActionsCode = new StringBuilder("final WebDriver driver = new FirefoxDriver();\n");
         actions.forEach(testAction -> testActionsCode.append(testAction.code()).append("\n"));
-        return "package " + SHORT_PACKAGE_PATH + "; \n"
+        return "package " + settings.basePackagePath() + "; \n"
                 + "import org.junit.Test; \n"
                 + "import org.openqa.selenium.*; \n"
                 + "import org.openqa.selenium.firefox.*; \n"
                 + "import org.openqa.selenium.support.ui.*; \n"
                 + "public class " + className + "{ \n"
                 + "@Test public void test(){ \n"
-                + " System.setProperty(\"webdriver.gecko.driver\", \"" + GECKO_DRIVER_PATH + "\");\n"
+                + " System.setProperty(\"webdriver.gecko.driver\", \"" + settings.getGeckoDriverPath() + "\");\n"
                 + testActionsCode.toString()
                 + "}"
                 + "}"; //End of class
     }
 
-    private void saveCodeToTestFile(String fileName, String testCode) {
+    private void saveCodeToTestFile(final String fileName, final String testCode) {
         try {
-            Files.write(Paths.get(COMPLETE_PACKAGE_PATH + fileName + ".java"), testCode.getBytes());
+            persistOperation.execute(
+                    format("%s%s.java", settings.completePackagePath(), fileName),
+                    testCode);
         } catch (final IOException exception) {
-            final String message = "Can not save the unit test to disk.";
-            LOG.error(message, exception);
-            throw new CodeException(message);
+            LOG.error(errorMessage(), exception);
+            throw new CodeException(errorMessage());
         }
+    }
+
+    private String errorMessage() {
+        return "Can not save the unit test to disk.";
     }
 }

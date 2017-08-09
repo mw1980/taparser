@@ -13,8 +13,6 @@ import java.util.List;
 /**
  * This class contains methods for reading test cases from an external file.
  */
-//In order to preserve the file path injection in the constructor, the bean is defined in the ApplicationConfig class.
-//Therefore no @Autowired and @Component annotation here...
 public class FileTestSpecificationStoreImpl implements TestSpecificationStore {
     private String location;
 
