@@ -1,7 +1,7 @@
 user id userNameHtmlId
 password id userPassHtmlId
-submit id submitButtonId
+submit XPath submitButtonId
 newpage id newPageLinkId
-mydropdown id mydropdownHtmlId
-agreecookies id agreeCookiesHtmlId
+mydropdown byId mydropdownHtmlId
+agreecookies XPath agreeCookiesHtmlId
 emailradiobutton id emailRadioButtonHtmlId

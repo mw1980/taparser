@@ -1,5 +1,6 @@
 package org.mrr.reader.txt.controls;
 
+import org.mrr.core.LoadControlsException;
 import org.mrr.core.domain.IdentificationCriteria;
 import org.mrr.core.domain.UiControl;
 import org.mrr.core.domain.UiLocation;
@@ -8,7 +9,9 @@ import org.mrr.reader.txt.controls.api.RegisteredControls;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.stream.Stream;
 
+import static java.lang.String.format;
 import static java.util.stream.Collectors.toMap;
 
 /**
@@ -38,7 +41,10 @@ class CsvRegisteredControls implements RegisteredControls {
 
     private UiControl control(final String[] words) {
         final String name = name(words);
-        final IdentificationCriteria type = IdentificationCriteria.forValue(words[1]);
+        final IdentificationCriteria type = Stream.of(IdentificationCriteria.values())
+                .filter(identificationCriteria -> identificationCriteria.matchesDescription(words[1]))
+                .findAny()
+                .orElseThrow(() -> new LoadControlsException(format("Cannot find a identification criteria for %s.", words[1])));
         final String value = words[2];
         return new UiControl(name, new UiLocation(type, value));
     }

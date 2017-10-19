@@ -1,7 +1,7 @@
-package org.mrr.selenium;
+package org.mrr.selenium.location;
 
-import org.mrr.api.CodeException;
 import org.mrr.api.CodeLocationLogic;
+import org.mrr.core.CodeLocationVisitor;
 import org.mrr.core.ControlsLogic;
 import org.mrr.core.LoadControlsException;
 import org.mrr.core.domain.UiControl;
@@ -9,19 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static java.lang.String.format;
-import static org.mrr.core.domain.IdentificationCriteria.ID;
 import static org.mrr.core.domain.UiControl.NO_CONTROL;
 
 /**
  * Code generate operation to identify the user interface controls on the Gui.
  */
 @Component
-class DefaultCodeLocationLogic implements CodeLocationLogic {
+public class SeleniumCodeLocationLogic implements CodeLocationLogic {
     private final ControlsLogic controlsLogic;
+    private final CodeLocationVisitor codeLocationVisitor;
 
     @Autowired
-    public DefaultCodeLocationLogic(final ControlsLogic controlsLogic) {
+    public SeleniumCodeLocationLogic(final ControlsLogic controlsLogic,
+                                     final CodeLocationVisitor seleniumCodeLocationVisitor) {
         this.controlsLogic = controlsLogic;
+        this.codeLocationVisitor = seleniumCodeLocationVisitor;
     }
 
     @Override
@@ -40,10 +42,8 @@ class DefaultCodeLocationLogic implements CodeLocationLogic {
     }
 
     private String identificationCodeFor(final UiControl control) {
-        if (ID == control.identifiedBy()) {
-            return format("By.id(\"%s\")", control.id());
-        }//extend here for other identification types
-        throw new CodeException(
-                format("Identification type for %s is unknown.", control.identifiedBy()));
+        return control.identificationCriteria()
+                .codeLocationType(codeLocationVisitor)
+                .codeFor(control.id());
     }
 }

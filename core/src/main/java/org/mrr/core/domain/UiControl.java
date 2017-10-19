@@ -19,7 +19,7 @@ public class UiControl {
     private final String name;
     private final UiLocation location;
 
-    public IdentificationCriteria identifiedBy() {
+    public IdentificationCriteria identificationCriteria() {
         return location.identificationCriteria();
     }
 
