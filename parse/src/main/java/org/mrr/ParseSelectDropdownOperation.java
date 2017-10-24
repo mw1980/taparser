@@ -9,7 +9,7 @@ import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
  * Parse operation for the actions of type "select value in dropdown".
  */
 @Component
-public class ParseSelectDropdownOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseSelectDropdownOperation extends AbstractParseActionOperationTemplate {
     @Override
     protected void validate(final String description) {
         final String regex = "Select in dropdown\\s\\w+\\svalue\\s\"[a-zA-Z0-9 ]+\"";

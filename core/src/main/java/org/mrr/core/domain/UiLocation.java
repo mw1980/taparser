@@ -1,15 +1,11 @@
 package org.mrr.core.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.Value;
 
 /**
  * The class stores the information needed to locate a control on a html page.
  */
-@AllArgsConstructor
-@EqualsAndHashCode
-@ToString
+@Value
 public class UiLocation {
     private final IdentificationCriteria identificationCriteria;
     private final String value;

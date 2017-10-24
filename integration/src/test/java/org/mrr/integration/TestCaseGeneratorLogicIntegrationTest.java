@@ -2,7 +2,7 @@ package org.mrr.integration;
 
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
-import org.mrr.core.CodeTestActionLogic;
+import org.mrr.core.CodeActionLogic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -14,7 +14,7 @@ public class TestCaseGeneratorLogicIntegrationTest {
     @Test
     public void shouldLoadNotNullGeneratorLogicFromApplicationContext(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final CodeTestActionLogic generateLogic = context.getBean("defaultCodeTestActionLogic", CodeTestActionLogic.class);
+        final CodeActionLogic generateLogic = context.getBean("defaultCodeActionLogic", CodeActionLogic.class);
         assertThat(generateLogic, notNullValue());
     }
 }

@@ -9,7 +9,7 @@ import static org.mrr.core.domain.ActionType.LOAD_PAGE;
  * The parse operation for the "load page" test actions.
  */
 @Component
-public class ParseLoadPageActionOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseLoadPageActionOperation extends AbstractParseActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

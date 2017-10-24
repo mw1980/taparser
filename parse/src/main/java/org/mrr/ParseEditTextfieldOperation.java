@@ -9,7 +9,7 @@ import static org.mrr.core.domain.ActionType.EDIT_TEXT;
  * Parse operation class for edit fields actions.
  */
 @Component
-public class ParseEditTextfieldOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseEditTextfieldOperation extends AbstractParseActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

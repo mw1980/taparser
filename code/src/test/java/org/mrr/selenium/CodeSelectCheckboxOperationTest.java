@@ -14,7 +14,7 @@ public class CodeSelectCheckboxOperationTest {
 
     @Test
     public void shouldGenerateExpectedCode() {
-        final CodeSelectCheckboxOperation underTest = new CodeSelectCheckboxOperation(new CodeLocationLogicStub());
+        final CodedSelectCheckboxCodeOperation underTest = new CodedSelectCheckboxCodeOperation(new CodeLocationLogicStub());
         assertThat(
                 underTest.codeFor(new Action(SELECT_CHECKBOX, "agreeCookies")))
                 .isEqualTo("if (!driver.findElement(By.id(\"agreeCookiesHtmlId\")).isSelected()){driver.findElement(By.id(\"agreeCookiesHtmlId\")).click();}");
@@ -24,7 +24,7 @@ public class CodeSelectCheckboxOperationTest {
     public void whenParsingTestStepWithUnknownTarget_shouldRaiseException() {
         final CodeLocationLogic codeLocationLogic = mock(CodeLocationLogic.class);
         when(codeLocationLogic.locationCodeFor("unknownTarget")).thenThrow(new LoadControlsException(""));
-        new CodeSelectCheckboxOperation(codeLocationLogic)
+        new CodedSelectCheckboxCodeOperation(codeLocationLogic)
                 .codeFor(new Action(SELECT_CHECKBOX, "unknownTarget"));
     }
 }

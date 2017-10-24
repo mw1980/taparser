@@ -3,7 +3,7 @@ package org.mrr.selenium;
 import org.apache.log4j.Logger;
 import org.mrr.api.CodeException;
 import org.mrr.api.PersistToFileOperation;
-import org.mrr.core.CodedTestAction;
+import org.mrr.core.CodedAction;
 import org.mrr.core.TestSettings;
 import org.mrr.core.UiUnitTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class DefaultUiUnitTest implements UiUnitTest {
     }
 
     @Override
-    public void persist(final Iterable<CodedTestAction> actions) {
+    public void persist(final Iterable<CodedAction> actions) {
         final String className = "Test_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY_MM_dd_hh_mm_ss"));
         saveCodeToTestFile(
                 className,
@@ -40,9 +40,9 @@ public class DefaultUiUnitTest implements UiUnitTest {
         );
     }
 
-    private String generatedUnitTestCode(final String className, final Iterable<CodedTestAction> actions) {
-        final StringBuilder testActionsCode = new StringBuilder("final WebDriver driver = new FirefoxDriver();\n");
-        actions.forEach(testAction -> testActionsCode.append(testAction.code()).append("\n"));
+    private String generatedUnitTestCode(final String className, final Iterable<CodedAction> actions) {
+        final StringBuilder actionsCode = new StringBuilder("final WebDriver driver = new FirefoxDriver();\n");
+        actions.forEach(action -> actionsCode.append(action.code()).append("\n"));
         return "package " + settings.basePackagePath() + "; \n"
                 + "import org.junit.Test; \n"
                 + "import org.openqa.selenium.*; \n"
@@ -50,8 +50,8 @@ public class DefaultUiUnitTest implements UiUnitTest {
                 + "import org.openqa.selenium.support.ui.*; \n"
                 + "public class " + className + "{ \n"
                 + "@Test public void test(){ \n"
-                + " System.setProperty(\"webdriver.gecko.driver\", \"" + settings.getGeckoDriverPath() + "\");\n"
-                + testActionsCode.toString()
+                + " System.setProperty(\"webdriver.gecko.driver\", \"" + settings.geckoDriverPath() + "\");\n"
+                + actionsCode.toString()
                 + "}"
                 + "}"; //End of class
     }

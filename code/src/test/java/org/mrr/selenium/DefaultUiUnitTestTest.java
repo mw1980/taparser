@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.mrr.api.CodeException;
 import org.mrr.api.PersistToFileOperation.DummyPersistToFileOperation;
 import org.mrr.api.PersistToFileOperation.PersistToFileOperationWithException;
-import org.mrr.core.CodedTestAction.DummyCodedTestAction;
+import org.mrr.core.CodedAction.DummyCodedAction;
 import org.mrr.core.TestSettings.DummyTestSetting;
 import org.mrr.core.UiUnitTest;
 
@@ -17,7 +17,7 @@ public class DefaultUiUnitTestTest {
         final UiUnitTest underTest = new DefaultUiUnitTest(
                 new DummyTestSetting(),
                 new DummyPersistToFileOperation());
-        underTest.persist(singletonList(new DummyCodedTestAction()));
+        underTest.persist(singletonList(new DummyCodedAction()));
     }
 
     @Test(expected = CodeException.class)
@@ -25,6 +25,6 @@ public class DefaultUiUnitTestTest {
         final UiUnitTest underTest = new DefaultUiUnitTest(
                 new DummyTestSetting(),
                 new PersistToFileOperationWithException());
-        underTest.persist(singletonList(new DummyCodedTestAction()));
+        underTest.persist(singletonList(new DummyCodedAction()));
     }
 }

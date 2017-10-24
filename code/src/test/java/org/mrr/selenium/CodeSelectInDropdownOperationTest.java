@@ -16,13 +16,13 @@ public class CodeSelectInDropdownOperationTest {
     public void whenGeneratingCodeForUiElementWithoutIdentifier_shouldThrowIdentifierValueNotFoundException() {
         final CodeLocationLogic locatorCodeOperation = mock(CodeLocationLogic.class);
         when(locatorCodeOperation.locationCodeFor("withoutIdentifier")).thenThrow(new LoadControlsException("control not found"));
-        new CodeSelectInDropdownOperation(locatorCodeOperation)
+        new CodedSelectInDropdownCodeOperation(locatorCodeOperation)
                 .codeFor(new Action(SELECT_IN_DROPDOWN, "withoutIdentifier"));
     }
 
     @Test
     public void whenGeneratingCodeForSelectDropdownOperation_shouldGenerateTheExpectedCode() {
-        final CodeSelectInDropdownOperation underTest = new CodeSelectInDropdownOperation(new CodeLocationLogicStub());
+        final CodedSelectInDropdownCodeOperation underTest = new CodedSelectInDropdownCodeOperation(new CodeLocationLogicStub());
         assertThat(
                 underTest.codeFor(new Action(SELECT_IN_DROPDOWN, "mydropdown", "ui option")))
                 .isEqualToIgnoringCase("new Select (driver.findElement(By.id(\"mydropdownHtmlId\"))).selectByVisibleText(\"ui option\");");

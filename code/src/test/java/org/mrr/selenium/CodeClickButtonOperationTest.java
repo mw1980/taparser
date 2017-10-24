@@ -10,7 +10,7 @@ public class CodeClickButtonOperationTest {
 
     @Test
     public void shouldGenerateCodeAsExpected() {
-        final CodeClickButtonOperation underTest = new CodeClickButtonOperation(new CodeLocationLogicStub());
+        final CodedClickButtonCodeOperation underTest = new CodedClickButtonCodeOperation(new CodeLocationLogicStub());
         assertThat(
                 underTest.codeFor(new Action(CLICK_BUTTON, "submit")))
                 .isEqualTo("driver.findElement(By.id(\"submitHtmlId\")).click();");

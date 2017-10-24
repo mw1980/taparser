@@ -1,8 +1,7 @@
 package org.mrr.core.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.Value;
 
 /**
  * The java representation of a test action.
@@ -12,8 +11,7 @@ import lombok.ToString;
  * - the value of the action (optional), like: the value to set in the description field,
  * the url of the page to load, the value to check for in an edit field.
  */
-@EqualsAndHashCode
-@ToString
+@Value
 @AllArgsConstructor
 public class Action {
     public static final Action EMPTY = new Action(ActionType.UNKNOWN, "", "");

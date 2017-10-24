@@ -9,15 +9,15 @@ import static org.junit.Assert.assertThat;
 import static org.mrr.core.domain.ActionType.UNKNOWN;
 
 
-public class AbstractParseTestActionOperationTemplateTest {
+public class AbstractParseActionOperationTemplateTest {
     @Test
     public void nullObjectShouldParseDescriptionToUnknowTestStep() {
-        final Action parsed = AbstractParseTestActionOperationTemplate.UNKNOWN.actionFrom("any description");
+        final Action parsed = AbstractParseActionOperationTemplate.UNKNOWN.actionFrom("any description");
         assertThat(parsed.actionType(), equalTo(UNKNOWN));
     }
 
     @Test
     public void nullObjectShouldNotHandleAnyDescriptions() {
-        assertThat(AbstractParseTestActionOperationTemplate.UNKNOWN.canHandle("any description"), is(false));
+        assertThat(AbstractParseActionOperationTemplate.UNKNOWN.canHandle("any description"), is(false));
     }
 }

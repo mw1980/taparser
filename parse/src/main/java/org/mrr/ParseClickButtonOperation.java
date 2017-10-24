@@ -13,7 +13,7 @@ import static org.mrr.core.domain.ActionType.CLICK_LINK;
  * Parse operation class for the actions of type: "click button button_name".
  */
 @Component
-public class ParseClickButtonOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseClickButtonOperation extends AbstractParseActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

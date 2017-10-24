@@ -1,25 +1,25 @@
 package org.mrr;
 
 import org.mrr.api.CodeFactory;
-import org.mrr.core.CodeTestActionLogic;
+import org.mrr.core.CodeActionLogic;
 import org.mrr.core.domain.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-class DefaultCodeTestActionLogic implements CodeTestActionLogic {
+class DefaultCodeActionLogic implements CodeActionLogic {
 
     private final CodeFactory factory;
 
     @Autowired
-    public DefaultCodeTestActionLogic(final CodeFactory generatorFactory) {
-        this.factory = generatorFactory;
+    public DefaultCodeActionLogic(final CodeFactory codeFactory) {
+        this.factory = codeFactory;
     }
 
     @Override
     public String codeForAction(final Action action) {
         return factory
-                .generateCodeOperationFor(action)
+                .codeGenerationOperationFor(action)
                 .codeFor(action);
     }
 }

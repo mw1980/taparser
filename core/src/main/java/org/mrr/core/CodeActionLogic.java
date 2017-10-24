@@ -5,9 +5,9 @@ import org.mrr.core.domain.Action;
 /**
  * Base interface for classes that generate automation code, like selenium.
  */
-public interface CodeTestActionLogic {
+public interface CodeActionLogic {
     /**
-     * Generates the automation code for the test action object received as parameter.
+     * Returns the automation code for the test action object received as parameter.
      *
      * @return the automation code (for instance selenium) for the given test action object.
      */

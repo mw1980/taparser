@@ -5,7 +5,7 @@ import java.io.IOException;
 import static java.lang.String.format;
 
 /**
- * The interface stores the execute test operation logic.
+ * The interface handles the storing of the string information on the disk.
  */
 public interface PersistToFileOperation {
     /**

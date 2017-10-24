@@ -11,7 +11,7 @@ public class CodeLoadPageOperationTest {
 
     @Test
     public void testGenerateCode() throws Exception {
-        final CodeLoadPageOperation underTest = new CodeLoadPageOperation();
+        final CodedLoadPageCodeOperation underTest = new CodedLoadPageCodeOperation();
         assertThat(
                 underTest.codeFor(new Action(ActionType.LOAD_PAGE, "", "www.google.com")),
                 equalTo("driver.get(\"www.google.com\");"));

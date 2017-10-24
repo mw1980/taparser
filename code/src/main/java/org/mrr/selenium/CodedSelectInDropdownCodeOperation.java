@@ -2,7 +2,7 @@ package org.mrr.selenium;
 
 
 import org.mrr.api.CodeLocationLogic;
-import org.mrr.api.CodeTestActionOperation;
+import org.mrr.api.GenerateActionCodeOperation;
 import org.mrr.core.domain.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,12 +14,12 @@ import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
  * Code generate operation for the action: select in dropdown x value "y".
  */
 @Component
-public class CodeSelectInDropdownOperation implements CodeTestActionOperation {
+public class CodedSelectInDropdownCodeOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodeSelectInDropdownOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedSelectInDropdownCodeOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 

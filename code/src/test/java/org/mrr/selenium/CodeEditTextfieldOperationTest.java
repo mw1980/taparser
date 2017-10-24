@@ -10,7 +10,7 @@ public class CodeEditTextfieldOperationTest {
 
     @Test
     public void shouldGenerateCodeAsExpected() {
-        final CodeEditTextfieldOperation underTest = new CodeEditTextfieldOperation(new CodeLocationLogicStub());
+        final CodedEditTextfieldCodeOperation underTest = new CodedEditTextfieldCodeOperation(new CodeLocationLogicStub());
         assertThat(
                 underTest.codeFor(new Action(ActionType.EDIT_TEXT, "user", "newValue")))
                 .isEqualTo("driver.findElement(By.id(\"userHtmlId\")).sendKeys(\"newValue\");");

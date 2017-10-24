@@ -2,7 +2,7 @@ package org.mrr;
 
 import org.mrr.api.CodeFactory;
 import org.mrr.api.CodeOperationNotFoundException;
-import org.mrr.api.CodeTestActionOperation;
+import org.mrr.api.GenerateActionCodeOperation;
 import org.mrr.core.domain.Action;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -22,8 +22,8 @@ public class DefaultCodeFactory implements ApplicationContextAware, CodeFactory 
     }
 
     @Override
-    public CodeTestActionOperation generateCodeOperationFor(final Action action) {
-        final Map<String, CodeTestActionOperation> operations = this.context.getBeansOfType(CodeTestActionOperation.class);
+    public GenerateActionCodeOperation codeGenerationOperationFor(final Action action) {
+        final Map<String, GenerateActionCodeOperation> operations = this.context.getBeansOfType(GenerateActionCodeOperation.class);
         return operations.values().stream()
                 .filter(operation -> operation.canHandle(action))
                 .findFirst()

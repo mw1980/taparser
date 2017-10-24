@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface CodeSpecificationLogic {
     /**
-     * Converts all the action descriptions from the specification store to automation commands.
+     * Converts all the registered test action descriptions to their correspondent automation commands.
      *
-     * @return List of {@link CodedTestAction} objects, like Selenium, for the actions described in the specification store.
+     * @return List of {@link CodedAction} objects.
      */
-    List<CodedTestAction> codeForSpecification();
+    List<CodedAction> codeForSpecification();
 }

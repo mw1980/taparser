@@ -1,7 +1,7 @@
 package org.mrr.selenium;
 
 import org.mrr.api.CodeLocationLogic;
-import org.mrr.api.CodeTestActionOperation;
+import org.mrr.api.GenerateActionCodeOperation;
 import org.mrr.core.domain.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,12 +13,12 @@ import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
  * Code generate operation for the actions of type: "Click button myButton".
  */
 @Component
-public class CodeClickButtonOperation implements CodeTestActionOperation {
+public class CodedClickButtonCodeOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodeClickButtonOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedClickButtonCodeOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 

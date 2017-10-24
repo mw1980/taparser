@@ -9,5 +9,5 @@ public interface UiUnitTest {
      *
      * @param actions, the test actions that the unit test should provide
      */
-    void persist(Iterable<CodedTestAction> actions);
+    void persist(Iterable<CodedAction> actions);
 }

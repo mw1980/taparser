@@ -3,9 +3,9 @@ package org.mrr.api;
 import org.mrr.core.domain.Action;
 
 /**
- *  Interface for the code generation operations.
+ *  The interface handles the action code generation.
  */
-public interface CodeTestActionOperation {
+public interface GenerateActionCodeOperation {
     /**
      * Generates the test automation code for the {@link Action} object received as parameter.
      */

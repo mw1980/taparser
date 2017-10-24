@@ -25,7 +25,7 @@ public class DefaultTestSettingsTest {
     @Test
     public void shouldReturnInjectedPathToGecko() {
         assertThat(
-                new DefaultTestSettings("", "", "gecko").getGeckoDriverPath(),
+                new DefaultTestSettings("", "", "gecko").geckoDriverPath(),
                 is("gecko")
         );
     }

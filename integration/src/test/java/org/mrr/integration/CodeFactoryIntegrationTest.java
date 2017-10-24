@@ -4,16 +4,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mrr.DefaultCodeFactory;
 import org.mrr.api.CodeOperationNotFoundException;
-import org.mrr.api.CodeTestActionOperation;
+import org.mrr.api.GenerateActionCodeOperation;
 import org.mrr.config.ApplicationConfig;
 import org.mrr.core.domain.Action;
 import org.mrr.core.domain.ActionType;
-import org.mrr.selenium.CodeClickButtonOperation;
-import org.mrr.selenium.CodeDeselectCheckboxOperation;
-import org.mrr.selenium.CodeEditTextfieldOperation;
-import org.mrr.selenium.CodeLoadPageOperation;
-import org.mrr.selenium.CodeSelectCheckboxOperation;
-import org.mrr.selenium.CodeSelectInDropdownOperation;
+import org.mrr.selenium.CodedClickButtonCodeOperation;
+import org.mrr.selenium.CodedDeselectCheckboxCodeOperation;
+import org.mrr.selenium.CodedEditTextfieldCodeOperation;
+import org.mrr.selenium.CodedLoadPageCodeOperation;
+import org.mrr.selenium.CodedSelectCheckboxCodeOperation;
+import org.mrr.selenium.CodedSelectInDropdownCodeOperation;
 import org.mrr.selenium.DefaultUiUnitTest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
@@ -38,48 +38,48 @@ public class CodeFactoryIntegrationTest {
     @Test
     public void whenCreatingInstanceForLoadPageTestStep_shouldReturnLoadPageCodeGenerator() {
         final Action action = new Action(LOAD_PAGE, "");
-        final CodeTestActionOperation codeGenerator = factory.generateCodeOperationFor(action);
-        assertTrue(codeGenerator instanceof CodeLoadPageOperation);
+        final GenerateActionCodeOperation codeGenerator = factory.codeGenerationOperationFor(action);
+        assertTrue(codeGenerator instanceof CodedLoadPageCodeOperation);
     }
 
     @Test
     public void whenCreatingInstanceForEditTextTestStep_shouldReturnEditTextCodeGenerator() {
         final Action action = new Action(EDIT_TEXT, "");
-        final CodeTestActionOperation codeGenerator = factory.generateCodeOperationFor(action);
-        assertTrue(codeGenerator instanceof CodeEditTextfieldOperation);
+        final GenerateActionCodeOperation codeGenerator = factory.codeGenerationOperationFor(action);
+        assertTrue(codeGenerator instanceof CodedEditTextfieldCodeOperation);
     }
 
     @Test
     public void whenCreatingInstanceForClickButtonTestStep_shouldReturnClickButtonCodeGenerator() {
         final Action action = new Action(CLICK_BUTTON, "");
-        final CodeTestActionOperation codeGenerator = factory.generateCodeOperationFor(action);
-        assertTrue(codeGenerator instanceof CodeClickButtonOperation);
+        final GenerateActionCodeOperation codeGenerator = factory.codeGenerationOperationFor(action);
+        assertTrue(codeGenerator instanceof CodedClickButtonCodeOperation);
     }
 
     @Test
     public void whenCreatingInstanceForSelectInDropdownTestStep_shouldReturnSelectInDropdownGenerator() {
         final Action action = new Action(ActionType.SELECT_IN_DROPDOWN, "");
-        final CodeTestActionOperation codeGenerator = factory.generateCodeOperationFor(action);
-        assertTrue(codeGenerator instanceof CodeSelectInDropdownOperation);
+        final GenerateActionCodeOperation codeGenerator = factory.codeGenerationOperationFor(action);
+        assertTrue(codeGenerator instanceof CodedSelectInDropdownCodeOperation);
     }
 
     @Test
     public void whenCreatingInstanceForSelectCheckboxTestStep_shouldReturnSelectCheckboxCodeGenerator() {
         final Action action = new Action(ActionType.SELECT_CHECKBOX, "");
-        final CodeTestActionOperation codeGenerator = factory.generateCodeOperationFor(action);
-        assertTrue(codeGenerator instanceof CodeSelectCheckboxOperation);
+        final GenerateActionCodeOperation codeGenerator = factory.codeGenerationOperationFor(action);
+        assertTrue(codeGenerator instanceof CodedSelectCheckboxCodeOperation);
     }
 
     @Test
     public void whenCreatingInstanceForDeselectCheckboxTestStep_shouldReturnDeselectCheckboxCodeGenerator() {
         final Action action = new Action(ActionType.DESELECT_CHECKBOX, "");
-        final CodeTestActionOperation codeGenerator = factory.generateCodeOperationFor(action);
-        assertTrue(codeGenerator instanceof CodeDeselectCheckboxOperation);
+        final GenerateActionCodeOperation codeGenerator = factory.codeGenerationOperationFor(action);
+        assertTrue(codeGenerator instanceof CodedDeselectCheckboxCodeOperation);
     }
 
     @Test(expected = CodeOperationNotFoundException.class)
     public void whenCreatingGeneratorForUnknownAction_shouldThrowException() {
-        factory.generateCodeOperationFor(new Action(ActionType.UNKNOWN, ""));
+        factory.codeGenerationOperationFor(new Action(ActionType.UNKNOWN, ""));
     }
 
     @Test

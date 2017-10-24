@@ -9,7 +9,7 @@ import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
  * Parse operation class for the actions of type: "deselect checkbox mycheckbox".
  */
 @Component
-public class ParseDeselectCheckboxOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseDeselectCheckboxOperation extends AbstractParseActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

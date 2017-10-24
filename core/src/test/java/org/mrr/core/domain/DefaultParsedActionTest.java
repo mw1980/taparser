@@ -5,20 +5,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.ParseTestActionLogic;
-import org.mrr.core.TestActionDescription;
+import org.mrr.core.DescribedAction;
+import org.mrr.core.ParseActionLogic;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-public class DefaultParsedTestActionTest {
+public class DefaultParsedActionTest {
 
     @Mock
-    private TestActionDescription origin;
+    private DescribedAction origin;
 
     @Mock
-    private ParseTestActionLogic parseLogic;
+    private ParseActionLogic parseLogic;
 
     @Before
     public void setup() {
@@ -26,9 +26,9 @@ public class DefaultParsedTestActionTest {
     }
 
     @Test
-    public void whenParsingTestAction_shouldDelegateCallToDependencies() {
+    public void whenParsingAction_shouldDelegateCallToDependencies() {
         when(origin.description()).thenReturn("");
-        new DefaultParsedTestAction(origin, parseLogic).action();
+        new DefaultParsedAction(origin, parseLogic).action();
         verifyZeroInteractions(origin);
         verify(parseLogic).actionFromDescription(origin);
     }

@@ -4,19 +4,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.CodeTestActionLogic;
-import org.mrr.core.ParsedTestAction;
+import org.mrr.core.CodeActionLogic;
+import org.mrr.core.ParsedAction;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class DefaultCodedTestActionTest {
+public class DefaultCodedActionTest {
 
     @Mock
-    private ParsedTestAction origin;
+    private ParsedAction origin;
 
     @Mock
-    private CodeTestActionLogic codeLogic;
+    private CodeActionLogic codeLogic;
 
     @Before
     public void setup() {
@@ -26,7 +26,7 @@ public class DefaultCodedTestActionTest {
     @Test
     public void whenDeliveringAutomationCode_shouldCallInnerMethods() {
         when(origin.action()).thenReturn(Action.EMPTY);
-        new DefaultCodedTestAction(origin, codeLogic).code();
+        new DefaultCodedAction(origin, codeLogic).code();
         verify(origin).action();
         verify(codeLogic).codeForAction(Action.EMPTY);
     }

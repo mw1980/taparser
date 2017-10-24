@@ -1,5 +1,6 @@
 package org.mrr;
 
+import org.mrr.core.DescribedAction;
 import org.mrr.core.domain.Action;
 import org.mrr.core.domain.ActionType;
 
@@ -8,11 +9,11 @@ import java.util.regex.Pattern;
 import static java.lang.String.format;
 
 /**
- * Abstract class, contains the methods to parse a {@link org.mrr.core.TestActionDescription} description and create
+ * Abstract class, contains the methods to parse a {@link DescribedAction} description and create
  * {@link Action} objects from test action's description.
  */
-public abstract class AbstractParseTestActionOperationTemplate implements ParseTestActionOperation {
-    public static final ParseTestActionOperation UNKNOWN = new ParseTestActionOperation() {
+public abstract class AbstractParseActionOperationTemplate implements ParseActionOperation {
+    public static final ParseActionOperation UNKNOWN = new ParseActionOperation() {
         @Override
         public Action actionFrom(final String description) {
             return new Action(ActionType.UNKNOWN, "", "");

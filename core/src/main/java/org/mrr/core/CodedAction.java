@@ -5,10 +5,10 @@ import org.mrr.core.domain.Action;
 /**
  * The class is a representation of a test action that contains also its automation code.
  */
-public interface CodedTestAction extends ParsedTestAction {
+public interface CodedAction extends ParsedAction {
     String code();
 
-    final class DummyCodedTestAction implements CodedTestAction {
+    final class DummyCodedAction implements CodedAction {
 
         @Override
         public Action action() {

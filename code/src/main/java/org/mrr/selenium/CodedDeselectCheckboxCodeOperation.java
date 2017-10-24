@@ -1,7 +1,7 @@
 package org.mrr.selenium;
 
 import org.mrr.api.CodeLocationLogic;
-import org.mrr.api.CodeTestActionOperation;
+import org.mrr.api.GenerateActionCodeOperation;
 import org.mrr.core.domain.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,12 +13,12 @@ import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
  * Code generate operation for the actions of type: "deselect checkbox my_checkbox".
  */
 @Component
-public class CodeDeselectCheckboxOperation implements CodeTestActionOperation {
+public class CodedDeselectCheckboxCodeOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodeDeselectCheckboxOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedDeselectCheckboxCodeOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 

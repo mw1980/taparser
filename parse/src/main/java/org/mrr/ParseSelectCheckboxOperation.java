@@ -9,7 +9,7 @@ import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
  * Parse operation class for the actions of type "Select checkbox".
  */
 @Component
-public class ParseSelectCheckboxOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseSelectCheckboxOperation extends AbstractParseActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

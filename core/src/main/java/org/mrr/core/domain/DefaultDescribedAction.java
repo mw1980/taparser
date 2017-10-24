@@ -3,12 +3,12 @@ package org.mrr.core.domain;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.mrr.core.TestActionDescription;
+import org.mrr.core.DescribedAction;
 
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class DefaultTestActionDescription implements TestActionDescription {
+public class DefaultDescribedAction implements DescribedAction {
     private final String description;
 
     @Override

@@ -10,7 +10,7 @@ import static org.mrr.core.domain.ActionType.SELECT_RADIO_BUTTON;
  * Parse Operation class for the actions of type: "select radio button radioButtonOption".
  */
 @Component
-public class ParseClickRadioButtonOperation extends AbstractParseTestActionOperationTemplate {
+public class ParseClickRadioButtonOperation extends AbstractParseActionOperationTemplate {
 
     @Override
     protected void validate(final String description) {

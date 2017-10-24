@@ -7,7 +7,7 @@ public interface TestSettings {
 
     String basePackagePath();
 
-    String getGeckoDriverPath();
+    String geckoDriverPath();
 
     String completePackagePath();
 
@@ -19,7 +19,7 @@ public interface TestSettings {
         }
 
         @Override
-        public String getGeckoDriverPath() {
+        public String geckoDriverPath() {
             return "geckoDriver";
         }
 

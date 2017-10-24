@@ -6,7 +6,7 @@ import org.mrr.core.CodeLocationVisitor;
 import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
 
 /**
- * The enum contains the identification criteria for a user interface element on the gui.
+ * The class contains the identification criteria for a user interface element on the gui.
  * Example: byId, byName, byXPath, ByCss.
  */
 public enum IdentificationCriteria {

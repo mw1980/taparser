@@ -25,7 +25,7 @@ public class DefaultTestSettings implements TestSettings {
     }
 
     @Override
-    public String getGeckoDriverPath() {
+    public String geckoDriverPath() {
         return geckoDriverPath;
     }
 

@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mrr.core.CodeTestActionLogic;
-import org.mrr.core.ParseTestActionLogic;
+import org.mrr.core.CodeActionLogic;
+import org.mrr.core.ParseActionLogic;
 import org.mrr.core.TestSpecificationStore;
 import org.mrr.core.domain.Action;
 import org.mrr.specification.CodeSpecificationLogicImpl;
@@ -18,10 +18,10 @@ public class CodeSpecificationLogicImplTest {
     private static final String TEST_DESCRIPTION = "test description";
 
     @Mock
-    private ParseTestActionLogic parseLogic;
+    private ParseActionLogic parseLogic;
 
     @Mock
-    private CodeTestActionLogic generateLogic;
+    private CodeActionLogic generateLogic;
 
     @Mock
     private TestSpecificationStore specificationStore;

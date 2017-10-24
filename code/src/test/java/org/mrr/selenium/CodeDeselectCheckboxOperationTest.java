@@ -16,13 +16,13 @@ public class CodeDeselectCheckboxOperationTest {
     public void whenGeneratingCodeForNotIdentifiableTarget_shouldThrowException() {
         final CodeLocationLogic codeLocationLogic = mock(CodeLocationLogic.class);
         when(codeLocationLogic.locationCodeFor("notThere")).thenThrow(new LoadControlsException(""));
-        new CodeDeselectCheckboxOperation(codeLocationLogic)
+        new CodedDeselectCheckboxCodeOperation(codeLocationLogic)
                 .codeFor(new Action(DESELECT_CHECKBOX, "notThere"));
     }
 
     @Test
     public void shouldGenerateCodeAsExpected() {
-        final CodeDeselectCheckboxOperation underTest = new CodeDeselectCheckboxOperation(new CodeLocationLogicStub());
+        final CodedDeselectCheckboxCodeOperation underTest = new CodedDeselectCheckboxCodeOperation(new CodeLocationLogicStub());
         assertThat(underTest.codeFor(new Action(DESELECT_CHECKBOX, "agreeCookies")))
                 .isEqualTo("if (driver.findElement(By.id(\"agreeCookiesHtmlId\")).isSelected()){driver.findElement(By.id(\"agreeCookiesHtmlId\")).click();}");
     }
