@@ -1,12 +1,12 @@
 package org.mrr.selenium.location;
 
 import org.mrr.api.CodeException;
-import org.mrr.core.CodeLocationType;
+import org.mrr.core.CodeLocationStrategy;
 
 /**
- * CodeLocationType implementation for the unknown element types.
+ * CodeLocationStrategy implementation for the unknown element types.
  */
-public class CodeLocationUnknown implements CodeLocationType {
+public class CodeLocationUnknown implements CodeLocationStrategy {
     @Override
     public String codeFor(final String value) {
         throw new CodeException(

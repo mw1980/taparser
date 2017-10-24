@@ -43,7 +43,7 @@ public class SeleniumCodeLocationLogic implements CodeLocationLogic {
 
     private String identificationCodeFor(final UiControl control) {
         return control.identificationCriteria()
-                .codeLocationType(codeLocationVisitor)
+                .codeLocationStrategy(codeLocationVisitor)
                 .codeFor(control.id());
     }
 }

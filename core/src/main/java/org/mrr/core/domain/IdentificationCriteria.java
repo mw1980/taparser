@@ -1,6 +1,6 @@
 package org.mrr.core.domain;
 
-import org.mrr.core.CodeLocationType;
+import org.mrr.core.CodeLocationStrategy;
 import org.mrr.core.CodeLocationVisitor;
 
 import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
@@ -17,7 +17,7 @@ public enum IdentificationCriteria {
         }
 
         @Override
-        public CodeLocationType codeLocationType(final CodeLocationVisitor visitor) {
+        public CodeLocationStrategy codeLocationStrategy(final CodeLocationVisitor visitor) {
             return visitor.codeLocationForId();
         }
 
@@ -28,7 +28,7 @@ public enum IdentificationCriteria {
         }
 
         @Override
-        public CodeLocationType codeLocationType(final CodeLocationVisitor visitor) {
+        public CodeLocationStrategy codeLocationStrategy(final CodeLocationVisitor visitor) {
             return visitor.codeLocationForUnknownCriteria();
         }
     }, XPATH {
@@ -38,13 +38,13 @@ public enum IdentificationCriteria {
         }
 
         @Override
-        public CodeLocationType codeLocationType(final CodeLocationVisitor visitor) {
+        public CodeLocationStrategy codeLocationStrategy(final CodeLocationVisitor visitor) {
             return visitor.codeLocationForXPath();
         }
     };
 
     public abstract boolean matchesDescription(String description);
 
-    public abstract CodeLocationType codeLocationType(CodeLocationVisitor visitor);
+    public abstract CodeLocationStrategy codeLocationStrategy(CodeLocationVisitor visitor);
 
 }

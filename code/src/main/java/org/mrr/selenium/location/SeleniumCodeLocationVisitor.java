@@ -1,6 +1,6 @@
 package org.mrr.selenium.location;
 
-import org.mrr.core.CodeLocationType;
+import org.mrr.core.CodeLocationStrategy;
 import org.mrr.core.CodeLocationVisitor;
 import org.springframework.stereotype.Component;
 
@@ -12,17 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SeleniumCodeLocationVisitor implements CodeLocationVisitor {
     @Override
-    public CodeLocationType codeLocationForId() {
+    public CodeLocationStrategy codeLocationForId() {
         return new CodeLocationById();
     }
 
     @Override
-    public CodeLocationType codeLocationForXPath() {
+    public CodeLocationStrategy codeLocationForXPath() {
         return new CodeLocationByXPath();
     }
 
     @Override
-    public CodeLocationType codeLocationForUnknownCriteria() {
+    public CodeLocationStrategy codeLocationForUnknownCriteria() {
         return new CodeLocationUnknown();
     }
 }

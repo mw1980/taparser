@@ -4,13 +4,13 @@ import org.mrr.core.domain.IdentificationCriteria;
 
 /**
  * Visitor class for the {@link IdentificationCriteria} enums.
- * Returns the CodeLocationType classes, that deliver the identification code for the ui controls.
+ * Returns the CodeLocationStrategy classes, that deliver the identification code for the ui controls.
  */
 public interface CodeLocationVisitor {
 
-    CodeLocationType codeLocationForId();
+    CodeLocationStrategy codeLocationForId();
 
-    CodeLocationType codeLocationForXPath();
+    CodeLocationStrategy codeLocationForXPath();
 
-    CodeLocationType codeLocationForUnknownCriteria();
+    CodeLocationStrategy codeLocationForUnknownCriteria();
 }
