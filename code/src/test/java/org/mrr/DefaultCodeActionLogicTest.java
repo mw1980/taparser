@@ -1,7 +1,7 @@
 package org.mrr;
 
 import org.junit.jupiter.api.Test;
-import org.mrr.api.GenerateActionCodeOperation;
+import org.mrr.api.CodedOperation;
 import org.mrr.core.CodeActionLogic;
 import org.mrr.core.domain.Action;
 
@@ -15,23 +15,23 @@ class DefaultCodeActionLogicTest {
     @Test
     void whenGeneratingCode_shouldCallTheGeneratorFactory() {
         final DefaultCodeFactory factory = mock(DefaultCodeFactory.class);
-        when(factory.codeGenerationOperationFor(aTestStep())).thenReturn(mock(GenerateActionCodeOperation.class));
+        when(factory.codedOperationFor(aTestStep())).thenReturn(mock(CodedOperation.class));
 
         final CodeActionLogic underTest = new DefaultCodeActionLogic(factory);
         underTest.codeForAction(aTestStep());
 
-        verify(factory).codeGenerationOperationFor(aTestStep());
+        verify(factory).codedOperationFor(aTestStep());
     }
 
     private Action aTestStep() {
-        return new Action(CLICK_BUTTON, "", "");
+        return Action.withType(CLICK_BUTTON);
     }
 
     @Test
     void whenGeneratingCode_shouldCallTheGenerator() {
         final DefaultCodeFactory factory = mock(DefaultCodeFactory.class);
-        final GenerateActionCodeOperation generate = mock(GenerateActionCodeOperation.class);
-        when(factory.codeGenerationOperationFor(aTestStep())).thenReturn(generate);
+        final CodedOperation generate = mock(CodedOperation.class);
+        when(factory.codedOperationFor(aTestStep())).thenReturn(generate);
 
         final CodeActionLogic underTest = new DefaultCodeActionLogic(factory);
         underTest.codeForAction(aTestStep());

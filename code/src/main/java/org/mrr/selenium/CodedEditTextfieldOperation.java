@@ -1,7 +1,7 @@
 package org.mrr.selenium;
 
 import org.mrr.api.CodeLocationLogic;
-import org.mrr.api.GenerateActionCodeOperation;
+import org.mrr.api.CodedOperation;
 import org.mrr.core.domain.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import static org.mrr.core.domain.ActionType.EDIT_TEXT;
  * Code generate operation for the operation "set value in edit description field".
  */
 @Component
-public class CodedEditTextfieldOperation implements GenerateActionCodeOperation {
+public class CodedEditTextfieldOperation implements CodedOperation {
 
     private final CodeLocationLogic locationLogic;
 

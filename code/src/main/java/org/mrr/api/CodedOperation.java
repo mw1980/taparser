@@ -3,11 +3,11 @@ package org.mrr.api;
 import org.mrr.core.domain.Action;
 
 /**
- *  The interface handles the action code generation.
+ *  Base interface for classes that contain the automation code for a single operation, like: click a button, load a page.
  */
-public interface GenerateActionCodeOperation {
+public interface CodedOperation {
     /**
-     * Generates the test automation code for the {@link Action} object received as parameter.
+     * Returns the test automation code for the {@link Action} object received as parameter.
      */
     String codeFor(Action action);
 

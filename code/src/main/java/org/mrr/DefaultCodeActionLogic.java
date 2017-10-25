@@ -19,7 +19,7 @@ class DefaultCodeActionLogic implements CodeActionLogic {
     @Override
     public String codeForAction(final Action action) {
         return factory
-                .codeGenerationOperationFor(action)
+                .codedOperationFor(action)
                 .codeFor(action);
     }
 }

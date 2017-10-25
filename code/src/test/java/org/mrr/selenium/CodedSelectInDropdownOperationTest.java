@@ -17,11 +17,11 @@ class CodedSelectInDropdownOperationTest {
 
     @Test
     void whenGeneratingCodeForUiElementWithoutIdentifier_shouldThrowIdentifierValueNotFoundException() {
-        final CodeLocationLogic locatorCodeOperation = mock(CodeLocationLogic.class);
-        when(locatorCodeOperation.locationCodeFor("withoutIdentifier")).thenThrow(new LoadControlsException("control not found"));
+        final CodeLocationLogic codeLocationLogic = mock(CodeLocationLogic.class);
+        when(codeLocationLogic.locationCodeFor("withoutIdentifier")).thenThrow(new LoadControlsException("control not found"));
         assertThrows(
                 LoadControlsException.class,
-                () -> new CodedSelectInDropdownOperation(locatorCodeOperation)
+                () -> new CodedSelectInDropdownOperation(codeLocationLogic)
                         .codeFor(new Action(SELECT_IN_DROPDOWN, "withoutIdentifier"))
         );
     }

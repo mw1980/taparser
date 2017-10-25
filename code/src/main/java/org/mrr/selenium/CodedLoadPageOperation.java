@@ -1,6 +1,6 @@
 package org.mrr.selenium;
 
-import org.mrr.api.GenerateActionCodeOperation;
+import org.mrr.api.CodedOperation;
 import org.mrr.core.domain.Action;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import static org.mrr.core.domain.ActionType.LOAD_PAGE;
  * Code generate operation for the "load page" actions.
  */
 @Component
-public class CodedLoadPageOperation implements GenerateActionCodeOperation {
+public class CodedLoadPageOperation implements CodedOperation {
 
     @Override
     public String codeFor(final Action action) {

@@ -22,7 +22,6 @@ class DefaultUiUnitTestTest {
     }
 
     @Test
-//(expected = CodeException.class)
     void persistSingleAction_parseException() {
         final UiUnitTest underTest = new DefaultUiUnitTest(
                 new DummyTestSetting(),
