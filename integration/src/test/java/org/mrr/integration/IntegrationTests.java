@@ -3,8 +3,8 @@ package org.mrr.integration;
 import org.junit.Test;
 import org.mrr.config.ApplicationConfig;
 import org.mrr.core.domain.UiControl;
-import org.mrr.reader.txt.controls.ControlsLogicImpl;
 import org.mrr.reader.txt.controls.CsvControlDescriptions;
+import org.mrr.reader.txt.controls.DefaultControlsLogic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -26,7 +26,7 @@ public class IntegrationTests {
     @Test
     public void shouldLoadUiElementsWhenCalledFromControlsLogicClass(){
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final ControlsLogicImpl controlsLogic = context.getBean("controlsLogicImpl", ControlsLogicImpl.class);
+        final DefaultControlsLogic controlsLogic = context.getBean("defaultControlsLogic", DefaultControlsLogic.class);
         final Map<String, UiControl> controls = controlsLogic.allControls();
         assertThat(controls, notNullValue());
     }

@@ -15,15 +15,15 @@ import static org.apache.commons.collections4.MapUtils.isEmpty;
  * The class also implements a low level caching mechanism.
  */
 @Component
-class ControlsRepositoryImpl implements ControlsRepository {
+class DefaultControlsRepository implements ControlsRepository {
 
     private final RegisteredControls registered;
 
-    //kind of caching
+    //low level caching
     private Map<String, UiControl> controls;
 
     @Autowired
-    public ControlsRepositoryImpl(final RegisteredControls registeredControls) {
+    public DefaultControlsRepository(final RegisteredControls registeredControls) {
         this.registered = registeredControls;
     }
 

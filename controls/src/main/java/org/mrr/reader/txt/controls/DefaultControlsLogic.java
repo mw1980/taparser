@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class ControlsLogicImpl implements ControlsLogic {
+public class DefaultControlsLogic implements ControlsLogic {
 
     private final ControlsRepository repository;
 
     @Autowired
-    public ControlsLogicImpl(final ControlsRepository repository) {
+    public DefaultControlsLogic(final ControlsRepository repository) {
         this.repository = repository;
     }
 

@@ -1,13 +1,18 @@
 package org.mrr.reader.txt.controls;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mrr.core.LoadControlsException;
 
-public class CsvLoadDescriptionStrategyTest {
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-    @Test(expected = LoadControlsException.class)
-    public void shouldTranslateIOExceptionToLoadControlsException() {
-        final CsvControlDescriptions loadStrategy = new CsvControlDescriptions("/not/existing/path");
-        loadStrategy.allDescriptions();
+class CsvLoadDescriptionStrategyTest {
+
+    @Test
+    void shouldTranslateIOExceptionToLoadControlsException() {
+        final CsvControlDescriptions underTest = new CsvControlDescriptions("/not/existing/path");
+        assertThrows(
+                LoadControlsException.class,
+                underTest::allDescriptions
+        );
     }
 }

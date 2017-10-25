@@ -13,7 +13,6 @@ import static java.nio.file.Paths.get;
 /**
  * The class contains methods to read controls descriptions from an csv file.
  */
-//The spring bean is declared in the ApplicationConfig class.
 public class CsvControlDescriptions implements ControlDescriptions {
 
     private final String location;

@@ -39,6 +39,7 @@ class CsvRegisteredControls implements RegisteredControls {
         return words[0];
     }
 
+    //the words are expected in this form: words[0] = name, words[1] = identification type, words[2] = identification value
     private UiControl control(final String[] words) {
         final String name = name(words);
         final IdentificationCriteria type = Stream.of(IdentificationCriteria.values())

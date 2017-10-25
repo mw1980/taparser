@@ -5,7 +5,7 @@ import org.mrr.core.TestSpecificationStore;
 import org.mrr.reader.txt.controls.CsvControlDescriptions;
 import org.mrr.reader.txt.controls.api.ControlDescriptions;
 import org.mrr.selenium.DefaultTestSettings;
-import org.mrr.specification.FileTestSpecificationStoreImpl;
+import org.mrr.specification.FileTestSpecificationStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -36,7 +36,7 @@ public class ApplicationConfig {
 
     @Bean
     public TestSpecificationStore fileTestSpecificationStore() {
-        return new FileTestSpecificationStoreImpl(specificationLocation);
+        return new FileTestSpecificationStore(specificationLocation);
     }
 
     @Bean

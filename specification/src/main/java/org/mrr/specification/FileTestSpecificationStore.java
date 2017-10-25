@@ -13,10 +13,10 @@ import java.util.List;
 /**
  * This class contains methods for reading test cases from an external file.
  */
-public class FileTestSpecificationStoreImpl implements TestSpecificationStore {
+public class FileTestSpecificationStore implements TestSpecificationStore {
     private String location;
 
-    public FileTestSpecificationStoreImpl(final String specificationLocation) {
+    public FileTestSpecificationStore(final String specificationLocation) {
         this.location = specificationLocation;
     }
 
