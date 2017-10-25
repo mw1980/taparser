@@ -1,6 +1,6 @@
 package org.mrr.selenium;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mrr.api.CodeException;
 import org.mrr.api.PersistToFileOperation.DummyPersistToFileOperation;
 import org.mrr.api.PersistToFileOperation.PersistToFileOperationWithException;
@@ -9,22 +9,27 @@ import org.mrr.core.TestSettings.DummyTestSetting;
 import org.mrr.core.UiUnitTest;
 
 import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DefaultUiUnitTestTest {
+class DefaultUiUnitTestTest {
 
     @Test
-    public void persistSingleAction_noException() {
+    void persistSingleAction_noException() {
         final UiUnitTest underTest = new DefaultUiUnitTest(
                 new DummyTestSetting(),
                 new DummyPersistToFileOperation());
         underTest.persist(singletonList(new DummyCodedAction()));
     }
 
-    @Test(expected = CodeException.class)
-    public void persistSingleAction_parseException() {
+    @Test
+//(expected = CodeException.class)
+    void persistSingleAction_parseException() {
         final UiUnitTest underTest = new DefaultUiUnitTest(
                 new DummyTestSetting(),
                 new PersistToFileOperationWithException());
-        underTest.persist(singletonList(new DummyCodedAction()));
+        assertThrows(
+                CodeException.class,
+                () -> underTest.persist(singletonList(new DummyCodedAction()))
+        );
     }
 }

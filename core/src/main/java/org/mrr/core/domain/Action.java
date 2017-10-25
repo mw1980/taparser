@@ -34,4 +34,8 @@ public class Action {
     public String value() {
         return value;
     }
+
+    public static Action withType(final ActionType actionType) {
+        return new Action(actionType, "");
+    }
 }

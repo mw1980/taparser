@@ -5,7 +5,7 @@ import org.mrr.core.CodeLocationVisitor;
 import org.springframework.stereotype.Component;
 
 /**
- * Selenium implementation for the CodeLocationVisitor interface.
+ * Selenium implementation of the CodeLocationVisitor interface.
  * It delivers the selenium classes that can generate the code location for elements with different
  * identification criteria.
  */

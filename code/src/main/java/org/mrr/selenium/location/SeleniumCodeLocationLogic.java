@@ -29,6 +29,7 @@ public class SeleniumCodeLocationLogic implements CodeLocationLogic {
     @Override
     public String locationCodeFor(final String controlName) {
         final UiControl control = controlsLogic.controlWithName(controlName);
+
         if (controlFound(control)) {
             return identificationCodeFor(control);
         } else {

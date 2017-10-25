@@ -11,7 +11,7 @@ import static org.mrr.core.domain.ActionType.LOAD_PAGE;
  * Code generate operation for the "load page" actions.
  */
 @Component
-public class CodedLoadPageCodeOperation implements GenerateActionCodeOperation {
+public class CodedLoadPageOperation implements GenerateActionCodeOperation {
 
     @Override
     public String codeFor(final Action action) {

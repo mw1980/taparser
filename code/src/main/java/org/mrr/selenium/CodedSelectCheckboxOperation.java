@@ -7,29 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static java.lang.String.format;
-import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
+import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
 
 /**
- * Code generate operation for the actions of type: "Click button myButton".
+ * Code generate operation for the step: "select checkbox myCheckbox".
  */
 @Component
-public class CodedClickButtonCodeOperation implements GenerateActionCodeOperation {
+public class CodedSelectCheckboxOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodedClickButtonCodeOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedSelectCheckboxOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 
     @Override
     public String codeFor(final Action action) {
-        return format("driver.findElement(%s).click();",
-                locationLogic.locationCodeFor(action.target()));
+        final String targetCode = locationLogic.locationCodeFor(action.target());
+        return format("if (!driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
+                targetCode, targetCode);
     }
 
     @Override
     public boolean canHandle(final Action action) {
-        return CLICK_BUTTON == action.actionType();
+        return SELECT_CHECKBOX == action.actionType();
     }
 }

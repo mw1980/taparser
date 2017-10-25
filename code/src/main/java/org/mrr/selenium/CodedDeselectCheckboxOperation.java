@@ -7,30 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static java.lang.String.format;
-import static org.mrr.core.domain.ActionType.SELECT_CHECKBOX;
+import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
 
 /**
- * Code generate operation for the step: "select checkbox myCheckbox".
+ * Code generate operation for the actions of type: "deselect checkbox my_checkbox".
  */
 @Component
-public class CodedSelectCheckboxCodeOperation implements GenerateActionCodeOperation {
+public class CodedDeselectCheckboxOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodedSelectCheckboxCodeOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedDeselectCheckboxOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 
     @Override
     public String codeFor(final Action action) {
         final String targetCode = locationLogic.locationCodeFor(action.target());
-        return format("if (!driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
+        return format("if (driver.findElement(%s).isSelected()){driver.findElement(%s).click();}",
                 targetCode, targetCode);
     }
 
     @Override
     public boolean canHandle(final Action action) {
-        return SELECT_CHECKBOX == action.actionType();
+        return DESELECT_CHECKBOX == action.actionType();
     }
 }

@@ -7,30 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static java.lang.String.format;
-import static org.mrr.core.domain.ActionType.EDIT_TEXT;
+import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 
 /**
- * Code generate operation for the operation "set value in edit description field".
+ * Code generate operation for the actions of type: "Click button myButton".
  */
 @Component
-public class CodedEditTextfieldCodeOperation implements GenerateActionCodeOperation {
+public class CodedClickButtonOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodedEditTextfieldCodeOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedClickButtonOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 
     @Override
     public String codeFor(final Action action) {
-        return format("driver.findElement(%s).sendKeys(\"%s\");",
-                locationLogic.locationCodeFor(action.target()),
-                action.value());
+        return format("driver.findElement(%s).click();",
+                locationLogic.locationCodeFor(action.target()));
     }
 
     @Override
     public boolean canHandle(final Action action) {
-        return EDIT_TEXT == action.actionType();
+        return CLICK_BUTTON == action.actionType();
     }
 }

@@ -1,32 +1,25 @@
 package org.mrr.selenium;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class DefaultTestSettingsTest {
-
-    @Test
-    public void shouldReturnInjectedBasePath() {
-        assertThat(
-                new DefaultTestSettings("base", "", "").basePackagePath(),
-                is("base"));
-    }
+class DefaultTestSettingsTest {
 
     @Test
-    public void shouldReturnInjectedCompletePath() {
-        assertThat(
-                new DefaultTestSettings("", "complete", "").completePackagePath(),
-                is("complete")
-        );
-    }
-
-    @Test
-    public void shouldReturnInjectedPathToGecko() {
-        assertThat(
-                new DefaultTestSettings("", "", "gecko").geckoDriverPath(),
-                is("gecko")
+    void shouldReturnInjectedValues() {
+        assertAll(
+                () -> assertThat(
+                        new DefaultTestSettings("base", "", "").basePackagePath(),
+                        is("base")),
+                () -> assertThat(
+                        new DefaultTestSettings("", "complete", "").completePackagePath(),
+                        is("complete")),
+                () -> assertThat(
+                        new DefaultTestSettings("", "", "gecko").geckoDriverPath(),
+                        is("gecko"))
         );
     }
 }

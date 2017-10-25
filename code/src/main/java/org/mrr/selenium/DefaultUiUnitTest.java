@@ -40,6 +40,17 @@ public class DefaultUiUnitTest implements UiUnitTest {
         );
     }
 
+    private void saveCodeToTestFile(final String fileName, final String testCode) {
+        try {
+            persistOperation.execute(
+                    format("%s%s.java", settings.completePackagePath(), fileName),
+                    testCode);
+        } catch (final IOException exception) {
+            LOG.error(errorMessage(), exception);
+            throw new CodeException(errorMessage());
+        }
+    }
+
     private String generatedUnitTestCode(final String className, final Iterable<CodedAction> actions) {
         final StringBuilder actionsCode = new StringBuilder("final WebDriver driver = new FirefoxDriver();\n");
         actions.forEach(action -> actionsCode.append(action.code()).append("\n"));
@@ -54,17 +65,6 @@ public class DefaultUiUnitTest implements UiUnitTest {
                 + actionsCode.toString()
                 + "}"
                 + "}"; //End of class
-    }
-
-    private void saveCodeToTestFile(final String fileName, final String testCode) {
-        try {
-            persistOperation.execute(
-                    format("%s%s.java", settings.completePackagePath(), fileName),
-                    testCode);
-        } catch (final IOException exception) {
-            LOG.error(errorMessage(), exception);
-            throw new CodeException(errorMessage());
-        }
     }
 
     private String errorMessage() {

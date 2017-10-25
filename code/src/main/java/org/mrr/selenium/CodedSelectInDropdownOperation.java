@@ -14,12 +14,12 @@ import static org.mrr.core.domain.ActionType.SELECT_IN_DROPDOWN;
  * Code generate operation for the action: select in dropdown x value "y".
  */
 @Component
-public class CodedSelectInDropdownCodeOperation implements GenerateActionCodeOperation {
+public class CodedSelectInDropdownOperation implements GenerateActionCodeOperation {
 
     private final CodeLocationLogic locationLogic;
 
     @Autowired
-    public CodedSelectInDropdownCodeOperation(final CodeLocationLogic codeLocationLogic) {
+    public CodedSelectInDropdownOperation(final CodeLocationLogic codeLocationLogic) {
         locationLogic = codeLocationLogic;
     }
 
