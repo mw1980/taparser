@@ -1,48 +1,24 @@
 package org.mrr.integration;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.Test;
 import org.mrr.core.CodeActionLogic;
 import org.mrr.core.ParseActionLogic;
 import org.mrr.core.TestSpecificationStore;
-import org.mrr.core.domain.Action;
 import org.mrr.specification.CodeSpecificationLogicImpl;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mrr.core.domain.ActionType.UNKNOWN;
 
-public class CodeSpecificationLogicImplTest {
-
-    private static final String TEST_DESCRIPTION = "test description";
-
-    @Mock
-    private ParseActionLogic parseLogic;
-
-    @Mock
-    private CodeActionLogic generateLogic;
-
-    @Mock
-    private TestSpecificationStore specificationStore;
-
-
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
+class CodeSpecificationLogicImplTest {
 
     @Test
-    public void whenParsingSpecification_shouldLoadDescriptionsFromSpecificationStore() {
-        parseSpecificationLogic().codeForSpecification();
+    void whenCodingSpecification_shouldLoadDescriptionsFromSpecificationStore() {
+        final TestSpecificationStore specificationStore = mock(TestSpecificationStore.class);
+        final CodeSpecificationLogicImpl underTest = new CodeSpecificationLogicImpl(
+                mock(ParseActionLogic.class),
+                mock(CodeActionLogic.class),
+                specificationStore);
+        underTest.codeForSpecification();
         verify(specificationStore).testDescriptions();
-    }
-
-    private CodeSpecificationLogicImpl parseSpecificationLogic() {
-        return new CodeSpecificationLogicImpl(parseLogic, generateLogic, specificationStore);
-    }
-
-    private Action testStep() {
-        return new Action(UNKNOWN, "");
     }
 }

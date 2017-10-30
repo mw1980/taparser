@@ -1,20 +1,19 @@
 package org.mrr.integration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mrr.config.ApplicationConfig;
 import org.mrr.core.CodeActionLogic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestCaseGeneratorLogicIntegrationTest {
+
+class TestCaseGeneratorLogicIntegrationTest {
 
     @Test
-    public void shouldLoadNotNullGeneratorLogicFromApplicationContext(){
+    void codeActionLogicBeanShouldBeAvailable() {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final CodeActionLogic generateLogic = context.getBean("defaultCodeActionLogic", CodeActionLogic.class);
-        assertThat(generateLogic, notNullValue());
+        assertThat(context.getBean("defaultCodeActionLogic", CodeActionLogic.class)).isNotNull();
     }
 }

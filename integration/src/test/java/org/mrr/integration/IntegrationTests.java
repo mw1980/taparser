@@ -1,6 +1,6 @@
 package org.mrr.integration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mrr.config.ApplicationConfig;
 import org.mrr.core.domain.UiControl;
 import org.mrr.reader.txt.controls.CsvControlDescriptions;
@@ -14,20 +14,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertNotNull;
 
-public class IntegrationTests {
+class IntegrationTests {
 
     @Test
-    public void shouldLoadDescriptionsStrategyerFirstElementAsExpected(){
+    void shouldLoadControlDescriptions() {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final CsvControlDescriptions loadStrategy = context.getBean("controlDescriptions", CsvControlDescriptions.class);
-        assertNotNull(loadStrategy.allDescriptions());
+        final CsvControlDescriptions underTest = context.getBean("controlDescriptions", CsvControlDescriptions.class);
+        assertNotNull(underTest.allDescriptions());
     }
 
     @Test
-    public void shouldLoadUiElementsWhenCalledFromControlsLogicClass(){
+    void shouldLoadControls() {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        final DefaultControlsLogic controlsLogic = context.getBean("defaultControlsLogic", DefaultControlsLogic.class);
-        final Map<String, UiControl> controls = controlsLogic.allControls();
+        final DefaultControlsLogic underTest = context.getBean("defaultControlsLogic", DefaultControlsLogic.class);
+        final Map<String, UiControl> controls = underTest.allControls();
         assertThat(controls, notNullValue());
     }
 }

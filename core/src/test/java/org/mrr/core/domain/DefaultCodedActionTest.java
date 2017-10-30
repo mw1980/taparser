@@ -1,33 +1,28 @@
 package org.mrr.core.domain;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.Test;
 import org.mrr.core.CodeActionLogic;
 import org.mrr.core.ParsedAction;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-public class DefaultCodedActionTest {
+class DefaultCodedActionTest {
 
-    @Mock
-    private ParsedAction origin;
-
-    @Mock
-    private CodeActionLogic codeLogic;
-
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
+    private final ParsedAction origin = mock(ParsedAction.class);
+    private CodeActionLogic codeLogic = mock(CodeActionLogic.class);
 
     @Test
-    public void whenDeliveringAutomationCode_shouldCallInnerMethods() {
+    void shouldDelegateCallWhenDeliveringCodeForAction() {
         when(origin.action()).thenReturn(Action.EMPTY);
-        new DefaultCodedAction(origin, codeLogic).code();
+
+        final DefaultCodedAction underTest = new DefaultCodedAction(origin, codeLogic);
+
+        underTest.code();
         verify(origin).action();
         verify(codeLogic).codeForAction(Action.EMPTY);
+        verifyNoMoreInteractions(origin, codeLogic);
     }
 }

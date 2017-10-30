@@ -3,6 +3,8 @@ package org.mrr.core.domain;
 /**
  * The class defines the supported user interface actions.
  */
+//TODO: extract and extend the logic from the enum. Remove CLICK_LINK and SELECT_RADIO_BUTTON
+// actions, since they are not needed.
 public enum ActionType {
   LOAD_PAGE("Load page"),
   EDIT_TEXT("Set in textfield"),

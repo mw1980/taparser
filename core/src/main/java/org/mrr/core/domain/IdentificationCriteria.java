@@ -9,6 +9,7 @@ import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
  * The class contains the identification criteria for a user interface element on the gui.
  * Example: byId, byName, byXPath, ByCss.
  */
+//TODO: externalise the matchesDescription logic.
 public enum IdentificationCriteria {
     ID {
         @Override

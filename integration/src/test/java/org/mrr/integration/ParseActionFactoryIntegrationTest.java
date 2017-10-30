@@ -1,10 +1,9 @@
 package org.mrr.integration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mrr.AbstractParseActionOperationTemplate;
 import org.mrr.ParseActionFactory;
 import org.mrr.ParseActionFactoryImpl;
-import org.mrr.ParseActionOperation;
 import org.mrr.ParseClickButtonOperation;
 import org.mrr.ParseClickRadioButtonOperation;
 import org.mrr.ParseDeselectCheckboxOperation;
@@ -16,61 +15,57 @@ import org.mrr.config.ApplicationConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class ParseActionFactoryIntegrationTest {
-    private final ParseActionFactory parserFactory;
+class ParseActionFactoryIntegrationTest {
+    private final ApplicationContext context = SpringApplication.run(ApplicationConfig.class);
+    private final ParseActionFactory underTest = context.getBean("parseActionFactory", ParseActionFactoryImpl.class);
 
-    public ParseActionFactoryIntegrationTest() {
-        final ApplicationContext context = SpringApplication.run(ApplicationConfig.class);
-        this.parserFactory = context.getBean("parseActionFactory", ParseActionFactoryImpl.class);
+    @Test
+    void whenParsingLoadPageDescription_shouldReturnLoadPageOperation() throws Exception {
+        assertThat(this.underTest.parseOperationFromDescription("Load page www.myurl.com"))
+                .isInstanceOf(ParseLoadPageActionOperation.class);
     }
 
     @Test
-    public void whenCreatingInstanceWithLoadPageDescription_shouldReturnLoadPageParser() throws Exception {
-        final ParseActionOperation parser = this.parserFactory.parseOperationFromDescription("Load page www.myurl.com");
-        assertTrue(parser instanceof ParseLoadPageActionOperation);
+    void whenParsingEditTextDescription_shouldReturnEditTextOperation() {
+        assertThat(this.underTest.parseOperationFromDescription("Set in textfield myfield value 20"))
+                .isInstanceOf(ParseEditTextfieldOperation.class);
     }
 
     @Test
-    public void whenCreatingInstanceWithEditTextDescription_shouldReturnEditTextParser() {
-        final ParseActionOperation parser = this.parserFactory.parseOperationFromDescription("Set in textfield myfield value 20");
-        assertTrue(parser instanceof ParseEditTextfieldOperation);
+    void whenParsingClickButtonDescription_shouldReturnClickButtonOperation() {
+        assertThat(underTest.parseOperationFromDescription("Click button submit"))
+                .isInstanceOf(ParseClickButtonOperation.class);
     }
 
     @Test
-    public void whenCreatingNewInstanceWithClickButtonText_shouldReturnClickButtonStepParserCommand() {
-        final ParseActionOperation parser = parserFactory.parseOperationFromDescription("Click button submit");
-        assertTrue(parser instanceof ParseClickButtonOperation);
+    void whenParsingSelectDropdownDescription_shouldReturnSelectDropdownOperation() {
+        assertThat(underTest.parseOperationFromDescription("Select in dropdown clients value \"johnie walker\""))
+                .isInstanceOf(ParseSelectDropdownOperation.class);
     }
 
     @Test
-    public void whenCreatingInstanceWithSelectDropdownText_shouldReturnSelectDropdownStepParser() {
-        final ParseActionOperation parser = parserFactory.parseOperationFromDescription("Select in dropdown clients value \"johnie walker\"");
-        assertTrue(parser instanceof ParseSelectDropdownOperation);
+    void whenParsingSelectCheckboxDescription_shouldReturnSelectCheckboxOperation() {
+        assertThat(underTest.parseOperationFromDescription("Select checkbox iAgree"))
+                .isInstanceOf(ParseSelectCheckboxOperation.class);
     }
 
     @Test
-    public void whenCreatingInstanceWithSelectCheckboxText_shouldReturnSelectCheckboxStepParser() {
-        final ParseActionOperation parser = parserFactory.parseOperationFromDescription("Select checkbox iAgree");
-        assertTrue(parser instanceof ParseSelectCheckboxOperation);
+    void whenParsingDeselectCheckboxDescription_shouldReturnDeselectCheckboxOperation() {
+        assertThat(underTest.parseOperationFromDescription("Deselect checkbox iAgree"))
+                .isInstanceOf(ParseDeselectCheckboxOperation.class);
     }
 
     @Test
-    public void whenCreatingInstanceWithDeselectCheckboxText_shouldReturnDeselectCheckboxStepParser() {
-        final ParseActionOperation parser = parserFactory.parseOperationFromDescription("Deselect checkbox iAgree");
-        assertTrue(parser instanceof ParseDeselectCheckboxOperation);
+    void whenParsingSelectRadioButtonDescription_shouldReturnClickRadioButtonOperation() {
+        assertThat(underTest.parseOperationFromDescription("Select radio button perEmail"))
+                .isInstanceOf(ParseClickRadioButtonOperation.class);
     }
 
     @Test
-    public void whenCreatingInstanceWithSelectRadioButtonText_shouldReturnClickRadioButtonParser() {
-        final ParseActionOperation parser = parserFactory.parseOperationFromDescription("Select radio button perEmail");
-        assertTrue(parser instanceof ParseClickRadioButtonOperation);
-    }
-
-    @Test
-    public void whenCreatingParserForUnknownAction_shouldReturnUnknownAction() {
-        assertEquals(AbstractParseActionOperationTemplate.UNKNOWN, parserFactory.parseOperationFromDescription("unknown action"));
+    void whenParsingUnknownActionDescription_shouldReturnUnknownOperation() {
+        assertThat(underTest.parseOperationFromDescription("unknown action"))
+                .isEqualTo(AbstractParseActionOperationTemplate.UNKNOWN);
     }
 }
