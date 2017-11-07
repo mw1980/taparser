@@ -10,9 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Map;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class IntegrationTests {
 
@@ -20,7 +18,7 @@ class IntegrationTests {
     void shouldLoadControlDescriptions() {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final CsvControlDescriptions underTest = context.getBean("controlDescriptions", CsvControlDescriptions.class);
-        assertNotNull(underTest.allDescriptions());
+        assertThat(underTest.allDescriptions()).isNotNull();
     }
 
     @Test
@@ -28,6 +26,6 @@ class IntegrationTests {
         final ConfigurableApplicationContext context = SpringApplication.run(ApplicationConfig.class);
         final DefaultControlsLogic underTest = context.getBean("defaultControlsLogic", DefaultControlsLogic.class);
         final Map<String, UiControl> controls = underTest.allControls();
-        assertThat(controls, notNullValue());
+        assertThat(controls).isNotNull();
     }
 }

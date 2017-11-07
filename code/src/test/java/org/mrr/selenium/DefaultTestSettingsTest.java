@@ -2,8 +2,7 @@ package org.mrr.selenium;
 
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class DefaultTestSettingsTest {
@@ -12,14 +11,14 @@ class DefaultTestSettingsTest {
     void shouldReturnInjectedValues() {
         assertAll(
                 () -> assertThat(
-                        new DefaultTestSettings("base", "", "").basePackagePath(),
-                        is("base")),
+                        new DefaultTestSettings("base", "", "").basePackagePath())
+                        .isEqualTo("base"),
                 () -> assertThat(
-                        new DefaultTestSettings("", "complete", "").completePackagePath(),
-                        is("complete")),
+                        new DefaultTestSettings("", "complete", "").completePackagePath())
+                        .isEqualTo("complete"),
                 () -> assertThat(
-                        new DefaultTestSettings("", "", "gecko").geckoDriverPath(),
-                        is("gecko"))
+                        new DefaultTestSettings("", "", "gecko").geckoDriverPath())
+                        .isEqualTo("gecko")
         );
     }
 }

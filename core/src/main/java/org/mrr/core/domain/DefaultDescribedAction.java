@@ -1,13 +1,9 @@
 package org.mrr.core.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.Value;
 import org.mrr.core.DescribedAction;
 
-@AllArgsConstructor
-@EqualsAndHashCode
-@ToString
+@Value
 public class DefaultDescribedAction implements DescribedAction {
     private final String description;
 

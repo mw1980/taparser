@@ -17,8 +17,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.DESELECT_CHECKBOX;
@@ -77,7 +75,7 @@ class CodeFactoryIntegrationTest {
     @Test
     void shouldInjectTheDefaultUiTest() {
         assertThat(
-                context.getBean("defaultUiUnitTest", DefaultUiUnitTest.class),
-                notNullValue());
+                context.getBean("defaultUiUnitTest", DefaultUiUnitTest.class))
+                .isNotNull();
     }
 }

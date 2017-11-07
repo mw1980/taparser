@@ -1,8 +1,0 @@
-Load page http://www.google.com
-Set in textfield user value "user name"
-Click button submit
-Click link newpage
-Select in dropdown mydropdown value "Johnie Walker"
-Select checkbox agreecookies
-Deselect checkbox agreecookies
-Select radio button emailradiobutton

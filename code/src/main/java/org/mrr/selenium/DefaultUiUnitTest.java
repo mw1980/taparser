@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import static java.lang.String.format;
 
 /**
- * A user interface test.
+ * The class models an user interface test.
  */
 @Component
 public class DefaultUiUnitTest implements UiUnitTest {
@@ -55,12 +55,12 @@ public class DefaultUiUnitTest implements UiUnitTest {
         final StringBuilder actionsCode = new StringBuilder("final WebDriver driver = new FirefoxDriver();\n");
         actions.forEach(action -> actionsCode.append(action.code()).append("\n"));
         return "package " + settings.basePackagePath() + "; \n"
-                + "import org.junit.Test; \n"
+                + "import org.junit.jupiter.api.Test; \n"
                 + "import org.openqa.selenium.*; \n"
                 + "import org.openqa.selenium.firefox.*; \n"
                 + "import org.openqa.selenium.support.ui.*; \n"
-                + "public class " + className + "{ \n"
-                + "@Test public void test(){ \n"
+                + "class " + className + "{ \n"
+                + "@Test void test(){ \n"
                 + " System.setProperty(\"webdriver.gecko.driver\", \"" + settings.geckoDriverPath() + "\");\n"
                 + actionsCode.toString()
                 + "}"

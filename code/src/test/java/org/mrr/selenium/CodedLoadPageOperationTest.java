@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.mrr.core.domain.Action;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 import static org.mrr.core.domain.ActionType.LOAD_PAGE;
@@ -16,8 +14,8 @@ class CodedLoadPageOperationTest {
     void testGenerateCode() throws Exception {
         final CodedLoadPageOperation underTest = new CodedLoadPageOperation();
         assertThat(
-                underTest.codeFor(new Action(LOAD_PAGE, "", "www.google.com")),
-                equalTo("driver.get(\"www.google.com\");"));
+                underTest.codeFor(new Action(LOAD_PAGE, "", "www.google.com")))
+                .isEqualTo("driver.get(\"www.google.com\");");
     }
 
     @Test
