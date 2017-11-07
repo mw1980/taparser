@@ -24,8 +24,8 @@ public class ParseEditTextfieldOperation extends AbstractParseActionOperationTem
 
     @Override
     protected String targetFrom(final String description) {
-        final String[] testCaseWords = description.split(" ");
-        return testCaseWords[3];
+        final String[] words = description.split(" ");
+        return words[3];
     }
 
     @Override
@@ -36,8 +36,8 @@ public class ParseEditTextfieldOperation extends AbstractParseActionOperationTem
 
     @Override
     public boolean canHandle(String description) {
-        return description.
-                trim()
+        return description
+                .trim()
                 .startsWith(EDIT_TEXT.description());
     }
 }

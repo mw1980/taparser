@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-class TestCaseGeneratorLogicIntegrationTest {
+class CodeActionLogicIntegrationTest {
 
     @Test
     void codeActionLogicBeanShouldBeAvailable() {

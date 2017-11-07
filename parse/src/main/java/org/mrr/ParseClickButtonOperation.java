@@ -15,16 +15,18 @@ import static org.mrr.core.domain.ActionType.CLICK_LINK;
 @Component
 public class ParseClickButtonOperation extends AbstractParseActionOperationTemplate {
 
+    //TODO: Separate the parse operations for click button and click link. Let the code generation operations generate
+    //the same code, for both cases, if the test automation framework needs it.
     @Override
     protected void validate(final String description) {
-        if (isNoClickDescription("button", description) &&
-                (isNoClickDescription("link", description))) {
+        if (notAClickDescription("button", description)
+                && (notAClickDescription("link", description))) {
             throw new DescriptionNotParsableException(
-                    format("The test step description '%s' cannot be parsed to a click button step.", description));
+                    format("The action description '%s' cannot be parsed to a click button action.", description));
         }
     }
 
-    private boolean isNoClickDescription(final String elementType, final String description) {
+    private boolean notAClickDescription(final String elementType, final String description) {
         return !Pattern.matches(format("Click %s [a-z]+", elementType), description);
     }
 
@@ -51,11 +53,7 @@ public class ParseClickButtonOperation extends AbstractParseActionOperationTempl
 
     @Override
     public boolean canHandle(String description) {
-        return isClickAction(description.trim());
-    }
-
-    private boolean isClickAction(final String description) {
-        return description.startsWith(CLICK_BUTTON.description())
-                || description.startsWith(CLICK_LINK.description());
+        return description.trim().startsWith(CLICK_BUTTON.description())
+                || description.trim().startsWith(CLICK_LINK.description());
     }
 }

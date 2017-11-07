@@ -34,8 +34,8 @@ public class ParseSelectCheckboxOperation extends AbstractParseActionOperationTe
 
     @Override
     public boolean canHandle(final String description) {
-        return description.
-                trim().
-                startsWith(SELECT_CHECKBOX.description());
+        return description
+                .trim()
+                .startsWith(SELECT_CHECKBOX.description());
     }
 }

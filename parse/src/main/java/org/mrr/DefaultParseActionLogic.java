@@ -11,15 +11,15 @@ public class DefaultParseActionLogic implements ParseActionLogic {
     private final ParseActionFactory factory;
 
     @Autowired
-    public DefaultParseActionLogic(final ParseActionFactory stepParserFactory) {
-        this.factory = stepParserFactory;
+    public DefaultParseActionLogic(final ParseActionFactory parseActionFactory) {
+        this.factory = parseActionFactory;
     }
 
     @Override
-    public Action actionFromDescription(final DescribedAction describedAction) {
-        final String description = describedAction.description();
+    public Action actionFromDescription(final DescribedAction action) {
+        final String description = action.description();
         return factory
-                .parseOperationFromDescription(description)
-                .actionFrom(description);
+                .parseOperationForDescription(description)
+                .actionFor(description);
     }
 }

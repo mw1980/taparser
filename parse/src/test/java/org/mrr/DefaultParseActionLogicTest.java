@@ -1,29 +1,33 @@
 package org.mrr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mrr.core.DescribedAction;
 import org.mrr.core.ParseActionLogic;
 import org.mrr.core.domain.Action;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.mrr.core.DescribedAction.EmptyDescribedAction;
 import static org.mrr.core.domain.ActionType.CLICK_BUTTON;
 
-public class DefaultParseActionLogicTest {
-    private static final String DESCRIPTION = "";
+class DefaultParseActionLogicTest {
 
     private final ParseActionFactory factory = mock(ParseActionFactory.class);
-    private final ParseActionOperation stepParser = mock(ParseActionOperation.class);
+    private final ParseActionOperation parseOperation = mock(ParseActionOperation.class);
 
     @Test
-    public void whenParsingAction_shouldLoadTheParseOperationOverTheFactory() {
+    void whenParsingAction_shouldLoadTheParseOperationOverTheFactory() {
         final DescribedAction empty = new EmptyDescribedAction();
-        when(factory.parseOperationFromDescription(DESCRIPTION)).thenReturn(stepParser);
-        when(stepParser.actionFrom(DESCRIPTION)).thenReturn(new Action(CLICK_BUTTON, "button", ""));
+        when(factory.parseOperationForDescription(empty.description())).thenReturn(parseOperation);
+        when(parseOperation.actionFor(empty.description())).thenReturn(Action.withType(CLICK_BUTTON));
+
         final ParseActionLogic underTest = new DefaultParseActionLogic(factory);
         underTest.actionFromDescription(empty);
-        verify(factory).parseOperationFromDescription(empty.description());
+
+        verify(factory).parseOperationForDescription(empty.description());
+        verify(parseOperation).actionFor(empty.description());
+        verifyNoMoreInteractions(factory, parseOperation);
     }
 }

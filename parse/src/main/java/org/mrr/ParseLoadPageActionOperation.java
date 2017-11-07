@@ -29,7 +29,7 @@ public class ParseLoadPageActionOperation extends AbstractParseActionOperationTe
     @Override
     protected String valueFrom(final String description) {
         //Expected:
-        // - on position 0 the action description: ""
+        // - on position 0 the action description
         // - on position 1 the action target: "http://www.myWebPage.com"
         final String[] actionTokens = description.split(LOAD_PAGE.description() + " ");
         return actionTokens[1];

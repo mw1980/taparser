@@ -19,6 +19,7 @@ public class ParseClickRadioButtonOperation extends AbstractParseActionOperation
 
     @Override
     protected ActionType actionType() {
+        //TODO: refactor here. Parse operations should be unaware of test automation framework.
         //From selenium point of view, the selection of a radio button is a radio button click.
         return CLICK_BUTTON;
     }

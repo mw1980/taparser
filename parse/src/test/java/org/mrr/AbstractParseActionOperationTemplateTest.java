@@ -1,23 +1,23 @@
 package org.mrr;
 
-import org.junit.Test;
-import org.mrr.core.domain.Action;
+import org.junit.jupiter.api.Test;
+import org.mrr.ParseActionOperation.DummyParseActionOperation;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mrr.core.domain.ActionType.UNKNOWN;
 
 
-public class AbstractParseActionOperationTemplateTest {
+class AbstractParseActionOperationTemplateTest {
+
     @Test
-    public void nullObjectShouldParseDescriptionToUnknowTestStep() {
-        final Action parsed = AbstractParseActionOperationTemplate.UNKNOWN.actionFrom("any description");
-        assertThat(parsed.actionType(), equalTo(UNKNOWN));
+    void nullObjectShouldParseDescriptionToUnknownTestStep() {
+        final DummyParseActionOperation underTest = new DummyParseActionOperation();
+        assertThat(underTest.actionFor("any description").actionType()).isEqualTo(UNKNOWN);
     }
 
     @Test
-    public void nullObjectShouldNotHandleAnyDescriptions() {
-        assertThat(AbstractParseActionOperationTemplate.UNKNOWN.canHandle("any description"), is(false));
+    void nullObjectShouldNotHandleAnyDescriptions() {
+        final DummyParseActionOperation underTest = new DummyParseActionOperation();
+        assertThat(underTest.canHandle("any description")).isFalse();
     }
 }

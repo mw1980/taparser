@@ -1,5 +1,6 @@
 package org.mrr;
 
+import org.mrr.ParseActionOperation.DummyParseActionOperation;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -9,7 +10,6 @@ import java.util.Collection;
 import java.util.Map;
 
 import static java.util.Collections.emptyList;
-import static org.mrr.AbstractParseActionOperationTemplate.UNKNOWN;
 
 @Component("parseActionFactory")
 public class ParseActionFactoryImpl implements ApplicationContextAware, ParseActionFactory {
@@ -22,11 +22,11 @@ public class ParseActionFactoryImpl implements ApplicationContextAware, ParseAct
     }
 
     @Override
-    public ParseActionOperation parseOperationFromDescription(final String description) {
+    public ParseActionOperation parseOperationForDescription(final String description) {
         return registeredTestStepParsers().stream()
                 .filter(parser -> parser.canHandle(description))
                 .findFirst()
-                .orElse(UNKNOWN);
+                .orElse(new DummyParseActionOperation());
     }
 
     private Collection<ParseActionOperation> registeredTestStepParsers() {

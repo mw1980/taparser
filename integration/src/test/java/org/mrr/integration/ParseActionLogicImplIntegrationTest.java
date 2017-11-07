@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
-public class TestStepParserLogicImplIntegrationParseTest {
+public class ParseActionLogicImplIntegrationTest {
 
     @Test
     public void whenStartingApplicationContext_shouldAutowireTheParserLogic(){
